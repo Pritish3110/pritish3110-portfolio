@@ -19,7 +19,35 @@ export default {
 		},
 		extend: {
 			colors: {
-				border: 'hsl(var(--border))',
+				// Design system colors
+				'neon-green': {
+					DEFAULT: 'hsl(var(--neon-green))',
+					dim: 'hsl(var(--neon-green-dim))'
+				},
+				'purple-accent': {
+					DEFAULT: 'hsl(var(--purple-accent))',
+					light: 'hsl(var(--purple-light))'
+				},
+				surface: {
+					DEFAULT: 'hsl(var(--surface))',
+					light: 'hsl(var(--surface-light))'
+				},
+				text: {
+					primary: 'hsl(var(--text-primary))',
+					secondary: 'hsl(var(--text-secondary))',
+					accent: 'hsl(var(--text-accent))',
+					muted: 'hsl(var(--text-muted))'
+				},
+				button: {
+					primary: 'hsl(var(--button-primary))',
+					secondary: 'hsl(var(--button-secondary))'
+				},
+				border: {
+					DEFAULT: 'hsl(var(--border))',
+					subtle: 'hsl(var(--border-subtle))',
+					accent: 'hsl(var(--border-accent))'
+				},
+				// Legacy shadcn colors
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
@@ -51,17 +79,13 @@ export default {
 				card: {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
-				},
-				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
 				}
+			},
+			fontFamily: {
+				'orbitron': ['Orbitron', 'monospace'],
+				'inter': ['Inter', 'sans-serif'],
+				'space': ['Space Grotesk', 'sans-serif'],
+				'mono': ['JetBrains Mono', 'monospace']
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
