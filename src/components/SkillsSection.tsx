@@ -22,7 +22,13 @@ const SkillsSection = () => {
       category: 'Programming Languages',
       icon: Code2,
       color: 'text-blue-400',
-      skills: ['C++', 'Python', 'JavaScript', 'Java', 'Shell Script'],
+      skills: [
+        { name: 'C++', icon: '⚡' },
+        { name: 'Python', icon: '🐍' },
+        { name: 'JavaScript', icon: '📜' },
+        { name: 'Java', icon: '☕' },
+        { name: 'Shell Script', icon: '📟' }
+      ],
       bgColor: 'bg-blue-500/10',
       borderColor: 'border-blue-500/30'
     },
@@ -30,7 +36,13 @@ const SkillsSection = () => {
       category: 'Web Technologies',
       icon: Globe,
       color: 'text-green-400',
-      skills: ['HTML5', 'CSS3', 'React.js', 'Node.js', 'Tailwind CSS'],
+      skills: [
+        { name: 'HTML5', icon: '🌐' },
+        { name: 'CSS3', icon: '🎨' },
+        { name: 'React.js', icon: '⚛️' },
+        { name: 'Node.js', icon: '🟢' },
+        { name: 'Tailwind CSS', icon: '💨' }
+      ],
       bgColor: 'bg-green-500/10',
       borderColor: 'border-green-500/30'
     },
@@ -38,7 +50,13 @@ const SkillsSection = () => {
       category: 'Robotics & Embedded',
       icon: Cpu,
       color: 'text-purple-400',
-      skills: ['Arduino IDE', 'IR Sensors', 'L298N', 'N20 Motors', 'Microcontrollers'],
+      skills: [
+        { name: 'Arduino IDE', icon: '🔌' },
+        { name: 'IR Sensors', icon: '👁️' },
+        { name: 'L298N', icon: '🔋' },
+        { name: 'N20 Motors', icon: '⚙️' },
+        { name: 'Microcontrollers', icon: '🖥️' }
+      ],
       bgColor: 'bg-purple-500/10',
       borderColor: 'border-purple-500/30'
     },
@@ -46,7 +64,13 @@ const SkillsSection = () => {
       category: 'Game Development',
       icon: Gamepad2,
       color: 'text-orange-400',
-      skills: ['Unity', 'C#', 'Game Design', '3D Modeling', 'Physics Engines'],
+      skills: [
+        { name: 'Unity', icon: '🎮' },
+        { name: 'C#', icon: '🔷' },
+        { name: 'Game Design', icon: '🎯' },
+        { name: '3D Modeling', icon: '📐' },
+        { name: 'Physics Engines', icon: '🌀' }
+      ],
       bgColor: 'bg-orange-500/10',
       borderColor: 'border-orange-500/30'
     }
@@ -115,16 +139,19 @@ const SkillsSection = () => {
               <div className="grid grid-cols-2 gap-3">
                 {category.skills.map((skill, skillIndex) => (
                   <motion.div
-                    key={skill}
+                    key={skill.name}
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={inView ? { opacity: 1, scale: 1 } : {}}
                     transition={{ duration: 0.4, delay: (index * 0.1) + (skillIndex * 0.05) }}
                     whileHover={{ scale: 1.05 }}
                     className="bg-background/70 rounded-lg p-3 text-center border border-border-subtle hover:border-neon-green/30 transition-all duration-300"
                   >
-                    <span className="text-sm font-mono text-text-secondary">
-                      {skill}
-                    </span>
+                    <div className="flex items-center justify-center space-x-2">
+                      <span className="text-base">{skill.icon}</span>
+                      <span className="text-sm font-mono text-text-secondary">
+                        {skill.name}
+                      </span>
+                    </div>
                   </motion.div>
                 ))}
               </div>

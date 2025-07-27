@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import { Download, Mail } from 'lucide-react';
 
 interface NavbarProps {
   activeSection: string;
@@ -12,8 +13,9 @@ const Navbar = ({ activeSection, onNavigate }: NavbarProps) => {
   const navItems = [
     { id: 'about', label: 'About Me', icon: '👨‍💻' },
     { id: 'skills', label: 'Technical Skills', icon: '⚡' },
-    { id: 'resume', label: 'Resume', icon: '📄' },
-    { id: 'projects', label: 'Featured Projects', icon: '🚀' }
+    { id: 'projects', label: 'Featured Projects', icon: '🚀' },
+    { id: 'contact', label: 'Contact', icon: <Mail className="w-4 h-4" /> },
+    { id: 'resume', label: 'Resume', icon: <Download className="w-4 h-4" /> }
   ];
 
   return (
@@ -84,7 +86,11 @@ const Navbar = ({ activeSection, onNavigate }: NavbarProps) => {
                 )}
                 
                 <span className="relative z-10 flex items-center space-x-2">
-                  <span className="text-lg">{item.icon}</span>
+                  {typeof item.icon === 'string' ? (
+                    <span className="text-lg">{item.icon}</span>
+                  ) : (
+                    item.icon
+                  )}
                   <span>{item.label}</span>
                 </span>
 

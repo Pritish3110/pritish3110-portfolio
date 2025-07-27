@@ -9,16 +9,16 @@ const AboutSection = () => {
   });
 
   const skills = [
-    'Data Structures & Algorithms',
-    'Robotics & Automation',
-    'Web Development',
-    'Operating Systems',
-    'Game Development',
-    'Python Programming',
-    'C Programming',
-    'Version Control',
-    'Database Management',
-    'Shell Scripting'
+    { name: 'Data Structures & Algorithms', icon: '🧩' },
+    { name: 'Robotics & Automation', icon: '🤖' },
+    { name: 'Web Development', icon: '🌐' },
+    { name: 'Operating Systems', icon: '💻' },
+    { name: 'Game Development', icon: '🎮' },
+    { name: 'Python Programming', icon: '🐍' },
+    { name: 'C Programming', icon: '⚡' },
+    { name: 'Version Control', icon: '📂' },
+    { name: 'Database Management', icon: '🗄️' },
+    { name: 'Shell Scripting', icon: '📟' }
   ];
 
   const softSkills = [
@@ -106,16 +106,46 @@ const AboutSection = () => {
                 </h3>
               </div>
               
-              <div className="space-y-4">
-                <div>
+              <div className="space-y-6">
+                {/* VIT */}
+                <div className="border-l-4 border-neon-green pl-4">
                   <h4 className="text-xl font-inter font-semibold text-text-primary">
                     B.Tech in Computer Science
                   </h4>
                   <p className="text-neon-green font-medium">
                     AI & Robotics Specialization
                   </p>
-                  <p className="text-text-muted">
-                    Vellore Institute of Technology, 2023–2027
+                  <p className="text-text-muted mb-1">
+                    Vellore Institute of Technology (VIT), 2023–2027
+                  </p>
+                  <p className="text-purple-accent font-medium">
+                    Current CGPA: 8.4
+                  </p>
+                </div>
+
+                {/* 12th Grade */}
+                <div className="border-l-4 border-purple-accent pl-4">
+                  <h4 className="text-lg font-inter font-semibold text-text-primary">
+                    Higher Secondary Education (12th Grade)
+                  </h4>
+                  <p className="text-text-muted mb-1">
+                    Sarwamangal High School
+                  </p>
+                  <p className="text-purple-accent font-medium">
+                    89.90 Percentile
+                  </p>
+                </div>
+
+                {/* 10th Grade */}
+                <div className="border-l-4 border-text-secondary pl-4">
+                  <h4 className="text-lg font-inter font-semibold text-text-primary">
+                    Secondary Education (10th Grade)
+                  </h4>
+                  <p className="text-text-muted mb-1">
+                    Mahan High School
+                  </p>
+                  <p className="text-neon-green font-medium">
+                    99.68 Percentile
                   </p>
                 </div>
               </div>
@@ -130,16 +160,19 @@ const AboutSection = () => {
               <div className="grid grid-cols-2 gap-3">
                 {skills.map((skill, index) => (
                   <motion.div
-                    key={skill}
+                    key={skill.name}
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={inView ? { opacity: 1, scale: 1 } : {}}
                     transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
                     whileHover={{ scale: 1.05 }}
                     className="bg-background/70 rounded-lg p-3 text-center border border-border-subtle hover:border-neon-green/50 transition-all duration-300"
                   >
-                    <span className="text-sm font-mono text-text-secondary">
-                      {skill}
-                    </span>
+                    <div className="flex items-center justify-center space-x-2">
+                      <span className="text-lg">{skill.icon}</span>
+                      <span className="text-sm font-mono text-text-secondary">
+                        {skill.name}
+                      </span>
+                    </div>
                   </motion.div>
                 ))}
               </div>
