@@ -5,7 +5,7 @@ import { Button } from './ui/button';
 
 const ResumeSection = () => {
   const [ref, inView] = useInView({
-    triggerOnce: true,
+    triggerOnce: false,
     threshold: 0.1
   });
 
@@ -29,7 +29,7 @@ const ResumeSection = () => {
   ];
 
   return (
-    <section id="resume" className="py-20 px-6">
+    <section id="resume" className="py-20 px-6 lg:px-12">
       <div className="container mx-auto">
         <motion.div
           ref={ref}

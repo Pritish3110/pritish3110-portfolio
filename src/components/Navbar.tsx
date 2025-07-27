@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { Download, Mail } from 'lucide-react';
+import { User, Zap, Download, MessageSquare, FolderOpen, Menu, X } from 'lucide-react';
 
 interface NavbarProps {
   activeSection: string;
@@ -9,13 +9,14 @@ interface NavbarProps {
 
 const Navbar = ({ activeSection, onNavigate }: NavbarProps) => {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItems = [
-    { id: 'about', label: 'About Me', icon: '👨‍💻' },
-    { id: 'skills', label: 'Technical Skills', icon: '⚡' },
-    { id: 'projects', label: 'Featured Projects', icon: '🚀' },
-    { id: 'contact', label: 'Contact', icon: <Mail className="w-4 h-4" /> },
-    { id: 'resume', label: 'Resume', icon: <Download className="w-4 h-4" /> }
+    { id: 'about', label: 'About Me', icon: <User className="w-4 h-4" /> },
+    { id: 'skills', label: 'Technical Skills', icon: <Zap className="w-4 h-4" /> },
+    { id: 'projects', label: 'Featured Projects', icon: <FolderOpen className="w-4 h-4" /> },
+    { id: 'resume', label: 'Resume', icon: <Download className="w-4 h-4" /> },
+    { id: 'contact', label: 'Contact', icon: <MessageSquare className="w-4 h-4" /> }
   ];
 
   return (
@@ -57,8 +58,8 @@ const Navbar = ({ activeSection, onNavigate }: NavbarProps) => {
             </span>
           </motion.div>
 
-          {/* Navigation Items */}
-          <div className="flex items-center space-x-1">
+          {/* Navigation Items - Desktop */}
+          <div className="hidden lg:flex items-center space-x-1">
             {navItems.map((item) => (
               <motion.button
                 key={item.id}
@@ -70,7 +71,7 @@ const Navbar = ({ activeSection, onNavigate }: NavbarProps) => {
                     ? 'text-background bg-neon-green shadow-lg'
                     : 'text-text-secondary hover:text-neon-green'
                 }`}
-                whileHover={{ y: -2 }}
+                whileHover={{ y: -2, scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
                 {/* Hover background */}
@@ -86,11 +87,7 @@ const Navbar = ({ activeSection, onNavigate }: NavbarProps) => {
                 )}
                 
                 <span className="relative z-10 flex items-center space-x-2">
-                  {typeof item.icon === 'string' ? (
-                    <span className="text-lg">{item.icon}</span>
-                  ) : (
-                    item.icon
-                  )}
+                  {item.icon}
                   <span>{item.label}</span>
                 </span>
 
@@ -101,8 +98,57 @@ const Navbar = ({ activeSection, onNavigate }: NavbarProps) => {
               </motion.button>
             ))}
           </div>
+
+          {/* Mobile Menu Button */}
+          <motion.button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="lg:hidden text-text-secondary hover:text-neon-green transition-colors duration-300"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+          >
+            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </motion.button>
         </div>
       </div>
+
+      {/* Mobile Menu */}
+      <motion.div
+        className={`lg:hidden bg-background/95 backdrop-blur-lg border-b border-subtle ${
+          mobileMenuOpen ? 'block' : 'hidden'
+        }`}
+        initial={{ opacity: 0, height: 0 }}
+        animate={{ 
+          opacity: mobileMenuOpen ? 1 : 0, 
+          height: mobileMenuOpen ? 'auto' : 0 
+        }}
+        transition={{ duration: 0.3 }}
+      >
+        <div className="container mx-auto px-6 py-4">
+          <div className="flex flex-col space-y-2">
+            {navItems.map((item) => (
+              <motion.button
+                key={item.id}
+                onClick={() => {
+                  onNavigate(item.id);
+                  setMobileMenuOpen(false);
+                }}
+                className={`text-left px-4 py-3 rounded-lg font-inter font-medium transition-all duration-300 ${
+                  activeSection === item.id
+                    ? 'text-background bg-neon-green'
+                    : 'text-text-secondary hover:text-neon-green hover:bg-surface-light'
+                }`}
+                whileHover={{ x: 10 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <span className="flex items-center space-x-3">
+                  {item.icon}
+                  <span>{item.label}</span>
+                </span>
+              </motion.button>
+            ))}
+          </div>
+        </div>
+      </motion.div>
     </motion.nav>
   );
 };

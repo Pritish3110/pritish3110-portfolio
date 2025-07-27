@@ -10,7 +10,7 @@ import { useToast } from '../hooks/use-toast';
 
 const ContactSection = () => {
   const [ref, inView] = useInView({
-    triggerOnce: true,
+    triggerOnce: false,
     threshold: 0.1
   });
 
@@ -67,7 +67,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-20 px-6">
+    <section id="contact" className="py-20 px-6 lg:px-12">
       <div className="container mx-auto">
         <motion.div
           ref={ref}

@@ -31,9 +31,9 @@ const HeroSection = () => {
   ];
 
   return (
-    <section className="min-h-screen flex items-center justify-center pt-20 px-6">
+    <section className="min-h-screen flex items-center justify-center pt-20 px-6 lg:px-12">
       <div className="container mx-auto">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -117,8 +117,12 @@ const HeroSection = () => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`text-text-secondary transition-colors duration-300 ${social.color}`}
-                  whileHover={{ scale: 1.2, y: -3 }}
+                  className={`text-text-secondary transition-all duration-300 ${social.color} hover:scale-110 hover:-translate-y-1`}
+                  whileHover={{ 
+                    scale: 1.3, 
+                    y: -5,
+                    transition: { type: "spring", stiffness: 400, damping: 10 }
+                  }}
                   whileTap={{ scale: 0.9 }}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}

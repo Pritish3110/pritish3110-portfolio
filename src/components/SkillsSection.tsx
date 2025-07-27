@@ -8,12 +8,27 @@ import {
   Brain,
   Users,
   MessageCircle,
-  Lightbulb
+  Lightbulb,
+  Code,
+  FileText,
+  Zap,
+  Coffee,
+  Terminal,
+  Palette,
+  GitBranch,
+  Database,
+  Layers,
+  Settings,
+  Eye,
+  Wrench,
+  Monitor,
+  Target,
+  Box
 } from 'lucide-react';
 
 const SkillsSection = () => {
   const [ref, inView] = useInView({
-    triggerOnce: true,
+    triggerOnce: false,
     threshold: 0.1
   });
 
@@ -23,11 +38,11 @@ const SkillsSection = () => {
       icon: Code2,
       color: 'text-blue-400',
       skills: [
-        { name: 'C++', icon: '⚡' },
-        { name: 'Python', icon: '🐍' },
-        { name: 'JavaScript', icon: '📜' },
-        { name: 'Java', icon: '☕' },
-        { name: 'Shell Script', icon: '📟' }
+        { name: 'C++', icon: <Zap className="w-4 h-4" /> },
+        { name: 'Python', icon: <Code className="w-4 h-4" /> },
+        { name: 'JavaScript', icon: <FileText className="w-4 h-4" /> },
+        { name: 'Java', icon: <Coffee className="w-4 h-4" /> },
+        { name: 'Shell Script', icon: <Terminal className="w-4 h-4" /> }
       ],
       bgColor: 'bg-blue-500/10',
       borderColor: 'border-blue-500/30'
@@ -37,11 +52,11 @@ const SkillsSection = () => {
       icon: Globe,
       color: 'text-green-400',
       skills: [
-        { name: 'HTML5', icon: '🌐' },
-        { name: 'CSS3', icon: '🎨' },
-        { name: 'React.js', icon: '⚛️' },
-        { name: 'Node.js', icon: '🟢' },
-        { name: 'Tailwind CSS', icon: '💨' }
+        { name: 'HTML5', icon: <Globe className="w-4 h-4" /> },
+        { name: 'CSS3', icon: <Palette className="w-4 h-4" /> },
+        { name: 'React.js', icon: <Layers className="w-4 h-4" /> },
+        { name: 'Node.js', icon: <Database className="w-4 h-4" /> },
+        { name: 'Tailwind CSS', icon: <Wrench className="w-4 h-4" /> }
       ],
       bgColor: 'bg-green-500/10',
       borderColor: 'border-green-500/30'
@@ -51,11 +66,11 @@ const SkillsSection = () => {
       icon: Cpu,
       color: 'text-purple-400',
       skills: [
-        { name: 'Arduino IDE', icon: '🔌' },
-        { name: 'IR Sensors', icon: '👁️' },
-        { name: 'L298N', icon: '🔋' },
-        { name: 'N20 Motors', icon: '⚙️' },
-        { name: 'Microcontrollers', icon: '🖥️' }
+        { name: 'Arduino IDE', icon: <Settings className="w-4 h-4" /> },
+        { name: 'IR Sensors', icon: <Eye className="w-4 h-4" /> },
+        { name: 'L298N', icon: <Zap className="w-4 h-4" /> },
+        { name: 'N20 Motors', icon: <Settings className="w-4 h-4" /> },
+        { name: 'Microcontrollers', icon: <Monitor className="w-4 h-4" /> }
       ],
       bgColor: 'bg-purple-500/10',
       borderColor: 'border-purple-500/30'
@@ -65,11 +80,11 @@ const SkillsSection = () => {
       icon: Gamepad2,
       color: 'text-orange-400',
       skills: [
-        { name: 'Unity', icon: '🎮' },
-        { name: 'C#', icon: '🔷' },
-        { name: 'Game Design', icon: '🎯' },
-        { name: '3D Modeling', icon: '📐' },
-        { name: 'Physics Engines', icon: '🌀' }
+        { name: 'Unity', icon: <Gamepad2 className="w-4 h-4" /> },
+        { name: 'C#', icon: <Code2 className="w-4 h-4" /> },
+        { name: 'Game Design', icon: <Target className="w-4 h-4" /> },
+        { name: '3D Modeling', icon: <Box className="w-4 h-4" /> },
+        { name: 'Physics Engines', icon: <Cpu className="w-4 h-4" /> }
       ],
       bgColor: 'bg-orange-500/10',
       borderColor: 'border-orange-500/30'
@@ -98,7 +113,7 @@ const SkillsSection = () => {
   ];
 
   return (
-    <section id="skills" className="py-20 px-6 bg-surface/30">
+    <section id="skills" className="py-20 px-6 lg:px-12 bg-surface/30">
       <div className="container mx-auto">
         <motion.div
           ref={ref}
@@ -147,7 +162,7 @@ const SkillsSection = () => {
                     className="bg-background/70 rounded-lg p-3 text-center border border-border-subtle hover:border-neon-green/30 transition-all duration-300"
                   >
                     <div className="flex items-center justify-center space-x-2">
-                      <span className="text-base">{skill.icon}</span>
+                      <span className="text-neon-green">{skill.icon}</span>
                       <span className="text-sm font-mono text-text-secondary">
                         {skill.name}
                       </span>

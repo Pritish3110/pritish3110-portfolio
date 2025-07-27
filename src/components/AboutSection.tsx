@@ -1,24 +1,39 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { GraduationCap, Heart, Lightbulb, Users } from 'lucide-react';
+import { 
+  GraduationCap, 
+  Heart, 
+  Lightbulb, 
+  Users, 
+  Code2, 
+  Cpu, 
+  Globe, 
+  Monitor, 
+  Gamepad2, 
+  Code, 
+  Zap, 
+  GitBranch, 
+  Database, 
+  Terminal 
+} from 'lucide-react';
 
 const AboutSection = () => {
   const [ref, inView] = useInView({
-    triggerOnce: true,
+    triggerOnce: false,
     threshold: 0.1
   });
 
   const skills = [
-    { name: 'Data Structures & Algorithms', icon: '🧩' },
-    { name: 'Robotics & Automation', icon: '🤖' },
-    { name: 'Web Development', icon: '🌐' },
-    { name: 'Operating Systems', icon: '💻' },
-    { name: 'Game Development', icon: '🎮' },
-    { name: 'Python Programming', icon: '🐍' },
-    { name: 'C Programming', icon: '⚡' },
-    { name: 'Version Control', icon: '📂' },
-    { name: 'Database Management', icon: '🗄️' },
-    { name: 'Shell Scripting', icon: '📟' }
+    { name: 'Data Structures & Algorithms', icon: <Code2 className="w-4 h-4" /> },
+    { name: 'Robotics & Automation', icon: <Cpu className="w-4 h-4" /> },
+    { name: 'Web Development', icon: <Globe className="w-4 h-4" /> },
+    { name: 'Operating Systems', icon: <Monitor className="w-4 h-4" /> },
+    { name: 'Game Development', icon: <Gamepad2 className="w-4 h-4" /> },
+    { name: 'Python Programming', icon: <Code className="w-4 h-4" /> },
+    { name: 'C Programming', icon: <Zap className="w-4 h-4" /> },
+    { name: 'Version Control', icon: <GitBranch className="w-4 h-4" /> },
+    { name: 'Database Management', icon: <Database className="w-4 h-4" /> },
+    { name: 'Shell Scripting', icon: <Terminal className="w-4 h-4" /> }
   ];
 
   const softSkills = [
@@ -28,7 +43,7 @@ const AboutSection = () => {
   ];
 
   return (
-    <section id="about" className="py-20 px-6">
+    <section id="about" className="py-20 px-6 lg:px-12">
       <div className="container mx-auto">
         <motion.div
           ref={ref}
@@ -168,7 +183,7 @@ const AboutSection = () => {
                     className="bg-background/70 rounded-lg p-3 text-center border border-border-subtle hover:border-neon-green/50 transition-all duration-300"
                   >
                     <div className="flex items-center justify-center space-x-2">
-                      <span className="text-lg">{skill.icon}</span>
+                      <span className="text-neon-green">{skill.icon}</span>
                       <span className="text-sm font-mono text-text-secondary">
                         {skill.name}
                       </span>
