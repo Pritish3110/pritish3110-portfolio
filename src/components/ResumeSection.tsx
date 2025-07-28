@@ -6,7 +6,8 @@ import { Button } from './ui/button';
 const ResumeSection = () => {
   const [ref, inView] = useInView({
     triggerOnce: false,
-    threshold: 0.1
+    threshold: 0.2,
+    rootMargin: '-50px 0px'
   });
 
   const handleDownload = () => {
@@ -52,7 +53,7 @@ const ResumeSection = () => {
             initial={{ opacity: 0, y: 50 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="bg-surface-light rounded-3xl p-12 border border-border-subtle relative overflow-hidden"
+            className="bg-surface-light rounded-3xl p-6 sm:p-8 lg:p-12 border border-border-subtle relative overflow-hidden"
           >
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-5">
@@ -62,7 +63,7 @@ const ResumeSection = () => {
             </div>
 
             <div className="relative z-10">
-              <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                 {/* Left Content */}
                 <div className="space-y-8">
                   <div className="flex items-center space-x-4">
@@ -99,7 +100,7 @@ const ResumeSection = () => {
                     </div>
                   </div>
 
-                  <div className="flex flex-col sm:flex-row gap-4">
+                  <div className="flex flex-col gap-4">
                     <motion.div
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}

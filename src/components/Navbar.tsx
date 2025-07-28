@@ -14,8 +14,8 @@ const Navbar = ({ activeSection, onNavigate }: NavbarProps) => {
   const navItems = [
     { id: 'about', label: 'About Me', icon: <User className="w-4 h-4" /> },
     { id: 'skills', label: 'Technical Skills', icon: <Zap className="w-4 h-4" /> },
-    { id: 'projects', label: 'Featured Projects', icon: <FolderOpen className="w-4 h-4" /> },
     { id: 'resume', label: 'Resume', icon: <Download className="w-4 h-4" /> },
+    { id: 'projects', label: 'Featured Projects', icon: <FolderOpen className="w-4 h-4" /> },
     { id: 'contact', label: 'Contact', icon: <MessageSquare className="w-4 h-4" /> }
   ];
 
@@ -26,7 +26,7 @@ const Navbar = ({ activeSection, onNavigate }: NavbarProps) => {
       transition={{ duration: 0.8, delay: 0.5 }}
       className="fixed top-0 left-0 right-0 z-40 bg-background/80 backdrop-blur-lg border-b border-subtle"
     >
-      <div className="container mx-auto px-6 py-4">
+      <div className="container mx-auto px-4 sm:px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <motion.div
@@ -53,7 +53,7 @@ const Navbar = ({ activeSection, onNavigate }: NavbarProps) => {
                 </text>
               </svg>
             </div>
-            <span className="text-xl font-orbitron font-bold text-neon-green">
+            <span className="text-lg sm:text-xl font-orbitron font-bold text-neon-green">
               Pritish
             </span>
           </motion.div>
@@ -66,7 +66,7 @@ const Navbar = ({ activeSection, onNavigate }: NavbarProps) => {
                 onClick={() => onNavigate(item.id)}
                 onHoverStart={() => setHoveredItem(item.id)}
                 onHoverEnd={() => setHoveredItem(null)}
-                className={`relative px-6 py-3 rounded-xl font-inter font-medium transition-all duration-300 ${
+                className={`relative px-4 xl:px-6 py-3 rounded-xl font-inter font-medium transition-all duration-300 ${
                   activeSection === item.id
                     ? 'text-background bg-neon-green shadow-lg'
                     : 'text-text-secondary hover:text-neon-green'
@@ -88,7 +88,7 @@ const Navbar = ({ activeSection, onNavigate }: NavbarProps) => {
                 
                 <span className="relative z-10 flex items-center space-x-2">
                   {item.icon}
-                  <span>{item.label}</span>
+                  <span className="hidden xl:block">{item.label}</span>
                 </span>
 
                 {/* Glow effect for active item */}

@@ -11,7 +11,8 @@ import { useToast } from '../hooks/use-toast';
 const ContactSection = () => {
   const [ref, inView] = useInView({
     triggerOnce: false,
-    threshold: 0.1
+    threshold: 0.2,
+    rootMargin: '-50px 0px'
   });
 
   const [formData, setFormData] = useState({
@@ -90,7 +91,7 @@ const ContactSection = () => {
             initial={{ opacity: 0, y: 50 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="bg-surface-light rounded-3xl p-12 border border-border-subtle relative overflow-hidden"
+            className="bg-surface-light rounded-3xl p-6 sm:p-8 lg:p-12 border border-border-subtle relative overflow-hidden"
           >
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-5">
@@ -100,7 +101,7 @@ const ContactSection = () => {
             </div>
 
             <div className="relative z-10">
-              <div className="grid lg:grid-cols-2 gap-12 items-start">
+              <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
                 {/* Left Content */}
                 <motion.div
                   initial={{ opacity: 0, x: -50 }}

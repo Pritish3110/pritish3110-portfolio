@@ -29,7 +29,8 @@ import {
 const SkillsSection = () => {
   const [ref, inView] = useInView({
     triggerOnce: false,
-    threshold: 0.1
+    threshold: 0.2,
+    rootMargin: '-50px 0px'
   });
 
   const technicalSkills = [
@@ -151,7 +152,7 @@ const SkillsSection = () => {
                 </h3>
               </div>
               
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {category.skills.map((skill, skillIndex) => (
                   <motion.div
                     key={skill.name}
@@ -162,8 +163,8 @@ const SkillsSection = () => {
                     className="bg-background/70 rounded-lg p-3 text-center border border-border-subtle hover:border-neon-green/30 transition-all duration-300"
                   >
                     <div className="flex items-center justify-center space-x-2">
-                      <span className="text-neon-green">{skill.icon}</span>
-                      <span className="text-sm font-mono text-text-secondary">
+                      <span className="text-neon-green flex-shrink-0">{skill.icon}</span>
+                      <span className="text-xs sm:text-sm font-mono text-text-secondary truncate">
                         {skill.name}
                       </span>
                     </div>

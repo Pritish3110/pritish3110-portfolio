@@ -20,7 +20,8 @@ import {
 const AboutSection = () => {
   const [ref, inView] = useInView({
     triggerOnce: false,
-    threshold: 0.1
+    threshold: 0.2,
+    rootMargin: '-50px 0px'
   });
 
   const skills = [
@@ -58,7 +59,7 @@ const AboutSection = () => {
           <div className="w-24 h-1 bg-gradient-to-r from-neon-green to-purple-accent mx-auto" />
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-stretch">
           {/* Bio Section */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -167,29 +168,31 @@ const AboutSection = () => {
             </div>
 
             {/* Technical Areas */}
-            <div className="bg-surface-light rounded-2xl p-8 border border-border-subtle">
+            <div className="bg-surface-light rounded-2xl p-8 border border-border-subtle h-fit">
               <h3 className="text-2xl font-space font-semibold text-purple-accent mb-6">
                 Specialized In
               </h3>
               
-              <div className="grid grid-cols-2 gap-3">
-                {skills.map((skill, index) => (
-                  <motion.div
-                    key={skill.name}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={inView ? { opacity: 1, scale: 1 } : {}}
-                    transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
-                    whileHover={{ scale: 1.05 }}
-                    className="bg-background/70 rounded-lg p-3 text-center border border-border-subtle hover:border-neon-green/50 transition-all duration-300"
-                  >
-                    <div className="flex items-center justify-center space-x-2">
-                      <span className="text-neon-green">{skill.icon}</span>
-                      <span className="text-sm font-mono text-text-secondary">
-                        {skill.name}
-                      </span>
-                    </div>
-                  </motion.div>
-                ))}
+              <div className="max-h-80 overflow-y-auto pr-2 scrollbar-thin scrollbar-track-background scrollbar-thumb-neon-green/30">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {skills.map((skill, index) => (
+                    <motion.div
+                      key={skill.name}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={inView ? { opacity: 1, scale: 1 } : {}}
+                      transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
+                      whileHover={{ scale: 1.05 }}
+                      className="bg-background/70 rounded-lg p-3 text-center border border-border-subtle hover:border-neon-green/50 transition-all duration-300"
+                    >
+                      <div className="flex items-center justify-center space-x-2">
+                        <span className="text-neon-green flex-shrink-0">{skill.icon}</span>
+                        <span className="text-xs sm:text-sm font-mono text-text-secondary truncate">
+                          {skill.name}
+                        </span>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
               </div>
             </div>
           </motion.div>

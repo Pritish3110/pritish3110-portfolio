@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Mail, MapPin, Github, Linkedin, Code, Award } from 'lucide-react';
+import { Mail, MapPin, Github, Linkedin, Coffee } from 'lucide-react';
 import profilePhoto from '../assets/profile-photo.jpg';
 
 const HeroSection = () => {
@@ -23,7 +23,7 @@ const HeroSection = () => {
       color: 'hover:text-purple-400'
     },
     { 
-      icon: Code, 
+      icon: Coffee, 
       href: 'https://codechef.com/users/pritish_3110',
       label: 'CodeChef',
       color: 'hover:text-orange-400'
@@ -33,7 +33,7 @@ const HeroSection = () => {
   return (
     <section className="min-h-screen flex items-center justify-center pt-20 px-6 lg:px-12">
       <div className="container mx-auto">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center max-w-7xl mx-auto">
           {/* Left Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -109,7 +109,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.4 }}
-              className="flex items-center space-x-6"
+              className="flex items-center justify-center lg:justify-start space-x-4 md:space-x-6"
             >
               {socialLinks.map((social, index) => (
                 <motion.a
@@ -178,12 +178,12 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll indicator - Hidden on mobile */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 2 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 hidden md:block"
       >
         <motion.div
           animate={{ y: [0, 10, 0] }}

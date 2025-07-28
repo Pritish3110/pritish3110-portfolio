@@ -6,7 +6,8 @@ import { Button } from './ui/button';
 const ProjectsSection = () => {
   const [ref, inView] = useInView({
     triggerOnce: false,
-    threshold: 0.1
+    threshold: 0.2,
+    rootMargin: '-50px 0px'
   });
 
   const projects = [
@@ -58,7 +59,7 @@ const ProjectsSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-1 gap-8 max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-1 gap-6 lg:gap-8 max-w-6xl mx-auto">
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
@@ -66,9 +67,9 @@ const ProjectsSection = () => {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.2 }}
               whileHover={{ scale: 1.02 }}
-              className="bg-surface-light rounded-2xl p-8 border border-border-subtle hover:border-neon-green/50 transition-all duration-300 group"
+              className="bg-surface-light rounded-2xl p-6 sm:p-8 border border-border-subtle hover:border-neon-green/50 transition-all duration-300 group"
             >
-              <div className="grid lg:grid-cols-3 gap-8 items-center">
+              <div className="grid lg:grid-cols-3 gap-6 lg:gap-8 items-start lg:items-center">
                 {/* Project Icon & Title */}
                 <div className="lg:col-span-1">
                   <div className="flex items-center space-x-4 mb-4">
@@ -102,7 +103,7 @@ const ProjectsSection = () => {
 
                 {/* Actions */}
                 <div className="lg:col-span-1 lg:text-right">
-                  <div className="flex lg:flex-col lg:items-end gap-4">
+                  <div className="flex flex-col sm:flex-row lg:flex-col lg:items-end gap-4">
                     <motion.div
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
@@ -147,7 +148,7 @@ const ProjectsSection = () => {
             Services I Offer
           </h3>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 max-w-5xl mx-auto">
             {[
               'Robotics Prototyping & Development',
               'Sensor-based Automation Solutions',
