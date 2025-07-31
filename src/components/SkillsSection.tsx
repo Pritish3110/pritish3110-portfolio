@@ -29,8 +29,8 @@ import {
 const SkillsSection = () => {
   const [ref, inView] = useInView({
     triggerOnce: false,
-    threshold: 0.2,
-    rootMargin: '-50px 0px'
+    threshold: 0.15,
+    rootMargin: '-30px 0px'
   });
 
   const technicalSkills = [
@@ -119,7 +119,7 @@ const SkillsSection = () => {
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
@@ -138,7 +138,7 @@ const SkillsSection = () => {
             <motion.div
               key={category.category}
               initial={{ opacity: 0, y: 50 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
+              animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               whileHover={{ scale: 1.02 }}
               className={`bg-surface-light rounded-2xl p-8 border ${category.borderColor} hover:border-neon-green/50 transition-all duration-300`}
@@ -157,7 +157,7 @@ const SkillsSection = () => {
                   <motion.div
                     key={skill.name}
                     initial={{ opacity: 0, scale: 0.8 }}
-                    animate={inView ? { opacity: 1, scale: 1 } : {}}
+                    animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
                     transition={{ duration: 0.4, delay: (index * 0.1) + (skillIndex * 0.05) }}
                     whileHover={{ scale: 1.05 }}
                     className="bg-background/70 rounded-lg p-3 text-center border border-border-subtle hover:border-neon-green/30 transition-all duration-300"
@@ -178,7 +178,7 @@ const SkillsSection = () => {
         {/* Soft Skills */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           className="text-center"
         >
@@ -191,7 +191,7 @@ const SkillsSection = () => {
               <motion.div
                 key={skill.label}
                 initial={{ opacity: 0, y: 30 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
+                animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
                 whileHover={{ scale: 1.05, y: -5 }}
                 className="bg-surface-light rounded-2xl p-6 border border-border-subtle hover:border-neon-green/50 transition-all duration-300"

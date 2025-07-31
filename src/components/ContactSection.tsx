@@ -11,8 +11,8 @@ import { useToast } from '../hooks/use-toast';
 const ContactSection = () => {
   const [ref, inView] = useInView({
     triggerOnce: false,
-    threshold: 0.2,
-    rootMargin: '-50px 0px'
+    threshold: 0.15,
+    rootMargin: '-30px 0px'
   });
 
   const [formData, setFormData] = useState({

@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { User, Zap, Download, MessageSquare, FolderOpen, Menu, X } from 'lucide-react';
+import { User, Zap, Download, MessageSquare, FolderOpen, Menu, X, Code } from 'lucide-react';
 
 interface NavbarProps {
   activeSection: string;

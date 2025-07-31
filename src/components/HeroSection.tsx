@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Mail, MapPin, Github, Linkedin, Coffee } from 'lucide-react';
+import { Mail, MapPin, Github, Linkedin, Code } from 'lucide-react';
 import profilePhoto from '../assets/profile-photo.jpg';
 
 const HeroSection = () => {
@@ -23,7 +23,7 @@ const HeroSection = () => {
       color: 'hover:text-purple-400'
     },
     { 
-      icon: Coffee, 
+      icon: Code, 
       href: 'https://codechef.com/users/pritish_3110',
       label: 'CodeChef',
       color: 'hover:text-orange-400'
@@ -117,13 +117,13 @@ const HeroSection = () => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`text-text-secondary transition-all duration-300 ${social.color} hover:scale-110 hover:-translate-y-1`}
+                  className={`text-text-secondary transition-all duration-200 ease-out ${social.color}`}
                   whileHover={{ 
-                    scale: 1.3, 
+                    scale: 1.2, 
                     y: -5,
-                    transition: { type: "spring", stiffness: 400, damping: 10 }
+                    transition: { type: "spring", stiffness: 600, damping: 15 }
                   }}
-                  whileTap={{ scale: 0.9 }}
+                  whileTap={{ scale: 0.95 }}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 1.6 + index * 0.1 }}
