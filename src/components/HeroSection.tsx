@@ -119,11 +119,17 @@ const HeroSection = () => {
                   rel="noopener noreferrer"
                   className={`text-text-secondary transition-all duration-200 ease-out ${social.color}`}
                   whileHover={{ 
-                    scale: 1.2, 
-                    y: -5,
-                    transition: { type: "spring", stiffness: 600, damping: 15 }
+                    scale: 1.3, 
+                    y: -8,
+                    rotate: [0, -10, 10, 0],
+                    transition: { 
+                      type: "spring", 
+                      stiffness: 500, 
+                      damping: 15,
+                      duration: 0.4
+                    }
                   }}
-                  whileTap={{ scale: 0.95 }}
+                  whileTap={{ scale: 0.9 }}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 1.6 + index * 0.1 }}
@@ -144,33 +150,81 @@ const HeroSection = () => {
             <div className="relative">
               {/* Background decoration */}
               <motion.div
-                className="absolute -inset-4 bg-gradient-to-r from-neon-green to-purple-accent rounded-3xl opacity-20 blur-xl"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                className="absolute -inset-8 bg-gradient-to-r from-neon-green to-purple-accent rounded-3xl opacity-30 blur-2xl"
+                animate={{ 
+                  rotate: 360,
+                  scale: [1, 1.1, 1],
+                  opacity: [0.3, 0.5, 0.3]
+                }}
+                transition={{ 
+                  rotate: { duration: 20, repeat: Infinity, ease: "linear" },
+                  scale: { duration: 4, repeat: Infinity },
+                  opacity: { duration: 3, repeat: Infinity }
+                }}
               />
               
               {/* Profile image container */}
               <motion.div
-                className="relative bg-surface-light rounded-3xl p-2 border border-neon-green/30"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.3 }}
+                className="relative bg-surface-light rounded-3xl p-2 border border-neon-green/30 overflow-hidden"
+                whileHover={{ 
+                  scale: 1.08,
+                  rotateY: 5,
+                  rotateX: 5 
+                }}
+                transition={{ 
+                  type: "spring",
+                  stiffness: 300,
+                  damping: 20,
+                  duration: 0.6 
+                }}
               >
-                <img
+                <motion.img
                   src={profilePhoto}
                   alt="Pritish Bhatasana"
                   className="w-80 h-80 lg:w-96 lg:h-96 object-cover rounded-2xl"
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.6 }}
                 />
                 
                 {/* Floating accent elements */}
                 <motion.div
-                  className="absolute -top-4 -right-4 w-8 h-8 bg-neon-green rounded-full"
-                  animate={{ y: [0, -10, 0] }}
-                  transition={{ duration: 2, repeat: Infinity }}
+                  className="absolute -top-4 -right-4 w-8 h-8 bg-neon-green rounded-full shadow-lg shadow-neon-green/50"
+                  animate={{ 
+                    y: [0, -15, 0],
+                    rotate: [0, 180, 360],
+                    scale: [1, 1.2, 1]
+                  }}
+                  transition={{ 
+                    duration: 3, 
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
                 />
                 <motion.div
-                  className="absolute -bottom-4 -left-4 w-6 h-6 bg-purple-accent rounded-full"
-                  animate={{ y: [0, 10, 0] }}
-                  transition={{ duration: 2.5, repeat: Infinity }}
+                  className="absolute -bottom-4 -left-4 w-6 h-6 bg-purple-accent rounded-full shadow-lg shadow-purple-accent/50"
+                  animate={{ 
+                    y: [0, 15, 0],
+                    rotate: [360, 180, 0],
+                    scale: [1, 1.3, 1]
+                  }}
+                  transition={{ 
+                    duration: 2.5, 
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
+                
+                {/* Pulse ring effect */}
+                <motion.div
+                  className="absolute inset-0 border-2 border-neon-green rounded-3xl"
+                  animate={{ 
+                    scale: [1, 1.05, 1],
+                    opacity: [0.5, 0.8, 0.5]
+                  }}
+                  transition={{ 
+                    duration: 2, 
+                    repeat: Infinity 
+                  }}
                 />
               </motion.div>
             </div>

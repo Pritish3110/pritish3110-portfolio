@@ -30,32 +30,35 @@ const Navbar = ({ activeSection, onNavigate }: NavbarProps) => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <motion.div
-            className="flex items-center space-x-2"
-            whileHover={{ scale: 1.05 }}
+            className="flex items-center justify-center"
+            whileHover={{ scale: 1.1, rotate: 180 }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
           >
-            <div className="w-8 h-8">
-              <svg viewBox="0 0 100 100" className="w-full h-full">
+            <div className="relative w-10 h-10">
+              <svg 
+                className="w-10 h-10 animate-pulse hover:animate-hexagon-spin" 
+                viewBox="0 0 100 100"
+                xmlns="http://www.w3.org/2000/svg"
+              >
                 <polygon
                   points="50,5 85,25 85,75 50,95 15,75 15,25"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="3"
-                  className="text-neon-green"
+                  className="text-neon-green drop-shadow-[0_0_10px_rgba(34,197,94,0.5)]"
                 />
-                <text
-                  x="50"
-                  y="60"
-                  textAnchor="middle"
-                  className="text-neon-green text-2xl font-orbitron font-bold"
-                  fontSize="28"
-                >
-                  P
-                </text>
               </svg>
+              
+              {/* Letter P in center */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <span className="text-2xl font-orbitron font-bold text-neon-green">
+                  P
+                </span>
+              </div>
+
+              {/* Glow effect */}
+              <div className="absolute inset-0 bg-neon-green rounded-full blur-lg opacity-20 animate-pulse" />
             </div>
-            <span className="text-lg sm:text-xl font-orbitron font-bold text-neon-green">
-              Pritish
-            </span>
           </motion.div>
 
           {/* Navigation Items - Desktop */}

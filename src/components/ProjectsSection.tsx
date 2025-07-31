@@ -66,8 +66,20 @@ const ProjectsSection = () => {
               initial={{ opacity: 0, y: 50 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.2 }}
-              whileHover={{ scale: 1.02 }}
-              className="bg-surface-light rounded-2xl p-6 sm:p-8 border border-border-subtle hover:border-neon-green/50 transition-all duration-300 group"
+              whileHover={{ 
+                scale: 1.03,
+                y: -8,
+                rotateX: 2,
+                rotateY: 2,
+                boxShadow: "0 25px 50px rgba(34, 197, 94, 0.15)",
+                transition: { 
+                  type: "spring",
+                  stiffness: 300,
+                  damping: 20,
+                  duration: 0.6 
+                }
+              }}
+              className="bg-surface-light rounded-2xl p-6 sm:p-8 border border-border-subtle hover:border-neon-green/50 transition-all duration-500 group hover:shadow-2xl hover:shadow-neon-green/10"
             >
               <div className="grid lg:grid-cols-3 gap-6 lg:gap-8 items-start lg:items-center">
                 {/* Project Icon & Title */}
