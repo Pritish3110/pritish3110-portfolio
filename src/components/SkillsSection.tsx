@@ -6,7 +6,6 @@ import {
   Cpu, 
   Gamepad2, 
   Brain,
-  Users,
   MessageCircle,
   Lightbulb,
   Code,
@@ -23,7 +22,10 @@ import {
   Wrench,
   Monitor,
   Target,
-  Box
+  Box,
+  Workflow,
+  Search,
+  Navigation
 } from 'lucide-react';
 
 const SkillsSection = () => {
@@ -35,60 +37,55 @@ const SkillsSection = () => {
 
   const technicalSkills = [
     {
-      category: 'Programming Languages',
-      icon: Code2,
-      color: 'text-blue-400',
-      skills: [
-        { name: 'C++', icon: <Zap className="w-4 h-4" /> },
-        { name: 'Python', icon: <Code className="w-4 h-4" /> },
-        { name: 'JavaScript', icon: <FileText className="w-4 h-4" /> },
-        { name: 'Java', icon: <Coffee className="w-4 h-4" /> },
-        { name: 'Shell Script', icon: <Terminal className="w-4 h-4" /> }
-      ],
-      bgColor: 'bg-blue-500/10',
-      borderColor: 'border-blue-500/30'
-    },
-    {
-      category: 'Web Technologies',
+      category: 'Web Development',
       icon: Globe,
       color: 'text-green-400',
       skills: [
         { name: 'HTML5', icon: <Globe className="w-4 h-4" /> },
         { name: 'CSS3', icon: <Palette className="w-4 h-4" /> },
-        { name: 'React.js', icon: <Layers className="w-4 h-4" /> },
-        { name: 'Node.js', icon: <Database className="w-4 h-4" /> },
-        { name: 'Tailwind CSS', icon: <Wrench className="w-4 h-4" /> }
+        { name: 'JavaScript', icon: <FileText className="w-4 h-4" /> },
+        { name: 'TypeScript', icon: <Code className="w-4 h-4" /> },
+        { name: 'React', icon: <Layers className="w-4 h-4" /> },
+        { name: 'Next.js', icon: <Database className="w-4 h-4" /> },
+        { name: 'Tailwind CSS', icon: <Wrench className="w-4 h-4" /> },
+        { name: 'Framer Motion', icon: <Zap className="w-4 h-4" /> }
       ],
       bgColor: 'bg-green-500/10',
       borderColor: 'border-green-500/30'
     },
     {
-      category: 'Robotics & Embedded',
+      category: 'Embedded Systems & Robotics',
       icon: Cpu,
       color: 'text-purple-400',
       skills: [
-        { name: 'Arduino IDE', icon: <Settings className="w-4 h-4" /> },
+        { name: 'Robotics & Automation', icon: <Settings className="w-4 h-4" /> },
+        { name: 'ROS2', icon: <Workflow className="w-4 h-4" /> },
+        { name: 'SLAM', icon: <Navigation className="w-4 h-4" /> },
+        { name: 'Arduino', icon: <Monitor className="w-4 h-4" /> },
+        { name: 'C++', icon: <Code2 className="w-4 h-4" /> },
+        { name: 'L298N Motor Driver', icon: <Zap className="w-4 h-4" /> },
         { name: 'IR Sensors', icon: <Eye className="w-4 h-4" /> },
-        { name: 'L298N', icon: <Zap className="w-4 h-4" /> },
-        { name: 'N20 Motors', icon: <Settings className="w-4 h-4" /> },
-        { name: 'Microcontrollers', icon: <Monitor className="w-4 h-4" /> }
+        { name: 'Motor Control', icon: <Settings className="w-4 h-4" /> },
+        { name: 'Flood Fill Algorithm', icon: <Search className="w-4 h-4" /> },
+        { name: 'BFS Algorithm', icon: <Search className="w-4 h-4" /> }
       ],
       bgColor: 'bg-purple-500/10',
       borderColor: 'border-purple-500/30'
     },
     {
-      category: 'Game Development',
-      icon: Gamepad2,
-      color: 'text-orange-400',
+      category: 'Tools & Platforms',
+      icon: Wrench,
+      color: 'text-blue-400',
       skills: [
-        { name: 'Unity', icon: <Gamepad2 className="w-4 h-4" /> },
-        { name: 'C#', icon: <Code2 className="w-4 h-4" /> },
-        { name: 'Game Design', icon: <Target className="w-4 h-4" /> },
-        { name: '3D Modeling', icon: <Box className="w-4 h-4" /> },
-        { name: 'Physics Engines', icon: <Cpu className="w-4 h-4" /> }
+        { name: 'Git', icon: <GitBranch className="w-4 h-4" /> },
+        { name: 'GitHub', icon: <GitBranch className="w-4 h-4" /> },
+        { name: 'Vercel', icon: <Globe className="w-4 h-4" /> },
+        { name: 'Tinkercad', icon: <Box className="w-4 h-4" /> },
+        { name: 'MATLAB', icon: <Terminal className="w-4 h-4" /> },
+        { name: 'SolidWorks', icon: <Box className="w-4 h-4" /> }
       ],
-      bgColor: 'bg-orange-500/10',
-      borderColor: 'border-orange-500/30'
+      bgColor: 'bg-blue-500/10',
+      borderColor: 'border-blue-500/30'
     }
   ];
 
@@ -133,7 +130,7 @@ const SkillsSection = () => {
         </motion.div>
 
         {/* Technical Skills Grid */}
-        <div className="grid md:grid-cols-2 gap-8 mb-16">
+        <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
           {technicalSkills.map((category, index) => (
             <motion.div
               key={category.category}

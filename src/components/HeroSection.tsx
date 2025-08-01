@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Mail, MapPin, Github, Linkedin, Coffee } from 'lucide-react';
+import { Mail, MapPin, Github, Linkedin } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import profilePhoto from '../assets/profile-photo.jpg';
 
@@ -16,6 +16,19 @@ const HeroSection = () => {
       clearTimeout(particleTimer);
     };
   }, []);
+
+  // CodeChef SVG Icon Component
+  const CodeChefIcon = () => (
+    <svg 
+      className="w-8 h-8" 
+      viewBox="0 0 24 24" 
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M11.5 0c-.4 0-.8.1-1.1.4L.4 10.4c-.5.5-.5 1.3 0 1.8l10 10c.3.3.7.4 1.1.4s.8-.1 1.1-.4l10-10c.5-.5.5-1.3 0-1.8L12.6.4c-.3-.3-.7-.4-1.1-.4zm0 2.3L20.2 11 11.5 19.7 2.8 11 11.5 2.3z"/>
+      <path d="M11.5 6.2c-.3 0-.6.1-.8.3l-3.2 3.2c-.4.4-.4 1.1 0 1.5l3.2 3.2c.2.2.5.3.8.3s.6-.1.8-.3l3.2-3.2c.4-.4.4-1.1 0-1.5l-3.2-3.2c-.2-.2-.5-.3-.8-.3z"/>
+    </svg>
+  );
 
   const socialLinks = [
     { 
@@ -37,7 +50,7 @@ const HeroSection = () => {
       color: 'hover:text-purple-400'
     },
     { 
-      icon: Coffee, 
+      icon: CodeChefIcon, 
       href: 'https://codechef.com/users/pritish_3110',
       label: 'CodeChef',
       color: 'hover:text-orange-400'
@@ -168,12 +181,13 @@ const HeroSection = () => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`text-text-secondary icon-snap tap-highlight ${social.color}`}
+                  className={`text-text-secondary icon-snap tap-highlight ${social.color} transition-all duration-300`}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 1.6 + index * 0.1 }}
+                  whileHover={{ scale: 1.1, y: -2 }}
                 >
-                  <social.icon className="w-8 h-8" />
+                  <social.icon />
                 </motion.a>
               ))}
             </motion.div>
