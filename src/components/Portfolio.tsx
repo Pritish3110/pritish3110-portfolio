@@ -8,6 +8,7 @@ import SkillsSection from './SkillsSection';
 import ResumeSection from './ResumeSection';
 import ProjectsSection from './ProjectsSection';
 import ContactSection from './ContactSection';
+import CursorGlow from './CursorGlow';
 
 const Portfolio = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -47,7 +48,9 @@ const Portfolio = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background text-text-primary overflow-x-hidden">
+    <div className="min-h-screen bg-parallax-gradient text-text-primary overflow-x-hidden">
+      <CursorGlow />
+      
       <AnimatePresence>
         {isLoading && <LoadingScreen onComplete={handleLoadingComplete} />}
       </AnimatePresence>

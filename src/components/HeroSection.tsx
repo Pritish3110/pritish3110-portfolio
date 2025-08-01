@@ -1,8 +1,22 @@
 import { motion } from 'framer-motion';
-import { Mail, MapPin, Github, Linkedin, Code } from 'lucide-react';
+import { Mail, MapPin, Github, Linkedin, Coffee } from 'lucide-react';
+import { useState, useEffect } from 'react';
 import profilePhoto from '../assets/profile-photo.jpg';
 
 const HeroSection = () => {
+  const [isTextFilled, setIsTextFilled] = useState(false);
+  const [showParticles, setShowParticles] = useState(false);
+
+  useEffect(() => {
+    const fillTimer = setTimeout(() => setIsTextFilled(true), 1000);
+    const particleTimer = setTimeout(() => setShowParticles(true), 2500);
+    
+    return () => {
+      clearTimeout(fillTimer);
+      clearTimeout(particleTimer);
+    };
+  }, []);
+
   const socialLinks = [
     { 
       icon: Mail, 
@@ -23,7 +37,7 @@ const HeroSection = () => {
       color: 'hover:text-purple-400'
     },
     { 
-      icon: Code, 
+      icon: Coffee, 
       href: 'https://codechef.com/users/pritish_3110',
       label: 'CodeChef',
       color: 'hover:text-orange-400'
@@ -31,7 +45,33 @@ const HeroSection = () => {
   ];
 
   return (
-    <section className="min-h-screen flex items-center justify-center pt-20 px-6 lg:px-12">
+    <section className="min-h-screen flex items-center justify-center pt-20 px-6 lg:px-12 relative">
+      {/* Particle Background */}
+      {showParticles && (
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {[...Array(20)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-2 h-2 bg-neon-green rounded-full"
+              initial={{ 
+                x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000), 
+                y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 800),
+                scale: 0 
+              }}
+              animate={{ 
+                scale: [0, 1, 0],
+                opacity: [0, 0.8, 0]
+              }}
+              transition={{ 
+                duration: 2,
+                delay: i * 0.1,
+                ease: "easeOut"
+              }}
+            />
+          ))}
+        </div>
+      )}
+
       <div className="container mx-auto">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center max-w-7xl mx-auto">
           {/* Left Content */}
@@ -51,16 +91,28 @@ const HeroSection = () => {
               👋 Hello, I'm
             </motion.p>
 
-            {/* Name with multiple typography styles */}
-            <div className="space-y-2">
-              <motion.h1
+            {/* Name with Liquid Fill Effect */}
+            <div className="space-y-2 relative">
+              <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
-                className="text-6xl lg:text-7xl font-orbitron font-black text-neon-green"
+                className="relative"
               >
-                PRITISH
-              </motion.h1>
+                <h1 className="text-6xl lg:text-7xl font-orbitron font-black text-text-primary relative overflow-hidden">
+                  PRITISH
+                  {/* Liquid Fill Overlay */}
+                  <motion.div
+                    className="absolute inset-0 text-6xl lg:text-7xl font-orbitron font-black text-neon-green"
+                    initial={{ clipPath: 'polygon(0 100%, 100% 100%, 100% 100%, 0 100%)' }}
+                    animate={isTextFilled ? { clipPath: 'polygon(0 0%, 100% 0%, 100% 100%, 0 100%)' } : {}}
+                    transition={{ duration: 1.5, ease: "easeOut" }}
+                  >
+                    PRITISH
+                  </motion.div>
+                </h1>
+              </motion.div>
+              
               <motion.h2
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -82,8 +134,7 @@ const HeroSection = () => {
                 AI & Robotics Engineer
               </h3>
               <p className="text-lg font-inter text-text-secondary leading-relaxed max-w-xl">
-                Tech-driven. Robot-obsessed. Always building. Passionate about creating 
-                intelligent systems that blend creativity with precision.
+                Passionate about creating intelligent automation systems that bridge the gap between innovation and real-world application. Building the future, one robot at a time.
               </p>
             </motion.div>
 
@@ -104,12 +155,12 @@ const HeroSection = () => {
               </div>
             </motion.div>
 
-            {/* Social Links */}
+            {/* Social Links with Snap Animation */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.4 }}
-              className="flex items-center justify-center lg:justify-start space-x-4 md:space-x-6"
+              className="flex items-center justify-center lg:justify-start space-x-6"
             >
               {socialLinks.map((social, index) => (
                 <motion.a
@@ -117,19 +168,7 @@ const HeroSection = () => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`text-text-secondary transition-all duration-200 ease-out ${social.color}`}
-                  whileHover={{ 
-                    scale: 1.3, 
-                    y: -8,
-                    rotate: [0, -10, 10, 0],
-                    transition: { 
-                      type: "spring", 
-                      stiffness: 500, 
-                      damping: 15,
-                      duration: 0.4
-                    }
-                  }}
-                  whileTap={{ scale: 0.9 }}
+                  className={`text-text-secondary icon-snap tap-highlight ${social.color}`}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 1.6 + index * 0.1 }}
@@ -150,14 +189,12 @@ const HeroSection = () => {
             <div className="relative">
               {/* Background decoration */}
               <motion.div
-                className="absolute -inset-8 bg-gradient-to-r from-neon-green to-purple-accent rounded-3xl opacity-30 blur-2xl"
+                className="absolute -inset-8 bg-gradient-to-r from-neon-green/30 to-purple-accent/30 rounded-3xl blur-2xl"
                 animate={{ 
-                  rotate: 360,
                   scale: [1, 1.1, 1],
                   opacity: [0.3, 0.5, 0.3]
                 }}
                 transition={{ 
-                  rotate: { duration: 20, repeat: Infinity, ease: "linear" },
                   scale: { duration: 4, repeat: Infinity },
                   opacity: { duration: 3, repeat: Infinity }
                 }}
@@ -167,15 +204,8 @@ const HeroSection = () => {
               <motion.div
                 className="relative bg-surface-light rounded-3xl p-2 border border-neon-green/30 overflow-hidden"
                 whileHover={{ 
-                  scale: 1.08,
-                  rotateY: 5,
-                  rotateX: 5 
-                }}
-                transition={{ 
-                  type: "spring",
-                  stiffness: 300,
-                  damping: 20,
-                  duration: 0.6 
+                  scale: 1.05,
+                  transition: { duration: 0.2 }
                 }}
               >
                 <motion.img
@@ -183,7 +213,7 @@ const HeroSection = () => {
                   alt="Pritish Bhatasana"
                   className="w-80 h-80 lg:w-96 lg:h-96 object-cover rounded-2xl"
                   whileHover={{ scale: 1.1 }}
-                  transition={{ duration: 0.6 }}
+                  transition={{ duration: 0.3 }}
                 />
                 
                 {/* Floating accent elements */}
@@ -191,7 +221,6 @@ const HeroSection = () => {
                   className="absolute -top-4 -right-4 w-8 h-8 bg-neon-green rounded-full shadow-lg shadow-neon-green/50"
                   animate={{ 
                     y: [0, -15, 0],
-                    rotate: [0, 180, 360],
                     scale: [1, 1.2, 1]
                   }}
                   transition={{ 
@@ -204,26 +233,12 @@ const HeroSection = () => {
                   className="absolute -bottom-4 -left-4 w-6 h-6 bg-purple-accent rounded-full shadow-lg shadow-purple-accent/50"
                   animate={{ 
                     y: [0, 15, 0],
-                    rotate: [360, 180, 0],
                     scale: [1, 1.3, 1]
                   }}
                   transition={{ 
                     duration: 2.5, 
                     repeat: Infinity,
                     ease: "easeInOut"
-                  }}
-                />
-                
-                {/* Pulse ring effect */}
-                <motion.div
-                  className="absolute inset-0 border-2 border-neon-green rounded-3xl"
-                  animate={{ 
-                    scale: [1, 1.05, 1],
-                    opacity: [0.5, 0.8, 0.5]
-                  }}
-                  transition={{ 
-                    duration: 2, 
-                    repeat: Infinity 
                   }}
                 />
               </motion.div>
