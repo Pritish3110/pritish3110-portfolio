@@ -5,7 +5,7 @@ import { Button } from './ui/button';
 
 const ProjectsSection = () => {
   const [ref, inView] = useInView({
-    triggerOnce: false,
+    triggerOnce: true,
     threshold: 0.15,
     rootMargin: '-30px 0px'
   });
@@ -49,7 +49,7 @@ const ProjectsSection = () => {
         <motion.div
           ref={ref}
           initial={{ x: -50 }}
-          animate={inView ? { x: 0 } : {}}
+          animate={inView ? { x: 0 } : { x: -50 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="text-center mb-12 sm:mb-20"
         >
@@ -67,7 +67,7 @@ const ProjectsSection = () => {
             <motion.div
               key={project.title}
               initial={{ x: -60, scale: 0.95 }}
-              animate={inView ? { x: 0, scale: 1 } : {}}
+              animate={inView ? { x: 0, scale: 1 } : { x: -60, scale: 0.95 }}
               transition={{ 
                 duration: 0.5, 
                 delay: index * 0.1,
@@ -143,7 +143,7 @@ const ProjectsSection = () => {
         {/* Services Section */}
         <motion.div
           initial={{ x: -40 }}
-          animate={inView ? { x: 0 } : {}}
+          animate={inView ? { x: 0 } : { x: -40 }}
           transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
           className="mt-16 sm:mt-24 text-center"
         >
@@ -161,7 +161,7 @@ const ProjectsSection = () => {
               <motion.div
                 key={service}
                 initial={{ x: -30, scale: 0.9 }}
-                animate={inView ? { x: 0, scale: 1 } : {}}
+                animate={inView ? { x: 0, scale: 1 } : { x: -30, scale: 0.9 }}
                 transition={{ 
                   duration: 0.4, 
                   delay: 0.6 + index * 0.08,
