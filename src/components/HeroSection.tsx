@@ -20,7 +20,7 @@ const HeroSection = () => {
   // CodeChef Logo Component (Minimalist Angle Brackets ~40 degrees)
   const CodeChefIcon = () => (
     <svg 
-      className="w-8 h-8" 
+      className="w-6 h-6 sm:w-8 sm:h-8" 
       viewBox="0 0 24 24" 
       fill="none"
       stroke="currentColor"
@@ -64,7 +64,7 @@ const HeroSection = () => {
   ];
 
   return (
-    <section className="min-h-screen flex items-center justify-center pt-20 px-6 lg:px-12 relative">
+    <section className="min-h-screen flex items-center justify-center pt-16 sm:pt-20 px-4 sm:px-6 lg:px-12 relative">
       {/* Particle Background */}
       {showParticles && (
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -91,21 +91,22 @@ const HeroSection = () => {
         </div>
       )}
 
-      <div className="container mx-auto">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center max-w-7xl mx-auto">
-          {/* Left Content */}
+      <div className="container mx-auto w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center max-w-7xl mx-auto">
+          
+          {/* Left Content - Centered on mobile */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="space-y-8"
+            className="space-y-6 sm:space-y-8 text-center lg:text-left flex flex-col items-center lg:items-start"
           >
             {/* Greeting */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-lg font-inter text-text-secondary tracking-wide"
+              className="text-base sm:text-lg font-inter text-text-secondary tracking-wide"
             >
               👋 Hello, I'm
             </motion.p>
@@ -118,11 +119,11 @@ const HeroSection = () => {
                 transition={{ duration: 0.8, delay: 0.6 }}
                 className="relative"
               >
-                <h1 className="text-6xl lg:text-7xl font-orbitron font-black text-text-primary relative overflow-hidden">
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-orbitron font-black text-text-primary relative overflow-hidden">
                   PRITISH
                   {/* Liquid Fill Overlay */}
                   <motion.div
-                    className="absolute inset-0 text-6xl lg:text-7xl font-orbitron font-black text-neon-green"
+                    className="absolute inset-0 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-orbitron font-black text-neon-green"
                     initial={{ clipPath: 'polygon(0 100%, 100% 100%, 100% 100%, 0 100%)' }}
                     animate={isTextFilled ? { clipPath: 'polygon(0 0%, 100% 0%, 100% 100%, 0 100%)' } : {}}
                     transition={{ duration: 1.5, ease: "easeOut" }}
@@ -136,7 +137,7 @@ const HeroSection = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.8 }}
-                className="text-4xl lg:text-5xl font-space font-bold text-text-primary"
+                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-space font-bold text-text-primary"
               >
                 BHATASANA
               </motion.h2>
@@ -147,12 +148,12 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.0 }}
-              className="space-y-4"
+              className="space-y-4 max-w-xl"
             >
-              <h3 className="text-2xl lg:text-3xl font-space font-semibold text-purple-accent">
+              <h3 className="text-xl sm:text-2xl lg:text-3xl font-space font-semibold text-purple-accent">
                 AI & Robotics Engineer
               </h3>
-              <p className="text-lg font-inter text-text-secondary leading-relaxed max-w-xl">
+              <p className="text-base sm:text-lg font-inter text-text-secondary leading-relaxed">
                 Passionate about creating intelligent automation systems that bridge the gap between innovation and real-world application. Building the future, one robot at a time.
               </p>
             </motion.div>
@@ -164,13 +165,13 @@ const HeroSection = () => {
               transition={{ duration: 0.8, delay: 1.2 }}
               className="space-y-3"
             >
-              <div className="flex items-center space-x-3 text-text-muted">
+              <div className="flex items-center justify-center lg:justify-start space-x-3 text-text-muted">
                 <Mail className="w-4 h-4" />
-                <span className="font-mono text-sm">pritishbhatasana68@gmail.com</span>
+                <span className="font-mono text-xs sm:text-sm">pritishbhatasana68@gmail.com</span>
               </div>
-              <div className="flex items-center space-x-3 text-text-muted">
+              <div className="flex items-center justify-center lg:justify-start space-x-3 text-text-muted">
                 <MapPin className="w-4 h-4" />
-                <span className="font-mono text-sm">+91-8200080298 • VIT, Chennai</span>
+                <span className="font-mono text-xs sm:text-sm">+91-8200080298 • VIT, Chennai</span>
               </div>
             </motion.div>
 
@@ -179,7 +180,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.4 }}
-              className="flex items-center justify-center lg:justify-start space-x-6"
+              className="flex items-center justify-center lg:justify-start space-x-4 sm:space-x-6"
             >
               {socialLinks.map((social, index) => (
                 <motion.a
@@ -187,7 +188,7 @@ const HeroSection = () => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`text-text-secondary icon-snap tap-highlight ${social.color} transition-all duration-300`}
+                  className={`text-text-secondary icon-snap tap-highlight ${social.color} transition-all duration-300 p-2`}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 1.6 + index * 0.1 }}
@@ -204,12 +205,12 @@ const HeroSection = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex justify-center lg:justify-end"
+            className="flex justify-center mt-8 lg:mt-0 lg:justify-end w-full"
           >
-            <div className="relative">
+            <div className="relative flex justify-center">
               {/* Background decoration */}
               <motion.div
-                className="absolute -inset-8 bg-gradient-to-r from-neon-green/30 to-purple-accent/30 rounded-3xl blur-2xl"
+                className="absolute -inset-6 sm:-inset-8 bg-gradient-to-r from-neon-green/30 to-purple-accent/30 rounded-3xl blur-2xl"
                 animate={{ 
                   scale: [1, 1.1, 1],
                   opacity: [0.3, 0.5, 0.3]
@@ -222,7 +223,7 @@ const HeroSection = () => {
               
               {/* Profile image container */}
               <motion.div
-                className="relative bg-surface-light rounded-3xl p-2 border border-neon-green/30 overflow-hidden"
+                className="relative bg-surface-light rounded-2xl sm:rounded-3xl p-2 border border-neon-green/30 overflow-hidden mx-auto"
                 whileHover={{ 
                   scale: 1.05,
                   transition: { duration: 0.2 }
@@ -231,14 +232,14 @@ const HeroSection = () => {
                 <motion.img
                   src={profilePhoto}
                   alt="Pritish Bhatasana"
-                  className="w-80 h-80 lg:w-96 lg:h-96 object-cover rounded-2xl"
+                  className="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 object-cover rounded-xl sm:rounded-2xl block"
                   whileHover={{ scale: 1.1 }}
                   transition={{ duration: 0.3 }}
                 />
                 
                 {/* Floating accent elements */}
                 <motion.div
-                  className="absolute -top-4 -right-4 w-8 h-8 bg-neon-green rounded-full shadow-lg shadow-neon-green/50"
+                  className="absolute -top-3 -right-3 sm:-top-4 sm:-right-4 w-6 h-6 sm:w-8 sm:h-8 bg-neon-green rounded-full shadow-lg shadow-neon-green/50"
                   animate={{ 
                     y: [0, -15, 0],
                     scale: [1, 1.2, 1]
@@ -250,7 +251,7 @@ const HeroSection = () => {
                   }}
                 />
                 <motion.div
-                  className="absolute -bottom-4 -left-4 w-6 h-6 bg-purple-accent rounded-full shadow-lg shadow-purple-accent/50"
+                  className="absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4 w-5 h-5 sm:w-6 sm:h-6 bg-purple-accent rounded-full shadow-lg shadow-purple-accent/50"
                   animate={{ 
                     y: [0, 15, 0],
                     scale: [1, 1.3, 1]
