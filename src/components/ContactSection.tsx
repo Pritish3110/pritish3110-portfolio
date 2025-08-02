@@ -264,7 +264,7 @@ const ContactSection = () => {
           className="text-center mt-12 sm:mt-16 pt-6 sm:pt-8 border-t border-border-subtle"
         >
           <p className="text-sm sm:text-base text-text-muted font-inter">
-            © 2024 Pritish Bhatasana. Built with passion for innovation.
+            © 2025 Pritish Bhatasana. Built with passion for innovation.
           </p>
         </motion.div>
       </div>
