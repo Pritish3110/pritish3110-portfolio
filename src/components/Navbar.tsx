@@ -24,6 +24,32 @@ const Navbar = ({ activeSection, onNavigate }) => {
     { id: 'contact', label: 'Contact', icon: <MessageSquare className="w-4 h-4" /> }
   ];
 
+  // Enhanced navigation function with fallback scrolling
+  const handleNavigation = (sectionId) => {
+    // Close mobile menu first
+    setMobileMenuOpen(false);
+    
+    // Try the parent onNavigate function first
+    if (onNavigate) {
+      onNavigate(sectionId);
+    }
+    
+    // Fallback: Direct scroll to element with offset for navbar
+    setTimeout(() => {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        const navbarHeight = 80; // Approximate navbar height
+        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - navbarHeight;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 100); // Small delay to ensure menu closes first
+  };
+
   return (
     <motion.nav
       initial={{ y: -100, opacity: 0 }}
@@ -45,9 +71,10 @@ const Navbar = ({ activeSection, onNavigate }) => {
         <div className="flex items-center justify-between">
           {/* Logo - Updated to Neon Cyan */}
           <motion.div
-            className="flex items-center justify-center"
+            className="flex items-center justify-center cursor-pointer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            onClick={() => handleNavigation('hero')} // Navigate to top/hero section
           >
             <div className="relative w-12 h-12 flex items-center justify-center">
               <svg viewBox="0 0 100 100" className="w-10 h-10">
@@ -77,7 +104,7 @@ const Navbar = ({ activeSection, onNavigate }) => {
             {navItems.map((item, index) => (
               <motion.button
                 key={item.id}
-                onClick={() => onNavigate(item.id)}
+                onClick={() => handleNavigation(item.id)}
                 className={`relative px-4 py-2 rounded-lg font-inter font-medium transition-all duration-300 ${
                   activeSection === item.id
                     ? 'text-cyan-400 bg-cyan-400/10 border border-cyan-400/20'
@@ -86,6 +113,8 @@ const Navbar = ({ activeSection, onNavigate }) => {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
                 <span className="flex items-center space-x-2">
                   {item.icon}
@@ -144,10 +173,7 @@ const Navbar = ({ activeSection, onNavigate }) => {
                 {navItems.map((item, index) => (
                   <motion.button
                     key={item.id}
-                    onClick={() => {
-                      onNavigate(item.id);
-                      setMobileMenuOpen(false);
-                    }}
+                    onClick={() => handleNavigation(item.id)}
                     className={`text-left px-4 py-3 rounded-lg font-inter font-medium transition-all duration-300 ${
                       activeSection === item.id
                         ? 'text-cyan-400 bg-cyan-400/10 border border-cyan-400/20'
@@ -156,6 +182,8 @@ const Navbar = ({ activeSection, onNavigate }) => {
                     initial={{ x: -50, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ duration: 0.3, delay: index * 0.1 }}
+                    whileHover={{ scale: 1.02, x: 5 }}
+                    whileTap={{ scale: 0.98 }}
                   >
                     <span className="flex items-center space-x-3">
                       {item.icon}

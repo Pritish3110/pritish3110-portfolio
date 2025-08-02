@@ -64,7 +64,7 @@ const HeroSection = () => {
   ];
 
   return (
-    <section className="min-h-screen flex items-center justify-center pt-16 sm:pt-20 px-4 sm:px-6 lg:px-12 relative">
+    <section className="min-h-screen flex items-center justify-center pt-24 sm:pt-28 lg:pt-20 px-4 sm:px-6 lg:px-12 relative">
       {/* Particle Background */}
       {showParticles && (
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
