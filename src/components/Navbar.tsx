@@ -7,9 +7,16 @@ const Navbar = ({ activeSection, onNavigate }) => {
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
+    let ticking = false;
+    
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      setScrollY(currentScrollY);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          setScrollY(window.scrollY);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
     
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -26,19 +33,20 @@ const Navbar = ({ activeSection, onNavigate }) => {
 
   // Enhanced navigation function with fallback scrolling
   const handleNavigation = (sectionId) => {
-    // Close mobile menu first
+    // Close mobile menu immediately for better UX
     setMobileMenuOpen(false);
     
-    // Try the parent onNavigate function first
-    if (onNavigate) {
-      onNavigate(sectionId);
-    }
-    
-    // Fallback: Direct scroll to element with offset for navbar
-    setTimeout(() => {
+    // Use requestAnimationFrame for smoother performance
+    requestAnimationFrame(() => {
+      // Try the parent onNavigate function first
+      if (onNavigate) {
+        onNavigate(sectionId);
+      }
+      
+      // Fallback: Direct scroll to element with offset for navbar
       const element = document.getElementById(sectionId);
       if (element) {
-        const navbarHeight = 80; // Approximate navbar height
+        const navbarHeight = 80;
         const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
         const offsetPosition = elementPosition - navbarHeight;
         
@@ -47,7 +55,7 @@ const Navbar = ({ activeSection, onNavigate }) => {
           behavior: 'smooth'
         });
       }
-    }, 100); // Small delay to ensure menu closes first
+    });
   };
 
   return (
@@ -127,28 +135,39 @@ const Navbar = ({ activeSection, onNavigate }) => {
           {/* Mobile Menu Button */}
           <motion.button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-3 rounded-lg text-text-secondary hover:text-cyan-400 transition-colors duration-300 bg-background/50 border border-border-subtle"
+            className="lg:hidden p-3 rounded-lg text-text-secondary hover:text-cyan-400 transition-colors duration-200 bg-background/50 border border-border-subtle will-change-transform"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 400, damping: 25 }}
           >
-            <AnimatePresence mode="wait">
+            <AnimatePresence mode="wait" initial={false}>
               {mobileMenuOpen ? (
                 <motion.div
                   key="close"
-                  initial={{ rotate: -90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: 90, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
+                  initial={{ rotate: -45, opacity: 0, scale: 0.8 }}
+                  animate={{ rotate: 0, opacity: 1, scale: 1 }}
+                  exit={{ rotate: 45, opacity: 0, scale: 0.8 }}
+                  transition={{ 
+                    type: "spring",
+                    stiffness: 500,
+                    damping: 30,
+                    mass: 0.8
+                  }}
                 >
                   <X className="w-6 h-6" />
                 </motion.div>
               ) : (
                 <motion.div
                   key="menu"
-                  initial={{ rotate: 90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: -90, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
+                  initial={{ rotate: 45, opacity: 0, scale: 0.8 }}
+                  animate={{ rotate: 0, opacity: 1, scale: 1 }}
+                  exit={{ rotate: -45, opacity: 0, scale: 0.8 }}
+                  transition={{ 
+                    type: "spring",
+                    stiffness: 500,
+                    damping: 30,
+                    mass: 0.8
+                  }}
                 >
                   <Menu className="w-6 h-6" />
                 </motion.div>
@@ -159,14 +178,19 @@ const Navbar = ({ activeSection, onNavigate }) => {
       </div>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {mobileMenuOpen && (
           <motion.div
-            className="lg:hidden border-t border-white/10 bg-background/95 backdrop-blur-xl"
+            className="lg:hidden border-t border-white/10 bg-background/95 backdrop-blur-xl will-change-transform"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ 
+              type: "spring",
+              stiffness: 300,
+              damping: 30,
+              mass: 0.8
+            }}
           >
             <div className="container mx-auto px-6 py-6">
               <div className="flex flex-col space-y-3">
@@ -174,16 +198,29 @@ const Navbar = ({ activeSection, onNavigate }) => {
                   <motion.button
                     key={item.id}
                     onClick={() => handleNavigation(item.id)}
-                    className={`text-left px-4 py-3 rounded-lg font-inter font-medium transition-all duration-300 ${
+                    className={`text-left px-4 py-3 rounded-lg font-inter font-medium transition-colors duration-200 will-change-transform ${
                       activeSection === item.id
                         ? 'text-cyan-400 bg-cyan-400/10 border border-cyan-400/20'
                         : 'text-text-secondary hover:text-cyan-400 hover:bg-cyan-400/5'
                     }`}
-                    initial={{ x: -50, opacity: 0 }}
+                    initial={{ x: -30, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
-                    transition={{ duration: 0.3, delay: index * 0.1 }}
-                    whileHover={{ scale: 1.02, x: 5 }}
-                    whileTap={{ scale: 0.98 }}
+                    exit={{ x: -20, opacity: 0 }}
+                    transition={{ 
+                      type: "spring",
+                      stiffness: 400,
+                      damping: 25,
+                      delay: index * 0.05
+                    }}
+                    whileHover={{ 
+                      scale: 1.02, 
+                      x: 5,
+                      transition: { type: "spring", stiffness: 400, damping: 25 }
+                    }}
+                    whileTap={{ 
+                      scale: 0.98,
+                      transition: { type: "spring", stiffness: 600, damping: 30 }
+                    }}
                   >
                     <span className="flex items-center space-x-3">
                       {item.icon}
