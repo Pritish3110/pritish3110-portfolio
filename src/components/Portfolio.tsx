@@ -15,11 +15,10 @@ const Portfolio = () => {
   const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
-    // Handle scroll to detect active section
     const handleScroll = () => {
       const sections = ['home', 'about', 'skills', 'resume', 'projects', 'contact'];
       const scrollPosition = window.scrollY + 100;
-
+      
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
@@ -36,7 +35,7 @@ const Portfolio = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavigate = (section: string) => {
+  const handleNavigate = (section) => {
     const element = document.getElementById(section);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });

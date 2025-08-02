@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Github, ExternalLink, Cpu, Brain, Navigation } from 'lucide-react';
+import { Github, Cpu, Brain, Navigation, ArrowUpRight } from 'lucide-react';
 import { Button } from './ui/button';
 
 const ProjectsSection = () => {
@@ -18,7 +18,8 @@ const ProjectsSection = () => {
       github: 'https://github.com/Pritish3110',
       icon: Navigation,
       color: 'text-blue-400',
-      bgColor: 'bg-blue-500/10'
+      bgColor: 'bg-blue-500/10',
+      borderColor: 'border-blue-500/20'
     },
     {
       title: 'ChessBotX – AI Chessboard',
@@ -27,7 +28,8 @@ const ProjectsSection = () => {
       github: 'https://github.com/Pritish3110',
       icon: Brain,
       color: 'text-purple-400',
-      bgColor: 'bg-purple-500/10'
+      bgColor: 'bg-purple-500/10',
+      borderColor: 'border-purple-500/20'
     },
     {
       title: 'Linefollower - Autonomous Robot',
@@ -36,112 +38,101 @@ const ProjectsSection = () => {
       github: 'https://github.com/Pritish3110',
       icon: Cpu,
       color: 'text-green-400',
-      bgColor: 'bg-green-500/10'
+      bgColor: 'bg-green-500/10',
+      borderColor: 'border-green-500/20'
     }
   ];
 
   return (
-    <section id="projects" className="py-20 px-6 lg:px-12 bg-surface/30">
-      <div className="container mx-auto">
+    <section id="projects" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-12 bg-surface/30">
+      <div className="container mx-auto max-w-6xl">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          initial={{ x: -50 }}
+          animate={inView ? { x: 0 } : {}}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="text-center mb-12 sm:mb-20"
         >
-          <h2 className="text-5xl font-orbitron font-bold text-neon-green mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-orbitron font-bold text-neon-green mb-4">
             Featured Projects
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-neon-green to-purple-accent mx-auto mb-6" />
-          <p className="text-xl text-text-secondary max-w-2xl mx-auto">
+          <div className="w-16 sm:w-20 h-1 bg-gradient-to-r from-neon-green to-purple-accent mx-auto mb-6" />
+          <p className="text-base sm:text-lg text-text-secondary max-w-2xl mx-auto px-4">
             Innovative robotics and AI solutions that showcase my passion for intelligent automation
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-1 gap-6 lg:gap-8 max-w-6xl mx-auto">
+        <div className="space-y-6 sm:space-y-8">
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
-              initial={{ opacity: 0, y: 50 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              whileHover={{ 
-                scale: 1.03,
-                y: -8,
-                rotateX: 2,
-                rotateY: 2,
-                boxShadow: "0 25px 50px rgba(34, 197, 94, 0.15)",
-                transition: { 
-                  type: "spring",
-                  stiffness: 300,
-                  damping: 20,
-                  duration: 0.6 
-                }
+              initial={{ x: -60, scale: 0.95 }}
+              animate={inView ? { x: 0, scale: 1 } : {}}
+              transition={{ 
+                duration: 0.5, 
+                delay: index * 0.1,
+                ease: "easeOut"
               }}
-              className="bg-surface-light rounded-2xl p-6 sm:p-8 border border-border-subtle hover:border-neon-green/50 transition-all duration-500 group hover:shadow-2xl hover:shadow-neon-green/10"
+              className="group relative"
             >
-              <div className="grid lg:grid-cols-3 gap-6 lg:gap-8 items-start lg:items-center">
-                {/* Project Icon & Title */}
-                <div className="lg:col-span-1">
-                  <div className="flex items-center space-x-4 mb-4">
-                    <div className={`${project.bgColor} p-4 rounded-2xl group-hover:scale-110 transition-transform duration-300`}>
-                      <project.icon className={`w-8 h-8 ${project.color}`} />
+              {/* Minimalistic card with subtle border animation */}
+              <div className="relative bg-surface-light rounded-xl sm:rounded-2xl p-6 sm:p-8 border border-border-subtle overflow-hidden transition-all duration-500 ease-out hover:border-neon-green/30">
+                
+                {/* Subtle top accent line that expands on hover */}
+                <div className="absolute top-0 left-0 h-0.5 bg-gradient-to-r from-neon-green to-purple-accent w-0 group-hover:w-full transition-all duration-700 ease-out" />
+                
+                {/* Content container */}
+                <div className="relative z-10">
+                  <div className="flex flex-col space-y-6">
+                    
+                    {/* Header section */}
+                    <div className="flex flex-col sm:flex-row sm:items-start gap-4">
+                      <div className={`${project.bgColor} p-3 rounded-xl self-start transition-all duration-300 group-hover:scale-105`}>
+                        <project.icon className={`w-5 h-5 sm:w-6 sm:h-6 ${project.color}`} />
+                      </div>
+                      
+                      <div className="flex-1 min-w-0">
+                        <h3 className="text-xl sm:text-2xl font-space font-bold text-text-primary mb-3 transition-colors duration-300 group-hover:text-neon-green">
+                          {project.title}
+                        </h3>
+                        <p className="text-sm sm:text-base text-text-secondary leading-relaxed">
+                          {project.description}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                  <h3 className="text-2xl font-space font-bold text-text-primary mb-4">
-                    {project.title}
-                  </h3>
-                  
-                  {/* Tech Stack */}
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.tech.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-3 py-1 text-xs font-mono bg-background/70 text-text-muted rounded-full border border-border-subtle"
+                    
+                    {/* Tech stack and button section */}
+                    <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 sm:gap-6">
+                      
+                      {/* Tech stack */}
+                      <div className="flex flex-wrap gap-2 flex-1">
+                        {project.tech.map((tech) => (
+                          <span
+                            key={tech}
+                            className="px-2.5 sm:px-3 py-1 text-xs font-mono bg-background/40 text-text-muted rounded-md border border-border-subtle transition-all duration-300 hover:border-neon-green/30 hover:text-text-secondary"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                      
+                      {/* GitHub button */}
+                      <motion.div
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        className="flex-shrink-0"
                       >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Description */}
-                <div className="lg:col-span-1">
-                  <p className="text-text-secondary leading-relaxed mb-6">
-                    {project.description}
-                  </p>
-                </div>
-
-                {/* Actions */}
-                <div className="lg:col-span-1 lg:text-right">
-                  <div className="flex flex-col sm:flex-row lg:flex-col lg:items-end gap-4">
-                    <motion.div
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <Button
-                        onClick={() => window.open(project.github, '_blank')}
-                        className="bg-gradient-to-r from-neon-green to-neon-green-dim hover:from-neon-green-dim hover:to-neon-green text-background font-inter font-semibold px-6 py-3 rounded-xl transition-all duration-300"
-                      >
-                        <Github className="w-4 h-4 mr-2" />
-                        View Code
-                      </Button>
-                    </motion.div>
-
-                    <motion.div
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <Button
-                        variant="outline"
-                        onClick={() => window.open(project.github, '_blank')}
-                        className="border-2 border-purple-accent text-purple-accent hover:bg-purple-accent hover:text-background font-inter font-semibold px-6 py-3 rounded-xl transition-all duration-300"
-                      >
-                        <ExternalLink className="w-4 h-4 mr-2" />
-                        Learn More
-                      </Button>
-                    </motion.div>
+                        <Button
+                          onClick={() => window.open(project.github, '_blank')}
+                          className="w-full sm:w-auto bg-transparent border border-neon-green/30 text-neon-green hover:bg-neon-green/10 hover:border-neon-green/50 font-inter font-medium px-4 sm:px-6 py-2.5 rounded-lg transition-all duration-300 group/btn"
+                        >
+                          <Github className="w-4 h-4 mr-2" />
+                          <span className="hidden sm:inline">View Code</span>
+                          <span className="sm:hidden">Code</span>
+                          <ArrowUpRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+                        </Button>
+                      </motion.div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -151,16 +142,16 @@ const ProjectsSection = () => {
 
         {/* Services Section */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="mt-20 text-center"
+          initial={{ x: -40 }}
+          animate={inView ? { x: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+          className="mt-16 sm:mt-24 text-center"
         >
-          <h3 className="text-3xl font-space font-semibold text-purple-accent mb-8">
+          <h3 className="text-2xl sm:text-3xl font-space font-semibold text-purple-accent mb-8 sm:mb-12">
             Services I Offer
           </h3>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {[
               'Robotics Prototyping & Development',
               'Sensor-based Automation Solutions',
@@ -169,15 +160,24 @@ const ProjectsSection = () => {
             ].map((service, index) => (
               <motion.div
                 key={service}
-                initial={{ opacity: 0, y: 30 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 1.0 + index * 0.1 }}
-                whileHover={{ scale: 1.05, y: -5 }}
-                className="bg-surface-light rounded-xl p-6 border border-border-subtle hover:border-neon-green/50 transition-all duration-300"
+                initial={{ x: -30, scale: 0.9 }}
+                animate={inView ? { x: 0, scale: 1 } : {}}
+                transition={{ 
+                  duration: 0.4, 
+                  delay: 0.6 + index * 0.08,
+                  ease: "easeOut"
+                }}
+                className="group relative"
               >
-                <p className="text-text-secondary font-inter text-center">
-                  {service}
-                </p>
+                <div className="bg-surface-light rounded-xl p-5 sm:p-6 border border-border-subtle transition-all duration-300 hover:border-neon-green/30 h-full">
+                  
+                  {/* Minimalistic top indicator */}
+                  <div className="h-1 w-6 bg-gradient-to-r from-neon-green to-purple-accent rounded-full mb-4 mx-auto transition-all duration-300 group-hover:w-10" />
+                  
+                  <p className="text-sm sm:text-base text-text-secondary font-inter text-center leading-relaxed">
+                    {service}
+                  </p>
+                </div>
               </motion.div>
             ))}
           </div>

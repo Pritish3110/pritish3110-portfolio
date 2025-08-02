@@ -17,16 +17,22 @@ const HeroSection = () => {
     };
   }, []);
 
-  // CodeChef SVG Icon Component
+  // CodeChef Logo Component (Minimalist Angle Brackets ~40 degrees)
   const CodeChefIcon = () => (
     <svg 
       className="w-8 h-8" 
       viewBox="0 0 24 24" 
-      fill="currentColor"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <path d="M11.5 0c-.4 0-.8.1-1.1.4L.4 10.4c-.5.5-.5 1.3 0 1.8l10 10c.3.3.7.4 1.1.4s.8-.1 1.1-.4l10-10c.5-.5.5-1.3 0-1.8L12.6.4c-.3-.3-.7-.4-1.1-.4zm0 2.3L20.2 11 11.5 19.7 2.8 11 11.5 2.3z"/>
-      <path d="M11.5 6.2c-.3 0-.6.1-.8.3l-3.2 3.2c-.4.4-.4 1.1 0 1.5l3.2 3.2c.2.2.5.3.8.3s.6-.1.8-.3l3.2-3.2c.4-.4.4-1.1 0-1.5l-3.2-3.2c-.2-.2-.5-.3-.8-.3z"/>
+      {/* Left angle bracket < with ~40 degree angle */}
+      <path d="M9 17l-2-5 2-5" />
+      {/* Right angle bracket > with ~40 degree angle */}
+      <path d="M15 7l2 5-2 5" />
     </svg>
   );
 
@@ -164,7 +170,7 @@ const HeroSection = () => {
               </div>
               <div className="flex items-center space-x-3 text-text-muted">
                 <MapPin className="w-4 h-4" />
-                <span className="font-mono text-sm">+91-8200080298 • VIT, Vellore</span>
+                <span className="font-mono text-sm">+91-8200080298 • VIT, Chennai</span>
               </div>
             </motion.div>
 

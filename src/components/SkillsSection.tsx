@@ -1,17 +1,15 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { 
-  Code2, 
-  Globe, 
-  Cpu, 
-  Gamepad2, 
+import {
+  Code2,
+  Globe,
+  Cpu,
   Brain,
   MessageCircle,
   Lightbulb,
   Code,
   FileText,
   Zap,
-  Coffee,
   Terminal,
   Palette,
   GitBranch,
@@ -21,7 +19,6 @@ import {
   Eye,
   Wrench,
   Monitor,
-  Target,
   Box,
   Workflow,
   Search,
@@ -30,7 +27,7 @@ import {
 
 const SkillsSection = () => {
   const [ref, inView] = useInView({
-    triggerOnce: false,
+    triggerOnce: true,
     threshold: 0.15,
     rootMargin: '-30px 0px'
   });
@@ -50,8 +47,8 @@ const SkillsSection = () => {
         { name: 'Tailwind CSS', icon: <Wrench className="w-4 h-4" /> },
         { name: 'Framer Motion', icon: <Zap className="w-4 h-4" /> }
       ],
-      bgColor: 'bg-green-500/10',
-      borderColor: 'border-green-500/30'
+      bgColor: 'bg-green-500/5',
+      borderColor: 'border-green-500/20'
     },
     {
       category: 'Embedded Systems & Robotics',
@@ -69,8 +66,8 @@ const SkillsSection = () => {
         { name: 'Flood Fill Algorithm', icon: <Search className="w-4 h-4" /> },
         { name: 'BFS Algorithm', icon: <Search className="w-4 h-4" /> }
       ],
-      bgColor: 'bg-purple-500/10',
-      borderColor: 'border-purple-500/30'
+      bgColor: 'bg-purple-500/5',
+      borderColor: 'border-purple-500/20'
     },
     {
       category: 'Tools & Platforms',
@@ -84,8 +81,8 @@ const SkillsSection = () => {
         { name: 'MATLAB', icon: <Terminal className="w-4 h-4" /> },
         { name: 'SolidWorks', icon: <Box className="w-4 h-4" /> }
       ],
-      bgColor: 'bg-blue-500/10',
-      borderColor: 'border-blue-500/30'
+      bgColor: 'bg-blue-500/5',
+      borderColor: 'border-blue-500/20'
     }
   ];
 
@@ -111,95 +108,119 @@ const SkillsSection = () => {
   ];
 
   return (
-    <section id="skills" className="py-20 px-6 lg:px-12 bg-surface/30">
-      <div className="container mx-auto">
+    <section id="skills" className="py-16 md:py-24 px-4 md:px-6 lg:px-12 bg-surface/30">
+      <div className="container mx-auto max-w-7xl">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12 md:mb-20"
         >
-          <h2 className="text-5xl font-orbitron font-bold text-neon-green mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-orbitron font-bold text-neon-green mb-4">
             Technical Skills
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-neon-green to-purple-accent mx-auto mb-6" />
-          <p className="text-xl text-text-secondary max-w-2xl mx-auto">
+          <motion.div 
+            className="w-20 h-1 bg-gradient-to-r from-neon-green to-purple-accent mx-auto mb-6"
+            initial={{ scaleX: 0 }}
+            animate={inView ? { scaleX: 1 } : {}}
+            transition={{ delay: 0.3, duration: 0.6 }}
+          />
+          <p className="text-base md:text-lg text-text-secondary max-w-2xl mx-auto">
             A comprehensive toolkit for building innovative solutions across multiple domains
           </p>
         </motion.div>
 
         {/* Technical Skills Grid */}
-        <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 mb-16 md:mb-20">
           {technicalSkills.map((category, index) => (
             <motion.div
               key={category.category}
-              initial={{ opacity: 0, y: 50 }}
-              animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ scale: 1.02 }}
-              className={`bg-surface-light rounded-2xl p-8 border ${category.borderColor} hover:border-neon-green/50 transition-all duration-300`}
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="group"
             >
-              <div className="flex items-center space-x-4 mb-6">
-                <div className={`${category.bgColor} p-3 rounded-xl`}>
-                  <category.icon className={`w-8 h-8 ${category.color}`} />
-                </div>
-                <h3 className="text-xl font-space font-semibold text-text-primary">
-                  {category.category}
-                </h3>
-              </div>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {category.skills.map((skill, skillIndex) => (
-                  <motion.div
-                    key={skill.name}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-                    transition={{ duration: 0.4, delay: (index * 0.1) + (skillIndex * 0.05) }}
+              {/* Card with subtle hover effect */}
+              <motion.div
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.2, ease: "easeOut" }}
+                className={`bg-surface-light rounded-xl p-6 md:p-8 border ${category.borderColor} hover:border-neon-green/40 transition-all duration-300 h-full`}
+              >
+                {/* Header */}
+                <div className="flex items-center space-x-3 mb-6">
+                  <motion.div 
+                    className={`${category.bgColor} p-2.5 rounded-lg`}
                     whileHover={{ scale: 1.05 }}
-                    className="bg-background/70 rounded-lg p-3 text-center border border-border-subtle hover:border-neon-green/30 transition-all duration-300"
+                    transition={{ duration: 0.2 }}
                   >
-                    <div className="flex items-center justify-center space-x-2">
-                      <span className="text-neon-green flex-shrink-0">{skill.icon}</span>
-                      <span className="text-xs sm:text-sm font-mono text-text-secondary truncate">
+                    <category.icon className={`w-5 h-5 ${category.color}`} />
+                  </motion.div>
+                  <h3 className="text-lg md:text-xl font-space font-semibold text-text-primary">
+                    {category.category}
+                  </h3>
+                </div>
+                
+                {/* Skills List */}
+                <div className="space-y-2">
+                  {category.skills.map((skill, skillIndex) => (
+                    <motion.div
+                      key={skill.name}
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={inView ? { opacity: 1, x: 0 } : {}}
+                      transition={{ 
+                        duration: 0.3, 
+                        delay: (index * 0.1) + (skillIndex * 0.02) 
+                      }}
+                      whileHover={{ x: 4 }}
+                      className="flex items-center space-x-3 py-2 px-3 rounded-lg hover:bg-background/30 transition-all duration-200 cursor-default"
+                    >
+                      <span className="text-text-muted flex-shrink-0">
+                        {skill.icon}
+                      </span>
+                      <span className="text-sm text-text-secondary font-mono">
                         {skill.name}
                       </span>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
             </motion.div>
           ))}
         </div>
 
         {/* Soft Skills */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.4 }}
           className="text-center"
         >
-          <h3 className="text-3xl font-space font-semibold text-purple-accent mb-8">
+          <h3 className="text-2xl md:text-3xl font-space font-semibold text-purple-accent mb-8 md:mb-12">
             Soft Skills & Leadership
           </h3>
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-6 md:gap-8">
             {softSkills.map((skill, index) => (
               <motion.div
                 key={skill.label}
-                initial={{ opacity: 0, y: 30 }}
-                animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
-                whileHover={{ scale: 1.05, y: -5 }}
-                className="bg-surface-light rounded-2xl p-6 border border-border-subtle hover:border-neon-green/50 transition-all duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
+                whileHover={{ y: -3 }}
+                className="bg-surface-light rounded-xl p-6 md:p-8 border border-border-subtle hover:border-purple-accent/30 transition-all duration-300 group"
               >
-                <div className="mb-4">
-                  <skill.icon className={`w-12 h-12 ${skill.color} mx-auto`} />
-                </div>
-                <h4 className="text-lg font-inter font-semibold text-text-primary mb-2">
+                <motion.div 
+                  className="mb-4"
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <skill.icon className={`w-8 h-8 ${skill.color} mx-auto`} />
+                </motion.div>
+                <h4 className="text-base md:text-lg font-inter font-semibold text-text-primary mb-2">
                   {skill.label}
                 </h4>
-                <p className="text-text-muted text-sm">
+                <p className="text-text-muted text-sm leading-relaxed">
                   {skill.description}
                 </p>
               </motion.div>
