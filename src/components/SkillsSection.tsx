@@ -22,7 +22,15 @@ import {
   Box,
   Workflow,
   Search,
-  Navigation
+  Navigation,
+  Camera,
+  BarChart3,
+  TrendingUp,
+  Network,
+  Atom,
+  Sparkles,
+  Target,
+  ScanLine
 } from 'lucide-react';
 
 const SkillsSection = () => {
@@ -33,6 +41,27 @@ const SkillsSection = () => {
   });
 
   const technicalSkills = [
+    {
+      category: 'AI/ML & Data Science',
+      icon: Brain,
+      color: 'text-orange-400',
+      skills: [
+        { name: 'Machine Learning', icon: <Brain className="w-4 h-4" /> },
+        { name: 'Deep Learning', icon: <Network className="w-4 h-4" /> },
+        { name: 'Computer Vision', icon: <Camera className="w-4 h-4" /> },
+        { name: 'Neural Networks', icon: <Atom className="w-4 h-4" /> },
+        { name: 'Object Detection', icon: <Target className="w-4 h-4" /> },
+        { name: 'Image Processing', icon: <ScanLine className="w-4 h-4" /> },
+        { name: 'Data Analysis', icon: <BarChart3 className="w-4 h-4" /> },
+        { name: 'Model Development', icon: <Sparkles className="w-4 h-4" /> },
+        { name: 'Python', icon: <Code2 className="w-4 h-4" /> },
+        { name: 'TensorFlow/PyTorch', icon: <Layers className="w-4 h-4" /> },
+        { name: 'OpenCV', icon: <Eye className="w-4 h-4" /> },
+        { name: 'Scikit-learn', icon: <TrendingUp className="w-4 h-4" /> }
+      ],
+      bgColor: 'bg-orange-500/5',
+      borderColor: 'border-orange-500/20'
+    },
     {
       category: 'Web Development',
       icon: Globe,
@@ -79,7 +108,9 @@ const SkillsSection = () => {
         { name: 'Vercel', icon: <Globe className="w-4 h-4" /> },
         { name: 'Tinkercad', icon: <Box className="w-4 h-4" /> },
         { name: 'MATLAB', icon: <Terminal className="w-4 h-4" /> },
-        { name: 'SolidWorks', icon: <Box className="w-4 h-4" /> }
+        { name: 'SolidWorks', icon: <Box className="w-4 h-4" /> },
+        { name: 'Jupyter Notebooks', icon: <FileText className="w-4 h-4" /> },
+        { name: 'VS Code', icon: <Code className="w-4 h-4" /> }
       ],
       bgColor: 'bg-blue-500/5',
       borderColor: 'border-blue-500/20'
@@ -131,8 +162,8 @@ const SkillsSection = () => {
           </p>
         </motion.div>
 
-        {/* Technical Skills Grid */}
-        <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 mb-16 md:mb-20">
+        {/* Technical Skills Grid - Now 2x2 layout on large screens */}
+        <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-16 md:mb-20">
           {technicalSkills.map((category, index) => (
             <motion.div
               key={category.category}

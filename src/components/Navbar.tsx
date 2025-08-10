@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import { User, Zap, Download, MessageSquare, FolderOpen, Menu, X } from 'lucide-react';
+import { User, Zap, MessageSquare, FolderOpen, Menu, X, Briefcase } from 'lucide-react';
 
 const Navbar = ({ activeSection, onNavigate }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -23,10 +23,11 @@ const Navbar = ({ activeSection, onNavigate }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Updated nav items without resume
   const navItems = [
     { id: 'about', label: 'About Me', icon: <User className="w-4 h-4" /> },
     { id: 'skills', label: 'Technical Skills', icon: <Zap className="w-4 h-4" /> },
-    { id: 'resume', label: 'Resume', icon: <Download className="w-4 h-4" /> },
+    { id: 'experience', label: 'Work Experience', icon: <Briefcase className="w-4 h-4" /> },
     { id: 'projects', label: 'Featured Projects', icon: <FolderOpen className="w-4 h-4" /> },
     { id: 'contact', label: 'Contact', icon: <MessageSquare className="w-4 h-4" /> }
   ];
@@ -76,10 +77,10 @@ const Navbar = ({ activeSection, onNavigate }) => {
       }}
     >
       <div className="container mx-auto px-4 sm:px-6 py-4 relative">
-        <div className="flex items-center justify-between">
-          {/* Logo - Updated to Neon Cyan */}
+        <div className="flex items-center justify-between lg:justify-center">
+          {/* Logo */}
           <motion.div
-            className="flex items-center justify-center cursor-pointer"
+            className="flex items-center justify-center cursor-pointer lg:absolute lg:left-4 lg:sm:left-6"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => handleNavigation('hero')} // Navigate to top/hero section
@@ -107,7 +108,7 @@ const Navbar = ({ activeSection, onNavigate }) => {
             </div>
           </motion.div>
 
-          {/* Navigation Items - Desktop (Minimalistic) */}
+          {/* Center - Navigation Items (Desktop) */}
           <div className="hidden lg:flex items-center space-x-2">
             {navItems.map((item, index) => (
               <motion.button
@@ -131,6 +132,30 @@ const Navbar = ({ activeSection, onNavigate }) => {
               </motion.button>
             ))}
           </div>
+
+          {/* Right - Open to Work Indicator (Desktop) */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            className="hidden lg:flex items-center space-x-3 bg-green-500/10 border border-green-500/30 rounded-full px-4 py-2 lg:absolute lg:right-4 lg:sm:right-6"
+          >
+            <motion.div
+              className="w-3 h-3 bg-green-500 rounded-full"
+              animate={{ 
+                scale: [1, 1.2, 1],
+                opacity: [0.8, 1, 0.8]
+              }}
+              transition={{ 
+                duration: 2, 
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
+            <span className="text-sm font-inter font-medium text-green-400">
+              Open to Work
+            </span>
+          </motion.div>
 
           {/* Mobile Menu Button */}
           <motion.button
@@ -193,6 +218,29 @@ const Navbar = ({ activeSection, onNavigate }) => {
             }}
           >
             <div className="container mx-auto px-6 py-6">
+              {/* Open to Work - Mobile */}
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                className="flex items-center justify-center space-x-3 bg-green-500/10 border border-green-500/30 rounded-full px-4 py-3 mb-4"
+              >
+                <motion.div
+                  className="w-3 h-3 bg-green-500 rounded-full"
+                  animate={{ 
+                    scale: [1, 1.2, 1],
+                    opacity: [0.8, 1, 0.8]
+                  }}
+                  transition={{ 
+                    duration: 2, 
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
+                <span className="text-sm font-inter font-medium text-green-400">
+                  Open to Work
+                </span>
+              </motion.div>
               <div className="flex flex-col space-y-3">
                 {navItems.map((item, index) => (
                   <motion.button

@@ -155,8 +155,8 @@ const ProjectsSection = () => {
             {[
               'Robotics Prototyping & Development',
               'Sensor-based Automation Solutions',
-              'Frontend Web Design (React.js)',
-              'DSA & Backend Development'
+              'Full-Stack Web Development (React.js & Backend)',
+              'Machine Learning & AI Solutions'
             ].map((service, index) => (
               <motion.div
                 key={service}
@@ -169,7 +169,11 @@ const ProjectsSection = () => {
                 }}
                 className="group relative"
               >
-                <div className="bg-surface-light rounded-xl p-5 sm:p-6 border border-border-subtle transition-all duration-300 hover:border-neon-green/30 h-full">
+                <motion.div
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                  className="bg-surface-light rounded-xl p-5 sm:p-6 border border-border-subtle transition-all duration-300 hover:border-neon-green/30 h-full"
+                >
                   
                   {/* Minimalistic top indicator */}
                   <div className="h-1 w-6 bg-gradient-to-r from-neon-green to-purple-accent rounded-full mb-4 mx-auto transition-all duration-300 group-hover:w-10" />
@@ -177,7 +181,7 @@ const ProjectsSection = () => {
                   <p className="text-sm sm:text-base text-text-secondary font-inter text-center leading-relaxed">
                     {service}
                   </p>
-                </div>
+                </motion.div>
               </motion.div>
             ))}
           </div>
@@ -186,5 +190,4 @@ const ProjectsSection = () => {
     </section>
   );
 };
-
 export default ProjectsSection;

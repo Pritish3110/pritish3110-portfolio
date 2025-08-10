@@ -1,11 +1,54 @@
 import { motion } from 'framer-motion';
-import { Mail, MapPin, Github, Linkedin } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { Mail, MapPin, Github, Linkedin, Download } from 'lucide-react';
+import { useState, useEffect, useMemo } from 'react';
 import profilePhoto from '../assets/profile-photo.jpg';
 
-const HeroSection = () => {
+const HeroSection = ({ onNavigate }) => {
   const [isTextFilled, setIsTextFilled] = useState(false);
   const [showParticles, setShowParticles] = useState(false);
+  const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
+  const [displayedText, setDisplayedText] = useState('');
+  const [isTyping, setIsTyping] = useState(true);
+  
+  const roles = useMemo(() => [
+    'AI/ML Engineer',
+    'Robotics Engineer', 
+    'Full Stack Developer',
+    'Computer Vision Specialist'
+  ], []);
+
+  // Role typing and erasing animation effect
+  useEffect(() => {
+    const currentRole = roles[currentRoleIndex];
+    let timeout;
+    
+    if (isTyping) {
+      // Typing animation
+      if (displayedText.length < currentRole.length) {
+        timeout = setTimeout(() => {
+          setDisplayedText(currentRole.slice(0, displayedText.length + 1));
+        }, 100);
+      } else {
+        // Pause before erasing
+        timeout = setTimeout(() => {
+          setIsTyping(false);
+        }, 2000);
+      }
+    } else {
+      // Erasing animation
+      if (displayedText.length > 0) {
+        timeout = setTimeout(() => {
+          setDisplayedText(displayedText.slice(0, -1));
+        }, 50);
+      } else {
+        // Move to next role and start typing
+        setCurrentRoleIndex((prev) => (prev + 1) % roles.length);
+        setIsTyping(true);
+      }
+    }
+    
+    return () => clearTimeout(timeout);
+  }, [displayedText, isTyping, currentRoleIndex, roles]);
 
   useEffect(() => {
     const fillTimer = setTimeout(() => setIsTextFilled(true), 1000);
@@ -143,18 +186,25 @@ const HeroSection = () => {
               </motion.h2>
             </div>
 
-            {/* Role & Description */}
+            {/* Dynamic Role with Fixed Typing Animation */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.0 }}
               className="space-y-4 max-w-xl"
             >
-              <h3 className="text-xl sm:text-2xl lg:text-3xl font-space font-semibold text-purple-accent">
-                AI & Robotics Engineer
-              </h3>
+              <div className="min-h-[3rem] sm:min-h-[4rem] lg:min-h-[5rem] flex items-center justify-center lg:justify-start">
+                <div className="text-xl sm:text-2xl lg:text-3xl font-space font-semibold text-purple-accent flex items-center">
+                  <span>{displayedText}</span>
+                  <motion.span
+                    className="inline-block w-0.5 h-6 sm:h-8 lg:h-10 bg-purple-accent ml-1"
+                    animate={{ opacity: [0, 1, 0] }}
+                    transition={{ duration: 1, repeat: Infinity }}
+                  />
+                </div>
+              </div>
               <p className="text-base sm:text-lg font-inter text-text-secondary leading-relaxed">
-                Passionate about creating intelligent automation systems that bridge the gap between innovation and real-world application. Building the future, one robot at a time.
+                Passionate about creating intelligent automation systems that bridge the gap between innovation and real-world application. Building the future, one solution at a time.
               </p>
             </motion.div>
 
@@ -175,28 +225,65 @@ const HeroSection = () => {
               </div>
             </motion.div>
 
-            {/* Social Links with Snap Animation */}
+            {/* Social Links and Resume Button - Now inline */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.4 }}
-              className="flex items-center justify-center lg:justify-start space-x-4 sm:space-x-6"
+              className="flex flex-col sm:flex-row items-center lg:items-start sm:justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-6"
             >
-              {socialLinks.map((social, index) => (
-                <motion.a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`text-text-secondary icon-snap tap-highlight ${social.color} transition-all duration-300 p-2`}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 1.6 + index * 0.1 }}
-                  whileHover={{ scale: 1.1, y: -2 }}
-                >
-                  <social.icon />
-                </motion.a>
-              ))}
+              {/* Social Links */}
+              <div className="flex items-center space-x-4">
+                {socialLinks.map((social, index) => (
+                  <motion.a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`text-text-secondary icon-snap tap-highlight ${social.color} transition-all duration-300 p-2`}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 1.6 + index * 0.1 }}
+                    whileHover={{ scale: 1.1, y: -2 }}
+                  >
+                    <social.icon />
+                  </motion.a>
+                ))}
+              </div>
+
+              {/* Divider - visible only on larger screens */}
+              <div className="hidden sm:block w-px h-8" />
+
+              {/* Resume Button */}
+              <motion.button
+                onClick={() => onNavigate && onNavigate('resume')}
+                className="group relative bg-gradient-to-r from-neon-green to-purple-accent p-[1px] rounded-lg overflow-hidden"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 2.0 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <div className="bg-background px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg flex items-center space-x-2 group-hover:bg-background/90 transition-all duration-300">
+                  <Download className="w-4 h-4 text-neon-green" />
+                  <span className="font-inter font-semibold text-sm sm:text-base text-text-primary group-hover:text-neon-green transition-colors duration-300">
+                    Resume
+                  </span>
+                </div>
+                
+                {/* Animated border glow */}
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-neon-green via-purple-accent to-neon-green opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  animate={{ 
+                    background: [
+                      'linear-gradient(0deg, #39ff14, #9333ea, #39ff14)',
+                      'linear-gradient(360deg, #39ff14, #9333ea, #39ff14)'
+                    ]
+                  }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                  style={{ zIndex: -1 }}
+                />
+              </motion.button>
             </motion.div>
           </motion.div>
 

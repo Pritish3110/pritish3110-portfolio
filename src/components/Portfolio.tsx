@@ -5,18 +5,20 @@ import Navbar from './Navbar';
 import HeroSection from './HeroSection';
 import AboutSection from './AboutSection';
 import SkillsSection from './SkillsSection';
-import ResumeSection from './ResumeSection';
+import WorkExperienceSection from './WorkExperienceSection';
 import ProjectsSection from './ProjectsSection';
+import ResumeSection from './ResumeSection';
 import ContactSection from './ContactSection';
 import CursorGlow from './CursorGlow';
 
 const Portfolio = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [activeSection, setActiveSection] = useState('home');
+  const [activeSection, setActiveSection] = useState('hero');
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'skills', 'resume', 'projects', 'contact'];
+      // Updated sections array to match new order
+      const sections = ['hero', 'about', 'skills', 'experience', 'projects', 'resume', 'contact'];
       const scrollPosition = window.scrollY + 100;
       
       for (const section of sections) {
@@ -38,7 +40,14 @@ const Portfolio = () => {
   const handleNavigate = (section) => {
     const element = document.getElementById(section);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      const navbarHeight = 80;
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - navbarHeight;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
     }
   };
 
@@ -63,14 +72,25 @@ const Portfolio = () => {
           <Navbar activeSection={activeSection} onNavigate={handleNavigate} />
           
           <main>
-            <section id="home">
-              <HeroSection />
-            </section>
+            {/* Hero Section */}
+            <HeroSection onNavigate={handleNavigate} />
             
+            {/* About Section */}
             <AboutSection />
+            
+            {/* Skills Section */}
             <SkillsSection />
-            <ResumeSection />
+            
+            {/* Work Experience Section */}
+            <WorkExperienceSection />
+            
+            {/* Projects Section */}
             <ProjectsSection />
+            
+            {/* Resume Section */}
+            <ResumeSection />
+            
+            {/* Contact Section */}
             <ContactSection />
           </main>
         </motion.div>
