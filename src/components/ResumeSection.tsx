@@ -10,13 +10,14 @@ const ResumeSection = () => {
     rootMargin: '-30px 0px'
   });
 
+  const downloadLink = 'https://drive.google.com/uc?export=download&id=1ONh6B5YLFEnvwR2Not76TiY1o1mM2qv_';
+  const previewLink = 'https://drive.google.com/file/d/1ONh6B5YLFEnvwR2Not76TiY1o1mM2qv_/view?usp=drive_link';
+
   const handleDownload = () => {
-    const driveLink = 'https://drive.google.com/file/d/1ONh6B5YLFEnvwR2Not76TiY1o1mM2qv_/view?usp=drive_link';
-    window.open(driveLink, '_blank');
+    window.open(downloadLink, '_blank');
   };
 
   const handlePreview = () => {
-    const previewLink = 'https://drive.google.com/file/d/1ONh6B5YLFEnvwR2Not76TiY1o1mM2qv_/view?usp=drive_link';
     window.open(previewLink, '_blank');
   };
 
@@ -61,7 +62,7 @@ const ResumeSection = () => {
           <motion.div
             className="absolute -inset-1 bg-gradient-to-r from-neon-green/20 to-purple-accent/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
           />
-                   
+                  
           <motion.div
             whileHover={{ y: -5 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
@@ -70,7 +71,7 @@ const ResumeSection = () => {
             {/* Minimal background decoration */}
             <div className="absolute top-4 right-4 w-20 h-20 border border-neon-green/5 rounded-full opacity-50" />
             <div className="absolute bottom-4 left-4 w-12 h-12 border border-purple-accent/5 rounded-lg rotate-45 opacity-50" />
-                     
+                    
             <div className="relative z-10">
               <div className="grid lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center">
                 {/* Left Content */}
@@ -154,7 +155,7 @@ const ResumeSection = () => {
                         Download Resume
                       </Button>
                     </motion.div>
-                                     
+                                        
                     <motion.div
                       whileHover={{ y: -2 }}
                       whileTap={{ scale: 0.98 }}
