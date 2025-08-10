@@ -11,12 +11,12 @@ const ResumeSection = () => {
   });
 
   const handleDownload = () => {
-    const driveLink = 'https://drive.google.com/uc?export=download&id=1dHz8Wx2-aaN2xSkXm96YDFxHnyV1FBqF';
+    const driveLink = 'https://drive.google.com/file/d/1ONh6B5YLFEnvwR2Not76TiY1o1mM2qv_/view?usp=drive_link';
     window.open(driveLink, '_blank');
   };
 
   const handlePreview = () => {
-    const previewLink = 'https://drive.google.com/file/d/1dHz8Wx2-aaN2xSkXm96YDFxHnyV1FBqF/view';
+    const previewLink = 'https://drive.google.com/file/d/1ONh6B5YLFEnvwR2Not76TiY1o1mM2qv_/view?usp=drive_link';
     window.open(previewLink, '_blank');
   };
 
