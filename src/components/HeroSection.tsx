@@ -151,7 +151,7 @@ const HeroSection = ({ onNavigate }) => {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="text-base sm:text-lg font-inter text-text-secondary tracking-wide"
             >
-              👋 Hello, I'm
+              Hello, I'm
             </motion.p>
 
             {/* Name with Liquid Fill Effect */}
@@ -254,10 +254,13 @@ const HeroSection = ({ onNavigate }) => {
               {/* Divider - visible only on larger screens */}
               <div className="hidden sm:block w-px h-8" />
 
-              {/* Resume Button */}
-              <motion.button
-                onClick={() => onNavigate && onNavigate('resume')}
-                className="group relative bg-gradient-to-r from-neon-green to-purple-accent p-[1px] rounded-lg overflow-hidden"
+              {/* Resume Button - Direct Download */}
+              <motion.a
+                href="https://drive.google.com/uc?export=download&id=1ONh6B5YLFEnvwR2Not76TiY1o1mM2qv_"
+                target="_blank"
+                rel="noopener noreferrer"
+                download="Pritish_Bhatasana_Resume.pdf"
+                className="group relative bg-gradient-to-r from-neon-green to-purple-accent p-[1px] rounded-lg overflow-hidden inline-flex"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 2.0 }}
@@ -283,7 +286,7 @@ const HeroSection = ({ onNavigate }) => {
                   transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
                   style={{ zIndex: -1 }}
                 />
-              </motion.button>
+              </motion.a>
             </motion.div>
           </motion.div>
 

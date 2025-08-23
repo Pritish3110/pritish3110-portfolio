@@ -15,7 +15,7 @@ const WorkExperienceSection = () => {
       company: 'Mafkin Robotics',
       role: 'Machine Learning & Robotics Intern',
       type: 'On-site',
-      duration: '2024',
+      duration: '2025 Aug - Present',
       location: 'Chennai, India',
       highlights: [
         'Developed high-accuracy image classification models using TensorFlow and EfficientNetB3 with advanced data augmentation (MixUp), label smoothing, and fine-tuning',

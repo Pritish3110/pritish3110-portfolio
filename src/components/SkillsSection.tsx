@@ -30,7 +30,12 @@ import {
   Atom,
   Sparkles,
   Target,
-  ScanLine
+  ScanLine,
+  Trophy,
+  Coffee,
+  Server,
+  Smartphone,
+  Gamepad
 } from 'lucide-react';
 
 const SkillsSection = () => {
@@ -41,6 +46,47 @@ const SkillsSection = () => {
   });
 
   const technicalSkills = [
+    {
+      category: 'Embedded Systems & Robotics',
+      icon: Cpu,
+      color: 'text-purple-400',
+      skills: [
+        { name: 'Robotics & Automation', icon: <Settings className="w-4 h-4" /> },
+        { name: 'ROS2', icon: <Workflow className="w-4 h-4" /> },
+        { name: 'SLAM', icon: <Navigation className="w-4 h-4" /> },
+        { name: 'Arduino', icon: <Monitor className="w-4 h-4" /> },
+        { name: 'Raspberry Pi', icon: <Cpu className="w-4 h-4" /> },
+        { name: 'C++', icon: <Code2 className="w-4 h-4" /> },
+        { name: 'L298N Motor Driver', icon: <Zap className="w-4 h-4" /> },
+        { name: 'IR Sensors', icon: <Eye className="w-4 h-4" /> },
+        { name: 'Motor Control', icon: <Settings className="w-4 h-4" /> },
+        { name: 'Flood Fill Algorithm', icon: <Search className="w-4 h-4" /> },
+        { name: 'BFS Algorithm', icon: <Search className="w-4 h-4" /> }
+      ],
+      bgColor: 'bg-purple-500/5',
+      borderColor: 'border-purple-500/20'
+    },
+    {
+      category: 'Web Development',
+      icon: Globe,
+      color: 'text-green-400',
+      skills: [
+        { name: 'HTML5', icon: <Globe className="w-4 h-4" /> },
+        { name: 'CSS3', icon: <Palette className="w-4 h-4" /> },
+        { name: 'JavaScript', icon: <FileText className="w-4 h-4" /> },
+        { name: 'TypeScript', icon: <Code className="w-4 h-4" /> },
+        { name: 'React', icon: <Layers className="w-4 h-4" /> },
+        { name: 'Next.js', icon: <Database className="w-4 h-4" /> },
+        { name: 'Tailwind CSS', icon: <Wrench className="w-4 h-4" /> },
+        { name: 'Framer Motion', icon: <Zap className="w-4 h-4" /> },
+        { name: 'Node.js', icon: <Server className="w-4 h-4" /> },
+        { name: 'Express.js', icon: <Code2 className="w-4 h-4" /> },
+        { name: 'MongoDB', icon: <Database className="w-4 h-4" /> },
+        { name: 'Responsive Design', icon: <Smartphone className="w-4 h-4" /> }
+      ],
+      bgColor: 'bg-green-500/5',
+      borderColor: 'border-green-500/20'
+    },
     {
       category: 'AI/ML & Data Science',
       icon: Brain,
@@ -63,42 +109,6 @@ const SkillsSection = () => {
       borderColor: 'border-orange-500/20'
     },
     {
-      category: 'Web Development',
-      icon: Globe,
-      color: 'text-green-400',
-      skills: [
-        { name: 'HTML5', icon: <Globe className="w-4 h-4" /> },
-        { name: 'CSS3', icon: <Palette className="w-4 h-4" /> },
-        { name: 'JavaScript', icon: <FileText className="w-4 h-4" /> },
-        { name: 'TypeScript', icon: <Code className="w-4 h-4" /> },
-        { name: 'React', icon: <Layers className="w-4 h-4" /> },
-        { name: 'Next.js', icon: <Database className="w-4 h-4" /> },
-        { name: 'Tailwind CSS', icon: <Wrench className="w-4 h-4" /> },
-        { name: 'Framer Motion', icon: <Zap className="w-4 h-4" /> }
-      ],
-      bgColor: 'bg-green-500/5',
-      borderColor: 'border-green-500/20'
-    },
-    {
-      category: 'Embedded Systems & Robotics',
-      icon: Cpu,
-      color: 'text-purple-400',
-      skills: [
-        { name: 'Robotics & Automation', icon: <Settings className="w-4 h-4" /> },
-        { name: 'ROS2', icon: <Workflow className="w-4 h-4" /> },
-        { name: 'SLAM', icon: <Navigation className="w-4 h-4" /> },
-        { name: 'Arduino', icon: <Monitor className="w-4 h-4" /> },
-        { name: 'C++', icon: <Code2 className="w-4 h-4" /> },
-        { name: 'L298N Motor Driver', icon: <Zap className="w-4 h-4" /> },
-        { name: 'IR Sensors', icon: <Eye className="w-4 h-4" /> },
-        { name: 'Motor Control', icon: <Settings className="w-4 h-4" /> },
-        { name: 'Flood Fill Algorithm', icon: <Search className="w-4 h-4" /> },
-        { name: 'BFS Algorithm', icon: <Search className="w-4 h-4" /> }
-      ],
-      bgColor: 'bg-purple-500/5',
-      borderColor: 'border-purple-500/20'
-    },
-    {
       category: 'Tools & Platforms',
       icon: Wrench,
       color: 'text-blue-400',
@@ -106,14 +116,55 @@ const SkillsSection = () => {
         { name: 'Git', icon: <GitBranch className="w-4 h-4" /> },
         { name: 'GitHub', icon: <GitBranch className="w-4 h-4" /> },
         { name: 'Vercel', icon: <Globe className="w-4 h-4" /> },
+        { name: 'Unity', icon: <Gamepad className="w-4 h-4" /> },
         { name: 'Tinkercad', icon: <Box className="w-4 h-4" /> },
+        { name: 'Jupyter Notebooks', icon: <FileText className="w-4 h-4" /> },
         { name: 'MATLAB', icon: <Terminal className="w-4 h-4" /> },
         { name: 'SolidWorks', icon: <Box className="w-4 h-4" /> },
-        { name: 'Jupyter Notebooks', icon: <FileText className="w-4 h-4" /> },
-        { name: 'VS Code', icon: <Code className="w-4 h-4" /> }
+        { name: 'StarUML', icon: <Workflow className="w-4 h-4" /> },
+        { name: 'R Studio', icon: <BarChart3 className="w-4 h-4" /> }
       ],
       bgColor: 'bg-blue-500/5',
       borderColor: 'border-blue-500/20'
+    }
+  ];
+
+  const skillLevels = [
+    {
+      name: 'Robotics',
+      level: 85,
+      icon: Cpu,
+      color: 'text-purple-400',
+      bgColor: 'bg-purple-400',
+      language: 'C++',
+      description: 'Embedded systems, ROS2, SLAM navigation'
+    },
+    {
+      name: 'Web Development',
+      level: 90,
+      icon: Globe,
+      color: 'text-green-400',
+      bgColor: 'bg-green-400',
+      language: 'React & JavaScript',
+      description: 'Full-stack development, modern frameworks'
+    },
+    {
+      name: 'Competitive Coding',
+      level: 75,
+      icon: Trophy,
+      color: 'text-yellow-400',
+      bgColor: 'bg-yellow-400',
+      language: 'Java',
+      description: 'Data structures, algorithms, problem solving'
+    },
+    {
+      name: 'Machine Learning',
+      level: 80,
+      icon: Brain,
+      color: 'text-orange-400',
+      bgColor: 'bg-orange-400',
+      language: 'Python & TensorFlow',
+      description: 'Computer vision, neural networks, model development'
     }
   ];
 
@@ -160,6 +211,79 @@ const SkillsSection = () => {
           <p className="text-base md:text-lg text-text-secondary max-w-2xl mx-auto">
             A comprehensive toolkit for building innovative solutions across multiple domains
           </p>
+        </motion.div>
+
+        {/* Skill Level Meters */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mb-16 md:mb-20"
+        >
+          <h3 className="text-2xl md:text-3xl font-space font-semibold text-purple-accent mb-8 md:mb-12 text-center">
+            Expertise Level
+          </h3>
+          
+          <div className="grid md:grid-cols-2 gap-6 md:gap-8">
+            {skillLevels.map((skill, index) => (
+              <motion.div
+                key={skill.name}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
+                animate={inView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
+                className="bg-surface-light rounded-xl p-6 md:p-8 border border-border-subtle hover:border-neon-green/30 transition-all duration-300"
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center space-x-3">
+                    <div className="bg-background/50 p-2 rounded-lg">
+                      <skill.icon className={`w-5 h-5 ${skill.color}`} />
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-space font-semibold text-text-primary">
+                        {skill.name}
+                      </h4>
+                      <p className="text-xs font-mono text-text-muted">
+                        {skill.language}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <span className="text-xl font-orbitron font-bold text-neon-green">
+                      {skill.level}%
+                    </span>
+                  </div>
+                </div>
+                
+                {/* Progress Bar */}
+                <div className="mb-3">
+                  <div className="w-full bg-background/50 rounded-full h-2.5 overflow-hidden">
+                    <motion.div
+                      className={`h-full ${skill.bgColor} rounded-full relative`}
+                      initial={{ width: 0 }}
+                      animate={inView ? { width: `${skill.level}%` } : {}}
+                      transition={{ duration: 1.2, delay: 0.6 + index * 0.1, ease: "easeOut" }}
+                    >
+                      {/* Animated shimmer effect */}
+                      <motion.div
+                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                        initial={{ x: '-100%' }}
+                        animate={inView ? { x: '200%' } : {}}
+                        transition={{ 
+                          duration: 1.5, 
+                          delay: 1.8 + index * 0.1,
+                          ease: "easeInOut"
+                        }}
+                      />
+                    </motion.div>
+                  </div>
+                </div>
+                
+                <p className="text-sm text-text-secondary">
+                  {skill.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
 
         {/* Technical Skills Grid - Now 2x2 layout on large screens */}

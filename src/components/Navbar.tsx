@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import { User, Zap, MessageSquare, FolderOpen, Menu, X, Briefcase } from 'lucide-react';
+import { User, Zap, MessageSquare, FolderOpen, Menu, X, Briefcase, Star, FileText } from 'lucide-react';
 
 const Navbar = ({ activeSection, onNavigate }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -23,12 +23,14 @@ const Navbar = ({ activeSection, onNavigate }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Updated nav items without resume
+  // Updated nav items with achievements and resume
   const navItems = [
     { id: 'about', label: 'About Me', icon: <User className="w-4 h-4" /> },
     { id: 'skills', label: 'Technical Skills', icon: <Zap className="w-4 h-4" /> },
     { id: 'experience', label: 'Work Experience', icon: <Briefcase className="w-4 h-4" /> },
     { id: 'projects', label: 'Featured Projects', icon: <FolderOpen className="w-4 h-4" /> },
+    { id: 'achievements', label: 'Achievements', icon: <Star className="w-4 h-4" /> },
+    { id: 'resume', label: 'Resume', icon: <FileText className="w-4 h-4" /> },
     { id: 'contact', label: 'Contact', icon: <MessageSquare className="w-4 h-4" /> }
   ];
 
@@ -109,7 +111,7 @@ const Navbar = ({ activeSection, onNavigate }) => {
           </motion.div>
 
           {/* Center - Navigation Items (Desktop) */}
-          <div className="hidden lg:flex items-center space-x-2">
+          <div className="hidden lg:flex items-center space-x-2 lg:-ml-20">
             {navItems.map((item, index) => (
               <motion.button
                 key={item.id}
@@ -138,7 +140,7 @@ const Navbar = ({ activeSection, onNavigate }) => {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.8 }}
-            className="hidden lg:flex items-center space-x-3 bg-green-500/10 border border-green-500/30 rounded-full px-4 py-2 lg:absolute lg:right-4 lg:sm:right-6"
+            className="hidden lg:flex items-center space-x-3 lg:absolute lg:right-4 lg:sm:right-6"
           >
             <motion.div
               className="w-3 h-3 bg-green-500 rounded-full"
@@ -223,7 +225,7 @@ const Navbar = ({ activeSection, onNavigate }) => {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
-                className="flex items-center justify-center space-x-3 bg-green-500/10 border border-green-500/30 rounded-full px-4 py-3 mb-4"
+                className="flex items-center justify-center space-x-3 mb-4"
               >
                 <motion.div
                   className="w-3 h-3 bg-green-500 rounded-full"
