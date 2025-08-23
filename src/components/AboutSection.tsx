@@ -259,7 +259,7 @@ const AboutSection = () => {
                       <Award className="w-4 h-4 text-purple-accent" />
                     </motion.div>
                     <span className="text-xs md:text-sm text-purple-accent font-semibold">
-                      Passed with 89.90 percentile
+                      Passed with 89.97 percentile
                     </span>
                   </div>
                 </motion.div>
@@ -283,7 +283,7 @@ const AboutSection = () => {
                       <Award className="w-4 h-4 text-yellow-400" />
                     </motion.div>
                     <span className="text-xs md:text-sm text-yellow-400 font-semibold">
-                      Passed with 99.68 percentile
+                      Passed with 99.62 percentile
                     </span>
                   </div>
                 </motion.div>
