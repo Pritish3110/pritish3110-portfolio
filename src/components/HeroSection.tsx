@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Mail, MapPin, Github, Linkedin, Download } from 'lucide-react';
 import { useState, useEffect, useMemo } from 'react';
-const profilePhoto = 'https://i.postimg.cc/kGDc7kp7/Portfolio-Pic.jpg';
+const profilePhoto = 'https://i.postimg.cc/jSLYf7MK/waistpic-1-Cropped.jpg';
 
 const HeroSection = ({ onNavigate }) => {
   const [isTextFilled, setIsTextFilled] = useState(false);
