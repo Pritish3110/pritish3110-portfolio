@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Briefcase, MapPin, Calendar, Code, Cpu, Brain, Users, Star } from 'lucide-react';
+import { Briefcase, MapPin, Calendar, Code, Cpu, Brain, Users, Star, Camera } from 'lucide-react';
 
 const WorkExperienceSection = () => {
   const [ref, inView] = useInView({
@@ -15,18 +15,19 @@ const WorkExperienceSection = () => {
       company: 'Mafkin Robotics',
       role: 'Machine Learning & Robotics Intern',
       type: 'On-site',
-      duration: '2025 Aug - Present',
+      duration: 'July 2025 - Present',
       location: 'Chennai, India',
       highlights: [
-        'Developed high-accuracy image classification models using TensorFlow and EfficientNetB3 with advanced data augmentation (MixUp), label smoothing, and fine-tuning',
-        'Built efficient tf.data pipelines, handled COCO-format datasets, implemented class weighting and learning rate scheduling',
-        'Integrated ROS 2 workflows and optimized AI workloads on NVIDIA Jetson Orin for autonomous navigation tasks',
-        'Delivered modular, production-ready Python scripts with GPU acceleration and reproducible training setups'
+        'Worked on environment mapping using a ZED2i camera paired with a NVIDIA Jetson Orin',
+        'Implemented an RTAB-based mapping pipeline that uses both RGB and depth streams to generate and refine 3D meshes of indoor environments',
+        'Responsibilities included sensor integration, calibration workflows, data capture pipelines (RGB+D), and producing 3D mesh outputs for mapping/visualization',
+        'Focused on real-time processing and optimization for autonomous navigation applications'
       ],
       technologies: [
-        { name: 'TensorFlow', icon: Brain },
+        { name: 'ZED2i Camera', icon: Camera },
+        { name: 'NVIDIA Jetson Orin', icon: Cpu },
+        { name: 'RTAB-Map', icon: Brain },
         { name: 'ROS 2', icon: Cpu },
-        { name: 'Jetson Orin', icon: Cpu },
         { name: 'Python', icon: Code }
       ],
       gradient: 'from-neon-green/20 to-cyan-400/20'

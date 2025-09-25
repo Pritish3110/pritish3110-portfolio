@@ -29,7 +29,7 @@ const Navbar = ({ activeSection, onNavigate }) => {
     { id: 'skills', label: 'Technical Skills', icon: <Zap className="w-4 h-4" /> },
     { id: 'experience', label: 'Work Experience', icon: <Briefcase className="w-4 h-4" /> },
     { id: 'projects', label: 'Featured Projects', icon: <FolderOpen className="w-4 h-4" /> },
-    // { id: 'achievements', label: 'Achievements', icon: <Star className="w-4 h-4" /> },
+    { id: 'achievements', label: 'Achievements', icon: <Star className="w-4 h-4" /> },
     { id: 'resume', label: 'Resume', icon: <FileText className="w-4 h-4" /> },
     { id: 'contact', label: 'Contact', icon: <MessageSquare className="w-4 h-4" /> }
   ];

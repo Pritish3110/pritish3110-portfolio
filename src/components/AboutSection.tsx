@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useState, useEffect } from 'react';
-import { User, GraduationCap, Award, Target } from 'lucide-react';
+import { User, GraduationCap, Award, Target, Trophy, Bot, Code2, Briefcase } from 'lucide-react';
 
 const AboutSection = () => {
   const [hasAnimated, setHasAnimated] = useState(false);

@@ -10,6 +10,8 @@ import ProjectsSection from './ProjectsSection';
 import ResumeSection from './ResumeSection';
 import ContactSection from './ContactSection';
 import CursorGlow from './CursorGlow';
+import AchievementsSection from './AchievementsSection';
+import JourneyTimeLine from './JourneyTimeline';
 
 const Portfolio = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -18,7 +20,7 @@ const Portfolio = () => {
   useEffect(() => {
     const handleScroll = () => {
       // Updated sections array to match new order
-      const sections = ['hero', 'about', 'skills', 'experience', 'projects', 'resume', 'contact'];
+      const sections = ['hero', 'about', 'skills', 'experience', 'projects','achievements', 'resume', 'contact'];
       const scrollPosition = window.scrollY + 100;
       
       for (const section of sections) {
@@ -77,7 +79,13 @@ const Portfolio = () => {
             
             {/* About Section */}
             <AboutSection />
-            
+
+            {/* JourneyTimeLine*/}
+            <JourneyTimeLine shouldAnimate={true} />
+
+            {/* Whitespace between timeline and skills */}
+            <div className="my-12" />
+
             {/* Skills Section */}
             <SkillsSection />
             
@@ -86,6 +94,9 @@ const Portfolio = () => {
             
             {/* Projects Section */}
             <ProjectsSection />
+
+            {/* Achievements Section */}
+            <AchievementsSection />
             
             {/* Resume Section */}
             <ResumeSection />
