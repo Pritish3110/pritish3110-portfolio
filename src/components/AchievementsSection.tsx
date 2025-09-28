@@ -7,8 +7,8 @@ const AchievementsSection = () => {
   // Fixed intersection observer settings for navbar compatibility
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.2, // Increased threshold for better navbar detection
-    rootMargin: '0px 0px -20% 0px' // Adjusted root margin for navbar compatibility
+    threshold: 0.15,
+    rootMargin: '-30px 0px'
   });
 
   const achievements = [
@@ -58,7 +58,6 @@ const AchievementsSection = () => {
 
   const CertificateCard = ({ achievement }) => {
     const [imageError, setImageError] = useState(false);
-
     return (
       <div className="bg-surface-light rounded-xl p-4 border border-border-subtle hover:border-neon-green/30 transition-all duration-300 group">
         <div className="flex items-center justify-between mb-3">
@@ -69,7 +68,7 @@ const AchievementsSection = () => {
             </span>
           </div>
           {achievement.certificateUrl && (
-            <a
+            <a 
               href={achievement.certificateUrl}
               target="_blank"
               rel="noopener noreferrer"
@@ -114,178 +113,134 @@ const AchievementsSection = () => {
 
   return (
     <section id="achievements" className="py-16 md:py-24 px-4 md:px-6 lg:px-12 bg-surface/20">
-      {/* Added a div with ref at the top of the section for better navbar detection */}
-      <div ref={ref} className="absolute" style={{ top: '20%' }} />
-      
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.6 }}
         className="container mx-auto max-w-7xl"
       >
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.1, duration: 0.5 }}
+          ref={ref}
+          initial={{ x: -50 }}
+          animate={inView ? { x: 0 } : { x: -50 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
           className="text-center mb-12 md:mb-20"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-orbitron font-bold text-neon-green mb-4">
             Achievements
           </h2>
-          <motion.div 
-            className="w-20 h-1 bg-gradient-to-r from-neon-green to-purple-accent mx-auto mb-6"
-            initial={{ scaleX: 0 }}
-            animate={inView ? { scaleX: 1 } : {}}
-            transition={{ delay: 0.2, duration: 0.4 }}
-          />
+          <div className="w-16 md:w-20 h-1 bg-gradient-to-r from-neon-green to-purple-accent mx-auto mb-6" />
           <p className="text-base md:text-lg text-text-secondary max-w-2xl mx-auto">
             Recognition and milestones in hackathons, internships, and key projects
           </p>
         </motion.div>
 
         {/* Achievements Grid */}
-        <div className="space-y-8 md:space-y-12">
+        <div className="space-y-6 md:space-y-8">
           {achievements.map((achievement, index) => (
             <motion.div
               key={achievement.id}
-              initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
+              initial={{ x: -60, scale: 0.95 }}
+              animate={inView ? { x: 0, scale: 1 } : { x: -60, scale: 0.95 }}
+              transition={{
+                duration: 0.5,
+                delay: index * 0.1,
+                ease: "easeOut"
+              }}
               className="group relative"
             >
-              {/* Background Glow */}
-              <motion.div
-                className={`absolute -inset-1 bg-gradient-to-r ${
-                  achievement.color === 'neon-green' ? 'from-neon-green/10 to-neon-green/5' :
-                  achievement.color === 'purple-accent' ? 'from-purple-accent/10 to-purple-accent/5' :
-                  achievement.color === 'cyan-400' ? 'from-cyan-400/10 to-cyan-400/5' :
-                  'from-yellow-400/10 to-yellow-400/5'
-                } rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm`}
-              />
-              
-              <motion.div
-                whileHover={{ y: -4 }}
-                transition={{ duration: 0.3, ease: "easeOut" }}
-                className="relative bg-surface-light rounded-2xl p-6 md:p-8 border border-border-subtle group-hover:border-neon-green/30 transition-all duration-300"
-              >
-                <div className="grid lg:grid-cols-3 gap-6 lg:gap-8">
-                  {/* Main Content */}
-                  <div className="lg:col-span-2">
-                    {/* Header */}
-                    <div className="flex items-start justify-between mb-6">
-                      <div className="flex-1">
-                        <motion.div
-                          className="flex items-center space-x-3 mb-3"
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={inView ? { opacity: 1, x: 0 } : {}}
-                          transition={{ delay: 0.4 + index * 0.1 }}
-                        >
-                          <motion.div
-                            className={`p-3 rounded-lg ${
-                              achievement.color === 'neon-green' ? 'bg-neon-green/10' :
-                              achievement.color === 'purple-accent' ? 'bg-purple-accent/10' :
-                              achievement.color === 'cyan-400' ? 'bg-cyan-400/10' :
-                              'bg-yellow-400/10'
-                            }`}
-                            whileHover={{ scale: 1.1, rotate: 5 }}
-                            transition={{ duration: 0.2 }}
-                          >
-                            <motion.div
-                              className={
-                                achievement.color === 'neon-green' ? 'text-neon-green' :
-                                achievement.color === 'purple-accent' ? 'text-purple-accent' :
-                                achievement.color === 'cyan-400' ? 'text-cyan-400' :
-                                'text-yellow-400'
-                              }
-                            >
-                              {achievement.icon}
-                            </motion.div>
-                          </motion.div>
-                          <div>
-                            <h3 className="text-xl md:text-2xl font-space font-bold text-text-primary">
-                              {achievement.title}
-                            </h3>
-                            <div className="flex items-center space-x-3 mt-1">
-                              <span className={`text-base md:text-lg font-inter font-semibold ${
-                                achievement.color === 'neon-green' ? 'text-neon-green' :
-                                achievement.color === 'purple-accent' ? 'text-purple-accent' :
-                                achievement.color === 'cyan-400' ? 'text-cyan-400' :
-                                'text-yellow-400'
-                              }`}>
-                                {achievement.result}
-                              </span>
-                              <span className="text-sm text-text-muted">
-                                {achievement.date}
-                              </span>
-                            </div>
+              {/* Minimalistic card with subtle border animation */}
+              <div className="relative bg-surface-light rounded-xl md:rounded-2xl p-6 md:p-8 border border-border-subtle overflow-hidden transition-all duration-500 ease-out hover:border-neon-green/30">
+                
+                {/* Subtle top accent line that expands on hover */}
+                <div className="absolute top-0 left-0 h-0.5 bg-gradient-to-r from-neon-green to-purple-accent w-0 group-hover:w-full transition-all duration-700 ease-out" />
+                
+                {/* Content container */}
+                <div className="relative z-10">
+                  <div className="grid lg:grid-cols-3 gap-6 lg:gap-8">
+                    {/* Main Content */}
+                    <div className="lg:col-span-2">
+                      {/* Header */}
+                      <div className="flex flex-col sm:flex-row sm:items-start gap-4 mb-6">
+                        <div className={`p-3 rounded-xl self-start transition-all duration-300 group-hover:scale-105 ${
+                          achievement.color === 'neon-green' ? 'bg-neon-green/10' :
+                          achievement.color === 'purple-accent' ? 'bg-purple-accent/10' :
+                          achievement.color === 'cyan-400' ? 'bg-cyan-400/10' :
+                          'bg-yellow-400/10'
+                        }`}>
+                          <div className={
+                            achievement.color === 'neon-green' ? 'text-neon-green' :
+                            achievement.color === 'purple-accent' ? 'text-purple-accent' :
+                            achievement.color === 'cyan-400' ? 'text-cyan-400' :
+                            'text-yellow-400'
+                          }>
+                            {achievement.icon}
                           </div>
-                        </motion.div>
-
-                        {/* Type Badge */}
-                        <motion.div
-                          className={`inline-block px-3 py-1 rounded-full text-xs font-semibold mb-4 ${
+                        </div>
+                        
+                        <div className="flex-1 min-w-0">
+                          <h3 className="text-xl md:text-2xl font-space font-bold text-text-primary mb-3 transition-colors duration-300 group-hover:text-neon-green">
+                            {achievement.title}
+                          </h3>
+                          <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-4">
+                            <span className={`text-base md:text-lg font-inter font-semibold ${
+                              achievement.color === 'neon-green' ? 'text-neon-green' :
+                              achievement.color === 'purple-accent' ? 'text-purple-accent' :
+                              achievement.color === 'cyan-400' ? 'text-cyan-400' :
+                              'text-yellow-400'
+                            }`}>
+                              {achievement.result}
+                            </span>
+                            <span className="text-sm text-text-muted">
+                              {achievement.date}
+                            </span>
+                          </div>
+                          
+                          {/* Type Badge */}
+                          <div className={`inline-block px-3 py-1 rounded-full text-xs font-semibold mb-4 ${
                             achievement.type === 'hackathon' ? 'bg-neon-green/20 text-neon-green border border-neon-green/30' :
                             achievement.type === 'internship' ? 'bg-cyan-400/20 text-cyan-400 border border-cyan-400/30' :
                             achievement.type === 'certification' ? 'bg-orange-400/20 text-orange-400 border border-orange-400/30' :
                             'bg-yellow-400/20 text-yellow-400 border border-yellow-400/30'
-                          }`}
-                          whileHover={{ scale: 1.05 }}
-                        >
-                          {achievement.type === 'hackathon' ? 'Hackathon Victory' :
-                           achievement.type === 'internship' ? 'Professional Experience' :
-                           achievement.type === 'certification' ? 'Professional Certification' :
-                           'Technical Project'}
-                        </motion.div>
+                          }`}>
+                            {achievement.type === 'hackathon' ? 'Hackathon Victory' :
+                             achievement.type === 'internship' ? 'Professional Experience' :
+                             achievement.type === 'certification' ? 'Professional Certification' :
+                             'Technical Project'}
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Description */}
+                      <div className="mb-6">
+                        <p className="text-sm md:text-base text-text-secondary leading-relaxed">
+                          {achievement.description}
+                        </p>
+                      </div>
+
+                      {/* Highlights */}
+                      <div>
+                        <h4 className="text-sm font-inter font-semibold text-text-muted mb-3">
+                          Key Highlights:
+                        </h4>
+                        <div className="flex flex-wrap gap-2">
+                          {achievement.highlights.map((highlight, highlightIndex) => (
+                            <div
+                              key={highlightIndex}
+                              className="bg-background/40 px-2.5 py-1 text-xs font-mono text-text-muted rounded-md border border-border-subtle transition-all duration-300 hover:border-neon-green/30 hover:text-text-secondary"
+                            >
+                              {highlight}
+                            </div>
+                          ))}
+                        </div>
                       </div>
                     </div>
 
-                    {/* Description */}
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={inView ? { opacity: 1, y: 0 } : {}}
-                      transition={{ delay: 0.6 + index * 0.1 }}
-                      className="mb-6"
-                    >
-                      <p className="text-sm md:text-base text-text-secondary leading-relaxed">
-                        {achievement.description}
-                      </p>
-                    </motion.div>
-
-                    {/* Highlights */}
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={inView ? { opacity: 1, y: 0 } : {}}
-                      transition={{ delay: 0.7 + index * 0.1 }}
-                    >
-                      <h4 className="text-sm font-inter font-semibold text-text-muted mb-3">
-                        Key Highlights:
-                      </h4>
-                      <div className="flex flex-wrap gap-2">
-                        {achievement.highlights.map((highlight, highlightIndex) => (
-                          <motion.div
-                            key={highlightIndex}
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={inView ? { opacity: 1, scale: 1 } : {}}
-                            transition={{ delay: 0.8 + index * 0.1 + highlightIndex * 0.05 }}
-                            whileHover={{ scale: 1.05, y: -2 }}
-                            className="bg-background/50 px-3 py-1.5 rounded-lg border border-border-subtle hover:border-neon-green/30 transition-all duration-200"
-                          >
-                            <span className="text-xs text-text-secondary font-medium">
-                              {highlight}
-                            </span>
-                          </motion.div>
-                        ))}
-                      </div>
-                    </motion.div>
-                  </div>
-
-                  {/* Certificate Card */}
-                  <div className="lg:col-span-1">
-                    <CertificateCard achievement={achievement} />
+                    {/* Certificate Card */}
+                    <div className="lg:col-span-1">
+                      <CertificateCard achievement={achievement} />
+                    </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             </motion.div>
           ))}
         </div>
