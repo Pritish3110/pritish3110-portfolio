@@ -35,9 +35,9 @@ const AboutSection = () => {
     'Data Structures and Algorithms',
     'Operating Systems',
     'Computer Networks',
-    'Microprocessors & Interfacing',
+    'Database Management Systems',
     'Artificial Intelligence',
-    'Robotics & Control',
+    'Robotics & Motion Control',
     'Embedded Systems',
     'Software Engineering',
   ];
