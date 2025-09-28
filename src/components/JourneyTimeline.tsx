@@ -4,17 +4,17 @@ import { Trophy, Briefcase, Code2 } from "lucide-react";
 const JourneyTimeline = ({ shouldAnimate }) => {
   const timelineEvents = [
     {
-      year: 'Aug 2025',
-      title: 'E-thon (IAIC @ VIT Chennai) — 1st Place',
-      description: 'Developed an autonomous medical unit with a user-friendly interface that scans surgical equipment, delivers required tools to surgeons during operations, and autonomously returns via a sanitization zone to its start station.',
+      year: 'Sep 2025',
+      title: 'Hack4Health (Perfint Healthcare Ltd.) — 1st Place',
+      description: 'Internship-style hackathon on autonomous docking mechanism for hospital infrastructure (hardware + motor control + autonomous navigation).; felicitated by Perfint CEO.',
       type: 'hackathon',
       icon: <Trophy className="w-4 h-4" />,
       color: 'neon-green'
     },
     {
-      year: 'Sep 2025',
-      title: 'Hack4Health (Perfint Healthcare Ltd.) — 1st Place',
-      description: 'Internship-style hackathon on autonomous docking mechanism for hospital infrastructure (hardware + motor control + autonomous navigation).; felicitated by Perfint CEO.',
+      year: 'Aug 2025',
+      title: 'E-thon (IAIC @ VIT Chennai) — 1st Place',
+      description: 'Developed an autonomous medical unit with a user-friendly interface that scans surgical equipment, delivers required tools to surgeons during operations, and autonomously returns via a sanitization zone to its start station.',
       type: 'hackathon',
       icon: <Trophy className="w-4 h-4" />,
       color: 'purple-accent'

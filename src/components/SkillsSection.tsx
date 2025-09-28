@@ -52,19 +52,47 @@ const SkillsSection = () => {
       color: 'text-purple-400',
       skills: [
         { name: 'Robotics & Automation', icon: <Settings className="w-4 h-4" /> },
-        { name: 'ROS2', icon: <Workflow className="w-4 h-4" /> },
-        { name: 'SLAM', icon: <Navigation className="w-4 h-4" /> },
-        { name: 'Arduino', icon: <Monitor className="w-4 h-4" /> },
+        { name: '3D Environment Mapping', icon: <Box className="w-4 h-4" /> },
+        { name: 'ROS2 / ROS Navigation Stack', icon: <Workflow className="w-4 h-4" /> },
+        { name: 'SLAM (RTAB)', icon: <Navigation className="w-4 h-4" /> },
+        { name: 'Autonomous Navigation', icon: <Target className="w-4 h-4" /> },
+        { name: 'Precision Mechanical Systems', icon: <Wrench className="w-4 h-4" /> },
+        { name: 'Point Cloud Processing & 3D Mesh Reconstruction', icon: <Layers className="w-4 h-4" /> },
+        { name: 'Robot Localisation & Motion Planning', icon: <Navigation className="w-4 h-4" /> },
+        { name: 'Sensor Fusion & Calibration (ZED2i Stereo Camera + IMU)', icon: <Eye className="w-4 h-4" /> },
+        { name: 'NVIDIA Jetson Orin (Edge AI computing)', icon: <Cpu className="w-4 h-4" /> },
         { name: 'Raspberry Pi', icon: <Cpu className="w-4 h-4" /> },
-        { name: 'C++', icon: <Code2 className="w-4 h-4" /> },
-        { name: 'L298N Motor Driver', icon: <Zap className="w-4 h-4" /> },
-        { name: 'IR Sensors', icon: <Eye className="w-4 h-4" /> },
+        { name: 'Arduino', icon: <Monitor className="w-4 h-4" /> },
+        { name: 'C++ / Python for Robotics', icon: <Code2 className="w-4 h-4" /> },
         { name: 'Motor Control', icon: <Settings className="w-4 h-4" /> },
-        { name: 'Flood Fill Algorithm', icon: <Search className="w-4 h-4" /> },
-        { name: 'BFS Algorithm', icon: <Search className="w-4 h-4" /> }
+        { name: 'Algorithm Design & Optimization', icon: <Search className="w-4 h-4" /> }
       ],
       bgColor: 'bg-purple-500/5',
       borderColor: 'border-purple-500/20'
+    },
+    {
+      category: 'AI/ML & Data Science',
+      icon: Brain,
+      color: 'text-orange-400',
+      skills: [
+        { name: 'Machine Learning', icon: <Brain className="w-4 h-4" /> },
+        { name: 'Deep Learning', icon: <Network className="w-4 h-4" /> },
+        { name: 'Computer Vision & OpenCV', icon: <Camera className="w-4 h-4" /> },
+        { name: '3D Visual Perception & Mesh Generation', icon: <Box className="w-4 h-4" /> },
+        { name: 'Real-time Data Acquisition & Processing', icon: <Zap className="w-4 h-4" /> },
+        { name: 'Depth Perception', icon: <Eye className="w-4 h-4" /> },
+        { name: 'Point Cloud Processing (Meshlab / Open3D)', icon: <Layers className="w-4 h-4" /> },
+        { name: 'Neural Networks', icon: <Atom className="w-4 h-4" /> },
+        { name: 'Object Detection', icon: <Target className="w-4 h-4" /> },
+        { name: 'Image Processing', icon: <ScanLine className="w-4 h-4" /> },
+        { name: 'Data Analysis', icon: <BarChart3 className="w-4 h-4" /> },
+        { name: 'Model Development', icon: <Sparkles className="w-4 h-4" /> },
+        { name: 'Python', icon: <Code2 className="w-4 h-4" /> },
+        { name: 'TensorFlow/PyTorch', icon: <Layers className="w-4 h-4" /> },
+        { name: 'Scikit-learn', icon: <TrendingUp className="w-4 h-4" /> }
+      ],
+      bgColor: 'bg-orange-500/5',
+      borderColor: 'border-orange-500/20'
     },
     {
       category: 'Web Development',
@@ -76,53 +104,41 @@ const SkillsSection = () => {
         { name: 'JavaScript', icon: <FileText className="w-4 h-4" /> },
         { name: 'TypeScript', icon: <Code className="w-4 h-4" /> },
         { name: 'React', icon: <Layers className="w-4 h-4" /> },
+        { name: 'Streamlit', icon: <MessageCircle className="w-4 h-4" /> },
+        { name: 'FastAPI', icon: <Server className="w-4 h-4" /> },
         { name: 'Next.js', icon: <Database className="w-4 h-4" /> },
         { name: 'Tailwind CSS', icon: <Wrench className="w-4 h-4" /> },
         { name: 'Framer Motion', icon: <Zap className="w-4 h-4" /> },
         { name: 'Node.js', icon: <Server className="w-4 h-4" /> },
         { name: 'Express.js', icon: <Code2 className="w-4 h-4" /> },
         { name: 'MongoDB', icon: <Database className="w-4 h-4" /> },
+        { name: 'RESTful API Design', icon: <Server className="w-4 h-4" /> },
         { name: 'Responsive Design', icon: <Smartphone className="w-4 h-4" /> }
       ],
       bgColor: 'bg-green-500/5',
       borderColor: 'border-green-500/20'
     },
     {
-      category: 'AI/ML & Data Science',
-      icon: Brain,
-      color: 'text-orange-400',
-      skills: [
-        { name: 'Machine Learning', icon: <Brain className="w-4 h-4" /> },
-        { name: 'Deep Learning', icon: <Network className="w-4 h-4" /> },
-        { name: 'Computer Vision', icon: <Camera className="w-4 h-4" /> },
-        { name: 'Neural Networks', icon: <Atom className="w-4 h-4" /> },
-        { name: 'Object Detection', icon: <Target className="w-4 h-4" /> },
-        { name: 'Image Processing', icon: <ScanLine className="w-4 h-4" /> },
-        { name: 'Data Analysis', icon: <BarChart3 className="w-4 h-4" /> },
-        { name: 'Model Development', icon: <Sparkles className="w-4 h-4" /> },
-        { name: 'Python', icon: <Code2 className="w-4 h-4" /> },
-        { name: 'TensorFlow/PyTorch', icon: <Layers className="w-4 h-4" /> },
-        { name: 'OpenCV', icon: <Eye className="w-4 h-4" /> },
-        { name: 'Scikit-learn', icon: <TrendingUp className="w-4 h-4" /> }
-      ],
-      bgColor: 'bg-orange-500/5',
-      borderColor: 'border-orange-500/20'
-    },
-    {
       category: 'Tools & Platforms',
       icon: Wrench,
       color: 'text-blue-400',
       skills: [
+        { name: 'ROS2 / RTAB-Map', icon: <Workflow className="w-4 h-4" /> },
+        { name: 'ZED SDK / ZED2i Camera', icon: <Camera className="w-4 h-4" /> },
+        { name: 'NVIDIA Jetson Orin', icon: <Cpu className="w-4 h-4" /> },
+        { name: 'Fusion 360', icon: <Box className="w-4 h-4" /> },
+        { name: 'Visualization tools (RViz, Open3D, Matplotlib)', icon: <Layers className="w-4 h-4" /> },
         { name: 'Git', icon: <GitBranch className="w-4 h-4" /> },
         { name: 'GitHub', icon: <GitBranch className="w-4 h-4" /> },
-        { name: 'Vercel', icon: <Globe className="w-4 h-4" /> },
         { name: 'Unity', icon: <Gamepad className="w-4 h-4" /> },
-        { name: 'Tinkercad', icon: <Box className="w-4 h-4" /> },
+        { name: 'Vercel', icon: <Globe className="w-4 h-4" /> },
         { name: 'Jupyter Notebooks', icon: <FileText className="w-4 h-4" /> },
+        { name: 'Tinkercad', icon: <Box className="w-4 h-4" /> },
+        { name: 'R Studio', icon: <BarChart3 className="w-4 h-4" /> },
         { name: 'MATLAB', icon: <Terminal className="w-4 h-4" /> },
-        { name: 'SolidWorks', icon: <Box className="w-4 h-4" /> },
         { name: 'StarUML', icon: <Workflow className="w-4 h-4" /> },
-        { name: 'R Studio', icon: <BarChart3 className="w-4 h-4" /> }
+        { name: 'Docker', icon: <Server className="w-4 h-4" /> },
+        { name: 'Visual Studio Code', icon: <Coffee className="w-4 h-4" /> }
       ],
       bgColor: 'bg-blue-500/5',
       borderColor: 'border-blue-500/20'
@@ -132,7 +148,7 @@ const SkillsSection = () => {
   const skillLevels = [
     {
       name: 'Robotics',
-      level: 85,
+      level: 75,
       icon: Cpu,
       color: 'text-purple-400',
       bgColor: 'bg-purple-400',
@@ -140,8 +156,17 @@ const SkillsSection = () => {
       description: 'Embedded systems, ROS2, SLAM navigation'
     },
     {
+      name: 'Machine Learning',
+      level: 70,
+      icon: Brain,
+      color: 'text-orange-400',
+      bgColor: 'bg-orange-400',
+      language: 'Python & TensorFlow',
+      description: 'Computer vision, neural networks, model development'
+    },
+    {
       name: 'Web Development',
-      level: 90,
+      level: 67,
       icon: Globe,
       color: 'text-green-400',
       bgColor: 'bg-green-400',
@@ -150,40 +175,31 @@ const SkillsSection = () => {
     },
     {
       name: 'Competitive Coding',
-      level: 75,
+      level: 60,
       icon: Trophy,
       color: 'text-yellow-400',
       bgColor: 'bg-yellow-400',
       language: 'Java',
       description: 'Data structures, algorithms, problem solving'
-    },
-    {
-      name: 'Machine Learning',
-      level: 80,
-      icon: Brain,
-      color: 'text-orange-400',
-      bgColor: 'bg-orange-400',
-      language: 'Python & TensorFlow',
-      description: 'Computer vision, neural networks, model development'
     }
   ];
 
   const softSkills = [
     {
       icon: Brain,
-      label: 'Leadership',
+      label: 'Leadership & Time Management',
       description: 'Leading teams and driving innovation',
       color: 'text-pink-400'
     },
     {
       icon: MessageCircle,
-      label: 'Communication',
+      label: 'Collaboration & Communication',
       description: 'Clear and effective communication',
       color: 'text-cyan-400'
     },
     {
       icon: Lightbulb,
-      label: 'Creative Problem Solving',
+      label: 'Problem Solving & Innovation',
       description: 'Innovative solutions to complex challenges',
       color: 'text-yellow-400'
     }

@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { useState, useEffect, useRef } from 'react';
 import { Trophy, Award, Briefcase, Code2, ExternalLink, FileText, Star } from 'lucide-react';
 
 const AchievementsSection = () => {
@@ -19,9 +20,10 @@ const AchievementsSection = () => {
       date: 'August 29, 2025',
       icon: <Trophy className="w-6 h-6" />,
       color: 'neon-green',
-      description: '1st Place — SCOPE School category at IAIC, hosted by VIT Chennai. Built a rapid prototype (~4 hours) of an autonomous docking mechanism for hospital infrastructure — a working hardware prototype demonstrating motor control and autonomous navigation. Felicitated by VIT leadership and industry guests. Focus: rapid prototyping, embedded motor control, systems integration.',
+      description: '1st Place — Built a rapid prototype (~4 hrs) of an autonomous hospital-assist bot with OCR-based equipment identification, embedded motor control, and autonomous navigation. Demonstrated real-time deployment, sanitization workflow, and system integration.',
       highlights: ['Rapid prototyping in 4 hours', 'Hardware + software integration', 'Autonomous navigation', 'Healthcare focus'],
-      certificateUrl: 'https://drive.google.com/file/d/1k3J3Psu7sBiwKybTvNH5WO7o9dgkGY_T/view?usp=sharing',
+      certificateUrl: 'https://drive.google.com/file/d/114IsQ7zGBrcv-l0l0MRY6zjZZD8c6_WG/view?usp=drive_link',
+      certificateThumbnail: 'https://i.postimg.cc/FsyQwwkn/Thon-event-certification-page.jpg',
       certificateAlt: 'E-thon IAIC VIT Chennai First Place Certificate'
     },
     {
@@ -32,48 +34,33 @@ const AchievementsSection = () => {
       date: 'September 11-12, 2025',
       icon: <Trophy className="w-6 h-6" />,
       color: 'purple-accent',
-      description: '1st Place — Hack4Health, organised by Perfint Healthcare Ltd., focused on hospital robotics infrastructure. Awarded 1st place and honored by the Perfint CEO; event ran under the HOD of AI & Robotics at my college. Focus: domain-specific robotics for healthcare, prototype productization, applied engineering.',
+      description: '1st Place — Developed a complete autonomous docking system for hospital robotics infrastructure. Focused on precision docking, point-to-point navigation, and prototype productization using embedded systems and applied engineering.',
       highlights: ['Hospital robotics infrastructure', 'CEO recognition', 'Productized prototype', 'Healthcare domain expertise'],
-      certificateUrl: 'https://drive.google.com/file/d/1iXeAOtm9W91g1ROow6TzJnpJg7uaRh_b/view?usp=sharing',
+      certificateUrl: 'https://drive.google.com/file/d/1PllBeo1J_8AaP2Oik8rugVcdGPF-0Kkp/view?usp=sharing',
+      certificateThumbnail: 'https://i.postimg.cc/zfBZbB2h/Hack4-Health-certificate.jpg',
       certificateAlt: 'Hack4Health Perfint Healthcare First Place Certificate'
     },
     {
-      id: 'mafkin',
-      title: 'Mafkin Robotics Internship',
-      result: 'Machine Learning & Robotics Intern',
-      type: 'internship',
-      date: 'July 2025 - Present',
-      icon: <Briefcase className="w-6 h-6" />,
+      id: 'oracle-genai-cert',
+      title: 'Oracle Cloud Infrastructure – Generative AI Certification',
+      result: 'Certified',
+      type: 'certification',
+      date: 'Race to Certification Campaign',
+      icon: <Award className="w-6 h-6" />,
       color: 'cyan-400',
-      description: 'Worked on environment mapping using a ZED2i camera and NVIDIA Jetson Orin. Implemented an RTAB-based mapping pipeline using RGB + depth streams to produce 3D meshes; responsible for sensor integration, calibration, and mesh production for visualization.',
-      highlights: ['Environment mapping', 'ZED2i + Jetson Orin', 'RTAB pipeline', '3D mesh generation'],
-      certificateUrl: null,
-      certificateAlt: 'Mafkin Robotics Internship Certificate (Pending)'
-    },
-    {
-      id: 'micromouse',
-      title: 'Micromouse Project',
-      result: 'Autonomous Navigation System',
-      type: 'project',
-      date: 'June 2025',
-      icon: <Code2 className="w-6 h-6" />,
-      color: 'yellow-400',
-      description: 'Implemented a flood-fill algorithm for efficient maze mapping and shortest-path navigation. Focused on sensor integration/calibration, motor control, and embedded system implementation.',
-      highlights: ['Flood-fill algorithm', 'Sensor integration', 'Motor control', 'Embedded systems'],
-      certificateUrl: null,
-      certificateAlt: 'Micromouse Project Documentation'
+      description: 'Completed as part of Oracle\'s Race to Certification campaign. Acquired practical knowledge in deploying and fine-tuning generative AI models on OCI, prompt design for LLM optimization, and integrating AI services with cloud-native applications. Also gained exposure to managing data pipelines, APIs, and monitoring workflows within OCI\'s AI ecosystem.',
+      highlights: ['Generative AI model deployment', 'LLM optimization & prompt design', 'Cloud-native AI integration', 'Data pipelines & API management'],
+      certificateUrl: 'https://drive.google.com/file/d/1AoGKexkWo1HXFFFzHmDvVMOTGtKN_mCI/view?usp=drive_link',
+      certificateThumbnail: 'https://i.postimg.cc/667WbHhD/Oracle-Gen-AI-Badge.jpg',
+      certificateAlt: 'Oracle Cloud Infrastructure Generative AI Certification'
     }
   ];
 
   const CertificateCard = ({ achievement }) => {
+    const [imageError, setImageError] = useState(false);
+
     return (
-      <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={inView ? { opacity: 1, scale: 1 } : {}}
-        transition={{ duration: 0.5, delay: 0.3 }}
-        whileHover={{ y: -2, scale: 1.02 }}
-        className="bg-surface-light rounded-xl p-4 border border-border-subtle hover:border-neon-green/30 transition-all duration-300 group"
-      >
+      <div className="bg-surface-light rounded-xl p-4 border border-border-subtle hover:border-neon-green/30 transition-all duration-300 group">
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center space-x-2">
             <FileText className="w-4 h-4 text-neon-green" />
@@ -82,44 +69,46 @@ const AchievementsSection = () => {
             </span>
           </div>
           {achievement.certificateUrl && (
-            <motion.a
+            <a
               href={achievement.certificateUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center space-x-1 text-xs text-purple-accent hover:text-neon-green transition-colors duration-200"
-              whileHover={{ scale: 1.05 }}
             >
               <span>View</span>
               <ExternalLink className="w-3 h-3" />
-            </motion.a>
+            </a>
           )}
         </div>
         
-        <div className="aspect-video bg-gradient-to-br from-background/50 to-surface/80 rounded-lg border border-border-subtle flex items-center justify-center mb-3 group-hover:border-neon-green/20 transition-all duration-300">
-          <motion.div
-            className={`flex flex-col items-center space-y-2 ${
-              achievement.certificateUrl 
-                ? 'text-neon-green cursor-pointer' 
-                : 'text-text-muted'
-            }`}
-            whileHover={achievement.certificateUrl ? { scale: 1.1 } : {}}
-            onClick={() => {
-              if (achievement.certificateUrl) {
-                window.open(achievement.certificateUrl, '_blank');
-              }
-            }}
-          >
-            <FileText className="w-8 h-8" />
-            <span className="text-xs font-inter text-center">
-              {achievement.certificateUrl ? 'Click to view certificate' : 'Certificate pending'}
-            </span>
-          </motion.div>
+        <div 
+          className="aspect-video rounded-lg border border-border-subtle overflow-hidden mb-3 group-hover:border-neon-green/20 transition-all duration-300 cursor-pointer"
+          onClick={() => achievement.certificateUrl && window.open(achievement.certificateUrl, '_blank')}
+        >
+          {achievement.certificateThumbnail && !imageError ? (
+            <img
+              src={achievement.certificateThumbnail}
+              alt={achievement.certificateAlt}
+              className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+              onError={() => setImageError(true)}
+              loading="eager"
+            />
+          ) : (
+            <div className="w-full h-full bg-gradient-to-br from-background/50 to-surface/80 flex items-center justify-center">
+              <div className="flex flex-col items-center space-y-2 text-text-muted">
+                <FileText className="w-8 h-8" />
+                <span className="text-xs font-inter text-center">
+                  Certificate not available
+                </span>
+              </div>
+            </div>
+          )}
         </div>
         
         <p className="text-xs text-text-secondary leading-relaxed">
           {achievement.result} — {achievement.title}
         </p>
-      </motion.div>
+      </div>
     );
   };
 
@@ -238,12 +227,14 @@ const AchievementsSection = () => {
                           className={`inline-block px-3 py-1 rounded-full text-xs font-semibold mb-4 ${
                             achievement.type === 'hackathon' ? 'bg-neon-green/20 text-neon-green border border-neon-green/30' :
                             achievement.type === 'internship' ? 'bg-cyan-400/20 text-cyan-400 border border-cyan-400/30' :
+                            achievement.type === 'certification' ? 'bg-orange-400/20 text-orange-400 border border-orange-400/30' :
                             'bg-yellow-400/20 text-yellow-400 border border-yellow-400/30'
                           }`}
                           whileHover={{ scale: 1.05 }}
                         >
                           {achievement.type === 'hackathon' ? 'Hackathon Victory' :
                            achievement.type === 'internship' ? 'Professional Experience' :
+                           achievement.type === 'certification' ? 'Professional Certification' :
                            'Technical Project'}
                         </motion.div>
                       </div>

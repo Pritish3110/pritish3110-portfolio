@@ -12,8 +12,28 @@ const ProjectsSection = () => {
 
   const projects = [
     {
-      title: 'MicroMice – Autonomous Maze Solver',
-      description: 'Hardware-based robot with IR sensors and N20 motors using a flood-fill algorithm to map and solve mazes. Features full exploration-return-replay phase with intelligent pathfinding.',
+      title: 'Autonomous Docking System',
+      description: 'A robot docking solution for automatic charging and positioning. Integrates environment mapping and precise docking using sensors and SLAM.',
+      tech: ['Spring Lock Mechanism', 'LEGO NXT', 'Arduino IDE', 'Camera (AprilTag detection)'],
+      github: 'https://github.com/Pritish3110/Autonomous_docking_system',
+      icon: Navigation,
+      color: 'text-cyan-400',
+      bgColor: 'bg-cyan-500/10',
+      borderColor: 'border-cyan-500/20'
+    },
+    {
+      title: 'AIDAS (Animal Injury Detection and Assistance System)',
+      description: 'AI-powered intelligent drone assistance system for navigation and decision making. Implements computer vision and real-time sensor data processing.',
+      tech: ['Python', 'OpenCV', 'TensorFlow', 'Streamlit', 'FastAPI', 'MobileNetV2'],
+      github: 'https://github.com/Pritish3110/AIDAS',
+      icon: Brain,
+      color: 'text-orange-400',
+      bgColor: 'bg-orange-500/10',
+      borderColor: 'border-orange-500/20'
+    },
+    {
+      title: 'MicroMice',
+      description: 'Maze-solving autonomous micromouse robot using flood-fill and BFS algorithms. Simulated and tested using the Makaron Maze Simulator.',
       tech: ['Arduino', 'C++', 'IR Sensors', 'N20 Motors', 'Flood-Fill Algorithm'],
       github: 'https://github.com/Pritish3110/MicroMice',
       icon: Navigation,
@@ -22,24 +42,34 @@ const ProjectsSection = () => {
       borderColor: 'border-blue-500/20'
     },
     {
-      title: 'ChessBotX – AI Chessboard',
-      description: 'Smart 8x8 chessboard using electromagnets and an AI engine. Recognizes board state with 95% accuracy and performs real-time, strategic moves with advanced chess algorithms.',
-      tech: ['AI Engine', 'Electromagnets', 'Computer Vision', 'Chess Algorithms', 'Real-time Processing'],
-      github: 'https://github.com/Pritish3110/ChessBotX',
-      icon: Brain,
-      color: 'text-purple-400',
-      bgColor: 'bg-purple-500/10',
-      borderColor: 'border-purple-500/20'
+      title: 'Monkeytype Analyzer',
+      description: 'A web tool to analyze typing speed and accuracy from Monkeytype data. Generates visual performance statistics and typing insights.',
+      tech: ['TypeScript', 'React', 'Tailwind CSS', 'Streamlit', 'FastAPI', 'Docker'],
+      github: 'https://github.com/Pritish3110/Monkeytype_analyzer',
+      icon: Cpu,
+      color: 'text-indigo-400',
+      bgColor: 'bg-indigo-500/10',
+      borderColor: 'border-indigo-500/20'
     },
     {
-      title: 'Linefollower - Autonomous Robot',
-      description: 'Hardware-based robot with IR and ultrasonic sensors using BO motors and L298N motor driver. Precisely follows black lines with obstacle detection and avoidance capabilities.',
+      title: 'Line Follower',
+      description: 'Autonomous line-following robot using IR sensors for path detection. Designed for real-time embedded system response.',
       tech: ['Arduino', 'IR Sensors', 'Ultrasonic Sensors', 'L298N', 'BO Motors'],
       github: 'https://github.com/Pritish3110/LineFollower',
       icon: Cpu,
       color: 'text-green-400',
       bgColor: 'bg-green-500/10',
       borderColor: 'border-green-500/20'
+    },
+    {
+      title: 'ChessBotX',
+      description: 'Robotic chess-playing system capable of moving pieces on a physical board. Integrates computer vision for board state detection.',
+      tech: ['AI Engine', 'Electromagnets', 'Computer Vision', 'Chess Algorithms', 'Real-time Processing'],
+      github: 'https://github.com/Pritish3110/ChessBotX',
+      icon: Brain,
+      color: 'text-purple-400',
+      bgColor: 'bg-purple-500/10',
+      borderColor: 'border-purple-500/20'
     }
   ];
 
@@ -190,4 +220,5 @@ const ProjectsSection = () => {
     </section>
   );
 };
+
 export default ProjectsSection;

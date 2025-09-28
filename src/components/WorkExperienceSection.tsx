@@ -13,7 +13,7 @@ const WorkExperienceSection = () => {
     {
       id: 'mafkin',
       company: 'Mafkin Robotics',
-      role: 'Machine Learning & Robotics Intern',
+      role: 'SLAM and Automation Intern',
       type: 'On-site',
       duration: 'July 2025 - Present',
       location: 'Chennai, India',
