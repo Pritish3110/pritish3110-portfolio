@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useState, useEffect, useRef } from 'react';
 import { Trophy, Award, Briefcase, Code2, ExternalLink, FileText, Star } from 'lucide-react';
+import OracleBadge from '../assets/OracleBadge.jpg';
 
 const AchievementsSection = () => {
   // Fixed intersection observer settings for navbar compatibility
@@ -64,8 +65,8 @@ const AchievementsSection = () => {
       color: 'yellow-400',
       description: 'Completed certification in Oracle\'s OCI Data Science. Learned to build, train, and deploy machine learning models at scale on OCI. Covered data preprocessing, feature engineering, model evaluation, and lifecycle management using OCI Data Science tools. Also gained experience with JupyterLab notebooks, model catalogs, and automated pipelines for deployment.',
       highlights: ['ML model building & training', 'Data preprocessing & feature engineering', 'Model lifecycle management', 'JupyterLab & automated pipelines'],
-      certificateUrl: '[PLACEHOLDER_GOOGLE_DRIVE_LINK]',
-      certificateThumbnail: '[PLACEHOLDER_POSTIMAGE_LINK]',
+      certificateUrl: 'https://drive.google.com/file/d/1tgOOPy6jCWD-jF-rj2glWv_Vxc_2QsRL/view?usp=sharing',
+      certificateThumbnail: OracleBadge,
       certificateAlt: 'Oracle Cloud Infrastructure Data Science Certification'
     }
   ];
