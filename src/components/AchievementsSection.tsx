@@ -53,6 +53,20 @@ const AchievementsSection = () => {
       certificateUrl: 'https://drive.google.com/file/d/1AoGKexkWo1HXFFFzHmDvVMOTGtKN_mCI/view?usp=drive_link',
       certificateThumbnail: 'https://i.postimg.cc/667WbHhD/Oracle-Gen-AI-Badge.jpg',
       certificateAlt: 'Oracle Cloud Infrastructure Generative AI Certification'
+    },
+    {
+      id: 'oracle-datascience-cert',
+      title: 'Oracle Cloud Infrastructure – Data Science Certification',
+      result: 'Certified',
+      type: 'certification',
+      date: 'OCI Data Science Certification',
+      icon: <Award className="w-6 h-6" />,
+      color: 'yellow-400',
+      description: 'Completed certification in Oracle\'s OCI Data Science. Learned to build, train, and deploy machine learning models at scale on OCI. Covered data preprocessing, feature engineering, model evaluation, and lifecycle management using OCI Data Science tools. Also gained experience with JupyterLab notebooks, model catalogs, and automated pipelines for deployment.',
+      highlights: ['ML model building & training', 'Data preprocessing & feature engineering', 'Model lifecycle management', 'JupyterLab & automated pipelines'],
+      certificateUrl: '[PLACEHOLDER_GOOGLE_DRIVE_LINK]',
+      certificateThumbnail: '[PLACEHOLDER_POSTIMAGE_LINK]',
+      certificateAlt: 'Oracle Cloud Infrastructure Data Science Certification'
     }
   ];
 
