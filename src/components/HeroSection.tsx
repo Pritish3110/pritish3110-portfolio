@@ -256,7 +256,7 @@ const HeroSection = ({ onNavigate }) => {
 
               {/* Resume Button - Direct Download */}
               <motion.a
-                href="https://drive.google.com/uc?export=download&id=1ONh6B5YLFEnvwR2Not76TiY1o1mM2qv_"
+                href="https://drive.google.com/uc?export=download&id=1YiD-MBpxPwGYg5MTr3B4wtOV9DkPSNHi"
                 target="_blank"
                 rel="noopener noreferrer"
                 download="Pritish_Bhatasana_Resume.pdf"
