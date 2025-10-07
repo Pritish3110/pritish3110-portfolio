@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useState } from 'react';
-import { Send, MessageCircle, Zap, Clock } from 'lucide-react';
+import { Send, MessageCircle, Zap, Clock, Mail, Linkedin, Github, Download } from 'lucide-react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
@@ -23,6 +23,52 @@ const ContactSection = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+
+  // CodeChef Logo Component (Minimalist Angle Brackets ~40 degrees)
+  const CodeChefIcon = () => (
+    <svg 
+      className="w-6 h-6 sm:w-8 sm:h-8" 
+      viewBox="0 0 24 24" 
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      {/* Left angle bracket < with ~40 degree angle */}
+      <path d="M9 17l-2-5 2-5" />
+      {/* Right angle bracket > with ~40 degree angle */}
+      <path d="M15 7l2 5-2 5" />
+    </svg>
+  );
+
+  const socialLinks = [
+    { 
+      icon: Mail, 
+      href: 'mailto:pritishbhatasana68@gmail.com',
+      label: 'Gmail',
+      color: 'hover:text-red-400'
+    },
+    { 
+      icon: Linkedin, 
+      href: 'https://linkedin.com/in/pritish3110',
+      label: 'LinkedIn',
+      color: 'hover:text-blue-400'
+    },
+    { 
+      icon: Github, 
+      href: 'https://github.com/Pritish3110',
+      label: 'GitHub',
+      color: 'hover:text-purple-400'
+    },
+    { 
+      icon: CodeChefIcon, 
+      href: 'https://codechef.com/users/pritish_3110',
+      label: 'CodeChef',
+      color: 'hover:text-orange-400'
+    }
+  ];
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -151,6 +197,10 @@ const ContactSection = () => {
                         </li>
                         <li className="flex items-center space-x-2">
                           <div className="w-1.5 h-1.5 bg-neon-green rounded-full" />
+                          <span>Computer Vision & ML Projects</span>
+                        </li>
+                        <li className="flex items-center space-x-2">
+                          <div className="w-1.5 h-1.5 bg-neon-green rounded-full" />
                           <span>Web Development Collaborations</span>
                         </li>
                         <li className="flex items-center space-x-2">
@@ -197,6 +247,7 @@ const ContactSection = () => {
                           className="bg-background/50 border-border-subtle text-text-primary placeholder:text-text-muted focus:border-neon-green transition-all duration-300 h-11 sm:h-12 hover:border-neon-green/20"
                         />
                       </div>
+
                       <div>
                         <label className="block text-text-primary font-inter font-medium mb-2 text-sm sm:text-base">
                           Email *
@@ -211,6 +262,7 @@ const ContactSection = () => {
                           className="bg-background/50 border-border-subtle text-text-primary placeholder:text-text-muted focus:border-neon-green transition-all duration-300 h-11 sm:h-12 hover:border-neon-green/20"
                         />
                       </div>
+
                       <div>
                         <label className="block text-text-primary font-inter font-medium mb-2 text-sm sm:text-base">
                           Message *
@@ -248,6 +300,71 @@ const ContactSection = () => {
                           </div>
                         )}
                       </Button>
+                    </motion.div>
+
+                    {/* Social Links and Resume Button */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: 0.3 }}
+                      className="flex flex-col sm:flex-row items-center justify-center sm:space-x-6 space-y-4 sm:space-y-0 pt-4 border-t border-border-subtle"
+                    >
+                      {/* Social Links */}
+                      <div className="flex items-center space-x-4">
+                        {socialLinks.map((social, index) => (
+                          <motion.a
+                            key={social.label}
+                            href={social.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={`text-text-secondary ${social.color} transition-all duration-300 p-2`}
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
+                            whileHover={{ scale: 1.1, y: -2 }}
+                            aria-label={social.label}
+                          >
+                            <social.icon />
+                          </motion.a>
+                        ))}
+                      </div>
+
+                      {/* Divider - visible only on larger screens */}
+                      {/* <div className="hidden sm:block w-px h-8 bg-border-subtle" /> */}
+
+                      {/* Resume Button - Direct Download */}
+                      <motion.a
+                        href="https://drive.google.com/uc?export=download&id=1YiD-MBpxPwGYg5MTr3B4wtOV9DkPSNHi"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        download="Pritish_Bhatasana_Resume.pdf"
+                        className="group/resume relative bg-gradient-to-r from-neon-green to-purple-accent p-[1px] rounded-lg overflow-hidden inline-flex"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.4, delay: 0.8 }}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <div className="bg-background px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg flex items-center space-x-2 group-hover/resume:bg-background/90 transition-all duration-300">
+                          <Download className="w-4 h-4 text-neon-green" />
+                          <span className="font-inter font-semibold text-sm sm:text-base text-text-primary group-hover/resume:text-neon-green transition-colors duration-300">
+                            Resume
+                          </span>
+                        </div>
+                        
+                        {/* Animated border glow */}
+                        <motion.div
+                          className="absolute inset-0 bg-gradient-to-r from-neon-green via-purple-accent to-neon-green opacity-0 group-hover/resume:opacity-100 transition-opacity duration-300"
+                          animate={{ 
+                            background: [
+                              'linear-gradient(0deg, #39ff14, #9333ea, #39ff14)',
+                              'linear-gradient(360deg, #39ff14, #9333ea, #39ff14)'
+                            ]
+                          }}
+                          transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                          style={{ zIndex: -1 }}
+                        />
+                      </motion.a>
                     </motion.div>
                   </form>
                 </div>
