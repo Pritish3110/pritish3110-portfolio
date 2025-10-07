@@ -14,32 +14,18 @@ const AchievementsSection = () => {
 
   const achievements = [
     {
-      id: 'e-thon',
-      title: 'E-thon (IAIC @ VIT Chennai)',
-      result: '1st Place',
-      type: 'hackathon',
-      date: 'August 29, 2025',
-      icon: <Trophy className="w-6 h-6" />,
-      color: 'neon-green',
-      description: '1st Place — Built a rapid prototype (~4 hrs) of an autonomous hospital-assist bot with OCR-based equipment identification, embedded motor control, and autonomous navigation. Demonstrated real-time deployment, sanitization workflow, and system integration.',
-      highlights: ['Rapid prototyping in 4 hours', 'Hardware + software integration', 'Autonomous navigation', 'Healthcare focus'],
-      certificateUrl: 'https://drive.google.com/file/d/114IsQ7zGBrcv-l0l0MRY6zjZZD8c6_WG/view?usp=drive_link',
-      certificateThumbnail: 'https://i.postimg.cc/FsyQwwkn/Thon-event-certification-page.jpg',
-      certificateAlt: 'E-thon IAIC VIT Chennai First Place Certificate'
-    },
-    {
-      id: 'hack4health',
-      title: 'Hack4Health (Perfint Healthcare Ltd.)',
-      result: '1st Place',
-      type: 'hackathon',
-      date: 'September 11-12, 2025',
-      icon: <Trophy className="w-6 h-6" />,
-      color: 'purple-accent',
-      description: '1st Place — Developed a complete autonomous docking system for hospital robotics infrastructure. Focused on precision docking, point-to-point navigation, and prototype productization using embedded systems and applied engineering.',
-      highlights: ['Hospital robotics infrastructure', 'CEO recognition', 'Productized prototype', 'Healthcare domain expertise'],
-      certificateUrl: 'https://drive.google.com/file/d/1PllBeo1J_8AaP2Oik8rugVcdGPF-0Kkp/view?usp=sharing',
-      certificateThumbnail: 'https://i.postimg.cc/zfBZbB2h/Hack4-Health-certificate.jpg',
-      certificateAlt: 'Hack4Health Perfint Healthcare First Place Certificate'
+      id: 'oracle-datascience-cert',
+      title: 'Oracle Cloud Infrastructure – Data Science Certification',
+      result: 'Certified',
+      type: 'certification',
+      date: 'OCI Data Science Certification',
+      icon: <Award className="w-6 h-6" />,
+      color: 'yellow-400',
+      description: 'Completed certification in Oracle\'s OCI Data Science. Learned to build, train, and deploy machine learning models at scale on OCI. Covered data preprocessing, feature engineering, model evaluation, and lifecycle management using OCI Data Science tools. Also gained experience with JupyterLab notebooks, model catalogs, and automated pipelines for deployment.',
+      highlights: ['ML model building & training', 'Data preprocessing & feature engineering', 'Model lifecycle management', 'JupyterLab & automated pipelines'],
+      certificateUrl: 'https://drive.google.com/file/d/1tgOOPy6jCWD-jF-rj2glWv_Vxc_2QsRL/view?usp=sharing',
+      certificateThumbnail: OracleBadge,
+      certificateAlt: 'Oracle Cloud Infrastructure Data Science Certification'
     },
     {
       id: 'oracle-genai-cert',
@@ -56,18 +42,32 @@ const AchievementsSection = () => {
       certificateAlt: 'Oracle Cloud Infrastructure Generative AI Certification'
     },
     {
-      id: 'oracle-datascience-cert',
-      title: 'Oracle Cloud Infrastructure – Data Science Certification',
-      result: 'Certified',
-      type: 'certification',
-      date: 'OCI Data Science Certification',
-      icon: <Award className="w-6 h-6" />,
-      color: 'yellow-400',
-      description: 'Completed certification in Oracle\'s OCI Data Science. Learned to build, train, and deploy machine learning models at scale on OCI. Covered data preprocessing, feature engineering, model evaluation, and lifecycle management using OCI Data Science tools. Also gained experience with JupyterLab notebooks, model catalogs, and automated pipelines for deployment.',
-      highlights: ['ML model building & training', 'Data preprocessing & feature engineering', 'Model lifecycle management', 'JupyterLab & automated pipelines'],
-      certificateUrl: 'https://drive.google.com/file/d/1tgOOPy6jCWD-jF-rj2glWv_Vxc_2QsRL/view?usp=sharing',
-      certificateThumbnail: OracleBadge,
-      certificateAlt: 'Oracle Cloud Infrastructure Data Science Certification'
+      id: 'hack4health',
+      title: 'Hack4Health (Perfint Healthcare Ltd.)',
+      result: '1st Place',
+      type: 'hackathon',
+      date: 'September 11-12, 2025',
+      icon: <Trophy className="w-6 h-6" />,
+      color: 'purple-accent',
+      description: '1st Place — Developed a complete autonomous docking system for hospital robotics infrastructure. Focused on precision docking, point-to-point navigation, and prototype productization using embedded systems and applied engineering.',
+      highlights: ['Hospital robotics infrastructure', 'CEO recognition', 'Productized prototype', 'Healthcare domain expertise'],
+      certificateUrl: 'https://drive.google.com/file/d/1PllBeo1J_8AaP2Oik8rugVcdGPF-0Kkp/view?usp=sharing',
+      certificateThumbnail: 'https://i.postimg.cc/zfBZbB2h/Hack4-Health-certificate.jpg',
+      certificateAlt: 'Hack4Health Perfint Healthcare First Place Certificate'
+    },
+    {
+      id: 'e-thon',
+      title: 'E-thon (IAIC @ VIT Chennai)',
+      result: '1st Place',
+      type: 'hackathon',
+      date: 'August 29, 2025',
+      icon: <Trophy className="w-6 h-6" />,
+      color: 'neon-green',
+      description: '1st Place — Built a rapid prototype (~4 hrs) of an autonomous hospital-assist bot with OCR-based equipment identification, embedded motor control, and autonomous navigation. Demonstrated real-time deployment, sanitization workflow, and system integration.',
+      highlights: ['Rapid prototyping in 4 hours', 'Hardware + software integration', 'Autonomous navigation', 'Healthcare focus'],
+      certificateUrl: 'https://drive.google.com/file/d/114IsQ7zGBrcv-l0l0MRY6zjZZD8c6_WG/view?usp=drive_link',
+      certificateThumbnail: 'https://i.postimg.cc/FsyQwwkn/Thon-event-certification-page.jpg',
+      certificateAlt: 'E-thon IAIC VIT Chennai First Place Certificate'
     }
   ];
 
