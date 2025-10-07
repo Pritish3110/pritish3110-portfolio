@@ -13,7 +13,7 @@ const ProjectsSection = () => {
   const projects = [
     {
       title: 'Autonomous Docking System',
-      description: 'A robot docking solution for automatic charging and positioning. Integrates environment mapping and precise docking using sensors and SLAM.',
+      description: 'Autonomous docking system for industrial machinery enabling precise, infrastructure-free alignment using sensor-guided navigation and soft-to-hard locking mechanisms',
       tech: ['Spring Lock Mechanism', 'LEGO NXT', 'Arduino IDE', 'Camera (AprilTag detection)'],
       github: 'https://github.com/Pritish3110/Autonomous_docking_system',
       icon: Navigation,
@@ -23,7 +23,7 @@ const ProjectsSection = () => {
     },
     {
       title: 'AIDAS (Animal Injury Detection and Assistance System)',
-      description: 'AI-powered intelligent drone assistance system for navigation and decision making. Implements computer vision and real-time sensor data processing.',
+      description: 'AI-powered animal injury detection assistance system. End-to-end ML system for classifying animal diseases and injuries from images, featuring multiple deep-learning architectures, image preprocessing, a web interface & REST API',
       tech: ['Python', 'OpenCV', 'TensorFlow', 'Streamlit', 'FastAPI', 'MobileNetV2'],
       github: 'https://github.com/Pritish3110/AIDAS',
       icon: Brain,
