@@ -137,7 +137,6 @@ const SkillsSection = () => {
         { name: 'R Studio', icon: <BarChart3 className="w-4 h-4" /> },
         { name: 'MATLAB', icon: <Terminal className="w-4 h-4" /> },
         { name: 'StarUML', icon: <Workflow className="w-4 h-4" /> },
-        { name: 'Docker', icon: <Server className="w-4 h-4" /> },
         { name: 'Visual Studio Code', icon: <Code className="w-4 h-4" /> }
       ],
       bgColor: 'bg-blue-500/5',
