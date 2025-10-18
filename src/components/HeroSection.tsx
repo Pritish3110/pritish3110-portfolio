@@ -14,7 +14,8 @@ const HeroSection = ({ onNavigate }) => {
     'AI/ML Engineer',
     'Robotics Engineer', 
     'Full Stack Developer',
-    'Computer Vision Specialist'
+    'Computer Vision Specialist',
+    'Project & Research Lead'
   ], []);
 
   // Role typing and erasing animation effect
@@ -256,7 +257,7 @@ const HeroSection = ({ onNavigate }) => {
 
               {/* Resume Button - Direct Download */}
               <motion.a
-                href="https://drive.google.com/uc?export=download&id=1YiD-MBpxPwGYg5MTr3B4wtOV9DkPSNHi"
+                href="https://drive.google.com/uc?export=download&id=1jAad-VQFNneXULnasYDsENG7gJPrrXon"
                 target="_blank"
                 rel="noopener noreferrer"
                 download="Pritish_Bhatasana_Resume.pdf"

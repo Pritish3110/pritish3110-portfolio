@@ -10,8 +10,8 @@ const ResumeSection = () => {
     rootMargin: '-30px 0px'
   });
 
-  const downloadLink = 'https://drive.google.com/uc?export=download&id=1YiD-MBpxPwGYg5MTr3B4wtOV9DkPSNHi';
-  const previewLink = 'https://drive.google.com/file/d/1YiD-MBpxPwGYg5MTr3B4wtOV9DkPSNHi/view?usp=sharing';
+  const downloadLink = 'https://drive.google.com/uc?export=download&id=1jAad-VQFNneXULnasYDsENG7gJPrrXon';
+  const previewLink = 'https://drive.google.com/file/d/1jAad-VQFNneXULnasYDsENG7gJPrrXon/preview';
 
   const handleDownload = () => {
     window.open(downloadLink, '_blank');

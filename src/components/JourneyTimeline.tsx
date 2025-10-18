@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Trophy, Briefcase, Code2 } from "lucide-react";
+import { Trophy, Briefcase, Code2, Users } from "lucide-react";
 
 const JourneyTimeline = ({ shouldAnimate }) => {
   const timelineEvents = [
@@ -26,6 +26,14 @@ const JourneyTimeline = ({ shouldAnimate }) => {
       type: 'internship',
       icon: <Briefcase className="w-4 h-4" />,
       color: 'cyan-400'
+    },
+    {
+      year: 'Jun 2025',
+      title: 'IEEE Photonics Society — Project and Research Lead',
+      description: 'Leading hardware-based projects and mentoring students in research paper writing, troubleshooting, and project management. Organizing technical events including hackathons, workshops, and demonstrations.',
+      type: 'leadership',
+      icon: <Users className="w-4 h-4" />,
+      color: 'blue-500'
     },
     {
       year: 'Jun 2025',
@@ -99,18 +107,19 @@ const JourneyTimeline = ({ shouldAnimate }) => {
                   event.color === 'neon-green' ? 'border-neon-green' :
                   event.color === 'purple-accent' ? 'border-purple-accent' :
                   event.color === 'cyan-400' ? 'border-cyan-400' :
+                  event.color === 'blue-500' ? 'border-blue-500' :
                   'border-yellow-400'
                 } bg-surface-light flex items-center justify-center`}
                 whileHover={{ 
-                  // scale: 1.2,
-                  // x: index % 2 === 0 ? 40 : -40, // Move opposite to card direction
                   boxShadow: event.color === 'neon-green' 
                     ? '0 0 20px rgba(34,197,94,0.6)' 
                     : event.color === 'purple-accent' 
                       ? '0 0 20px rgba(147,51,234,0.6)'
                       : event.color === 'cyan-400'
                         ? '0 0 20px rgba(34,211,238,0.6)'
-                        : '0 0 20px rgba(250,204,21,0.6)'
+                        : event.color === 'blue-500'
+                          ? '0 0 20px rgba(59,130,246,0.6)'
+                          : '0 0 20px rgba(250,204,21,0.6)'
                 }}
                 transition={{ 
                   type: "spring", 
@@ -124,6 +133,7 @@ const JourneyTimeline = ({ shouldAnimate }) => {
                     event.color === 'neon-green' ? 'text-neon-green' :
                     event.color === 'purple-accent' ? 'text-purple-accent' :
                     event.color === 'cyan-400' ? 'text-cyan-400' :
+                    event.color === 'blue-500' ? 'text-blue-500' :
                     'text-yellow-400'
                   }
                   whileHover={{ rotate: 360 }}
@@ -159,6 +169,7 @@ const JourneyTimeline = ({ shouldAnimate }) => {
                     event.color === 'neon-green' ? 'bg-gradient-to-r from-neon-green/10 to-neon-green/5' :
                     event.color === 'purple-accent' ? 'bg-gradient-to-r from-purple-accent/10 to-purple-accent/5' :
                     event.color === 'cyan-400' ? 'bg-gradient-to-r from-cyan-400/10 to-cyan-400/5' :
+                    event.color === 'blue-500' ? 'bg-gradient-to-r from-blue-500/10 to-blue-500/5' :
                     'bg-gradient-to-r from-yellow-400/10 to-yellow-400/5'
                   } rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
                 />
@@ -169,6 +180,7 @@ const JourneyTimeline = ({ shouldAnimate }) => {
                     event.color === 'neon-green' ? 'border-l-4 border-l-neon-green' :
                     event.color === 'purple-accent' ? 'border-l-4 border-l-purple-accent' :
                     event.color === 'cyan-400' ? 'border-l-4 border-l-cyan-400' :
+                    event.color === 'blue-500' ? 'border-l-4 border-l-blue-500' :
                     event.color === 'yellow-400' ? 'border-l-4 border-l-yellow-400' : ''
                   }
                 `}>
@@ -178,6 +190,7 @@ const JourneyTimeline = ({ shouldAnimate }) => {
                       event.color === 'neon-green' ? 'bg-neon-green/10 text-neon-green border border-neon-green/20' :
                       event.color === 'purple-accent' ? 'bg-purple-accent/10 text-purple-accent border border-purple-accent/20' :
                       event.color === 'cyan-400' ? 'bg-cyan-400/10 text-cyan-400 border border-cyan-400/20' :
+                      event.color === 'blue-500' ? 'bg-blue-500/10 text-blue-500 border border-blue-500/20' :
                       'bg-yellow-400/10 text-yellow-400 border border-yellow-400/20'
                     }`}
                   >
@@ -185,15 +198,17 @@ const JourneyTimeline = ({ shouldAnimate }) => {
                   </div>
 
                   {/* Event Type Badge - Static & Minimal */}
-                  {(event.type === 'hackathon' || event.type === 'internship') && (
+                  {(event.type === 'hackathon' || event.type === 'internship' || event.type === 'leadership') && (
                     <div
                       className={`inline-block ml-2 px-2 py-0.5 rounded text-xs font-medium ${
                         event.type === 'hackathon' 
                           ? 'bg-neon-green/20 text-neon-green border border-neon-green/30'
-                          : 'bg-cyan-400/20 text-cyan-400 border border-cyan-400/30'
+                          : event.type === 'internship'
+                            ? 'bg-cyan-400/20 text-cyan-400 border border-cyan-400/30'
+                            : 'bg-blue-500/20 text-blue-500 border border-blue-500/30'
                       }`}
                     >
-                      {event.type === 'hackathon' ? 'Hackathon Win' : 'Internship'}
+                      {event.type === 'hackathon' ? 'Hackathon Win' : event.type === 'internship' ? 'Internship' : 'Leadership'}
                     </div>
                   )}
 
@@ -201,6 +216,7 @@ const JourneyTimeline = ({ shouldAnimate }) => {
                     event.color === 'neon-green' ? 'text-neon-green' :
                     event.color === 'purple-accent' ? 'text-purple-accent' :
                     event.color === 'cyan-400' ? 'text-cyan-400' :
+                    event.color === 'blue-500' ? 'text-blue-500' :
                     'text-yellow-400'
                   }`}>
                     {event.title}
@@ -216,6 +232,7 @@ const JourneyTimeline = ({ shouldAnimate }) => {
                       event.color === 'neon-green' ? 'bg-gradient-to-r from-neon-green/30' :
                       event.color === 'purple-accent' ? 'bg-gradient-to-r from-purple-accent/30' :
                       event.color === 'cyan-400' ? 'bg-gradient-to-r from-cyan-400/30' :
+                      event.color === 'blue-500' ? 'bg-gradient-to-r from-blue-500/30' :
                       'bg-gradient-to-r from-yellow-400/30'
                     } to-transparent`}
                     initial={{ scaleX: 0 }}

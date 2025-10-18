@@ -140,7 +140,7 @@ const AchievementsSection = () => {
           className="text-center mb-12 md:mb-20"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-orbitron font-bold text-neon-green mb-4">
-            Achievements
+            Certifications & Achievements
           </h2>
           <div className="w-16 md:w-20 h-1 bg-gradient-to-r from-neon-green to-purple-accent mx-auto mb-6" />
           <p className="text-base md:text-lg text-text-secondary max-w-2xl mx-auto">

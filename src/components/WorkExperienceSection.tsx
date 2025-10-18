@@ -33,8 +33,31 @@ const WorkExperienceSection = () => {
       gradient: 'from-neon-green/20 to-cyan-400/20'
     },
     {
+      id: 'ieee-photonics',
+      company: 'IEEE Photonics Society, VIT Chennai',
+      role: 'Project and Research Lead',
+      type: 'Leadership Role',
+      duration: 'June 2025 - Present',
+      location: 'VIT Chennai',
+      highlights: [
+        'Lead and oversee hardware-based projects developed by department students, ensuring alignment with technical standards and research objectives',
+        'Mentor team members in advanced troubleshooting, problem-solving methodologies, and research paper writing for conferences and journals',
+        'Track project milestones and deliverables, ensuring timely completion of research papers and technical documentation',
+        'Organize and conduct technical events including hackathons, quizzes, demonstrations, presentations, and hands-on workshops to foster innovation',
+        'Coordinate cross-functional communication among team members and manage stakeholder engagement across club activities'
+      ],
+      technologies: [
+        { name: 'Project Management', icon: Briefcase },
+        { name: 'Technical Leadership', icon: Users },
+        { name: 'Research Guidance', icon: Brain },
+        { name: 'Hardware Projects', icon: Cpu },
+        { name: 'Event Management', icon: Star }
+      ],
+      gradient: 'from-blue-500/20 to-cyan-400/20'
+    },
+    {
       id: 'anime-realm',
-      company: 'Anime Realm Club',
+      company: 'Anime Realm Club, VIT Chennai',
       role: 'Leadership & Community Management',
       type: 'Core Member',
       duration: '2023 - Present',
